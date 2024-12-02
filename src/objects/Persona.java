@@ -8,12 +8,12 @@ public class Persona {
     private String idString;
     private String idType;
     private GregorianCalendar dayOfBirth;
-    private String adress;
+    private String[] adress;
     private String phoneNumber;
     private String email;
     private String civilStatus;
 
-    public Persona(String name, String surname, String idString, String idType, GregorianCalendar dayOfBirth, String adress, String phoneNumber, String email, String civilStatus) {
+    public Persona(String name, String surname, String idString, String idType, GregorianCalendar dayOfBirth, String[] adress, String phoneNumber, String email, String civilStatus) {
         this.name = name;
         this.surname = surname;
         this.idString = idString;
@@ -65,11 +65,11 @@ public class Persona {
         this.dayOfBirth = dayOfBirth;
     }
 
-    public String getAdress() {
+    public String[] getAdress() {
         return adress;
     }
 
-    public void setAdress(String adress) {
+    public void setAdress(String[] adress) {
         this.adress = adress;
     }
 
