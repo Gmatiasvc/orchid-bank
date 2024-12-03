@@ -1,4 +1,4 @@
-package cli.output;
+package common.output;
 
 public class Color {
     public static final String DEFAULT = "\033[0m";   
