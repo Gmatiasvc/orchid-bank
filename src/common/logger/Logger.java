@@ -32,7 +32,7 @@ public class Logger {
         }
     }
 
-    private static String dateString(int format) {
+    public static String dateString(int format) {
         switch (format) {
             case 0 -> {
                 dateFormat = new SimpleDateFormat("dd-MM-yyyy");

@@ -1,19 +1,17 @@
 package objects;
 
-import java.util.GregorianCalendar;
-
 public class Persona {
     private String name;
     private String surname;
     private String idString;
     private String idType;
-    private GregorianCalendar dayOfBirth;
+    private String[] dayOfBirth;
     private String[] adress;
     private String phoneNumber;
     private String email;
     private String civilStatus;
 
-    public Persona(String name, String surname, String idString, String idType, GregorianCalendar dayOfBirth, String[] adress, String phoneNumber, String email, String civilStatus) {
+    public Persona(String name, String surname, String idString, String idType, String[] dayOfBirth, String[] adress, String phoneNumber, String email, String civilStatus) {
         this.name = name;
         this.surname = surname;
         this.idString = idString;
@@ -57,11 +55,11 @@ public class Persona {
         this.idType = idType;
     }
 
-    public GregorianCalendar getDayOfBirth() {
+    public String[] getDayOfBirth() {
         return dayOfBirth;
     }
 
-    public void setDayOfBirth(GregorianCalendar dayOfBirth) {
+    public void setDayOfBirth(String[] dayOfBirth) {
         this.dayOfBirth = dayOfBirth;
     }
 
@@ -97,4 +95,10 @@ public class Persona {
         this.civilStatus = civilStatus;
     }
 
+    @Override
+    //Doc: Save format: name - surname - idString - idType - BithYear - BirthMonth - BirthDay - Adress - phoneNumber - email - marital
+    //Doc: Address format: Region - Provincia - Distrito - Calle
+    public String toString() {
+        return getName() + "\n" + getSurname() + "\n" + getIdString() + "\n" + getDayOfBirth()[0] + "\n" + getDayOfBirth()[1]+ "\n" + getDayOfBirth()[2]+ "\n" + getAdress()[0] + "\n" + getAdress()[1] + "\n" + getAdress()[2] + "\n" + getAdress()[3] + "\n" + getPhoneNumber()+  "\n" + getEmail() + "\n" + getCivilStatus();
+    }
 }

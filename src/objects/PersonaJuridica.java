@@ -74,5 +74,13 @@ public class PersonaJuridica {
 
     public void setIncorporationDoc(String incorporationDoc) {
         this.incorporationDoc = incorporationDoc;
-    }    
+    }
+
+    //Doc: Save format: name - ruc - adress - phoneNumber - email -  inc. doc.
+    //Doc: Address format: Region - Provincia - Distrito - Calle
+
+    @Override
+    public String toString() {
+        return getCompanyName() + "\n" + getRuc() + "\n" + getAdress()[0] + "\n" + getAdress()[1] + "\n" + getAdress()[2] + "\n" + getAdress()[3] + "\n" + getPhoneNumber() + "\n" + getEmail() + "\n" + getIncorporationDoc() + "\n" + getRepresentative().toString();
+    }
 }
