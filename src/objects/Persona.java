@@ -99,6 +99,6 @@ public class Persona {
     //Doc: Save format: name - surname - idString - idType - BithYear - BirthMonth - BirthDay - Adress - phoneNumber - email - marital
     //Doc: Address format: Region - Provincia - Distrito - Calle
     public String toString() {
-        return getName() + "\n" + getSurname() + "\n" + getIdString() + "\n" + getDayOfBirth()[0] + "\n" + getDayOfBirth()[1]+ "\n" + getDayOfBirth()[2]+ "\n" + getAdress()[0] + "\n" + getAdress()[1] + "\n" + getAdress()[2] + "\n" + getAdress()[3] + "\n" + getPhoneNumber()+  "\n" + getEmail() + "\n" + getCivilStatus();
+        return getName() + "\n" + getSurname() + "\n" + getIdString() + "\n" + getIdType() + "\n" +getDayOfBirth()[0] + "\n" + getDayOfBirth()[1]+ "\n" + getDayOfBirth()[2]+ "\n" + getAdress()[0] + "\n" + getAdress()[1] + "\n" + getAdress()[2] + "\n" + getAdress()[3] + "\n" + getPhoneNumber()+  "\n" + getEmail() + "\n" + getCivilStatus();
     }
 }
