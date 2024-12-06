@@ -1,5 +1,6 @@
-package objects;
 
+
+package objects;
 public class PersonaJuridica {
     private String companyName;
     private String ruc;

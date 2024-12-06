@@ -9,8 +9,8 @@ public class CuentaCorriente extends Cuenta{
     private String checkbookNumber;
     private float chequeCommission;
 
-    public CuentaCorriente(float overdraftLimit, float chequeLimit, float chequeNumberLimit, String checkbookNumber, float chequeCommission, String number, GregorianCalendar creationDate, String currency, double balance, float interestRate) {
-        super(number, creationDate, currency, balance, interestRate);
+    public CuentaCorriente(float overdraftLimit, float chequeLimit, float chequeNumberLimit, String checkbookNumber, float chequeCommission, String number, GregorianCalendar creationDate, String currency, double balance, float interestRate,int tipoCuenta) {
+        super(number, creationDate, currency, balance, interestRate,tipoCuenta);
         this.overdraftLimit = overdraftLimit;
         this.chequeLimit = chequeLimit;
         this.chequeNumberLimit = chequeNumberLimit;

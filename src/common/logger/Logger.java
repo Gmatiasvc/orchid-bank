@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//DOC: DD-MM-YYYY HH:MM:SS
 public class Logger {
 
     private boolean verbose = false;
@@ -121,7 +120,7 @@ public class Logger {
         } catch (IOException e) {
             System.out.println(dateString(4) + " [CRITICAL] An error during the logging of an event has happened, an event HAS NOT been recorded");
             System.out.println(dateString(4) + " [CRITICAL] Restart your system immediately to avoid further unrecorded events");
-            System.out.println(dateString(4) + " [CRITICAL] If the problem continues, contact your IT branch and report the error");;
+            System.out.println(dateString(4) + " [CRITICAL] If the problem continues, contact your IT branch and report the error");
         }
     }
 
