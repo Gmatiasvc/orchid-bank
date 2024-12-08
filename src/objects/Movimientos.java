@@ -1,6 +1,5 @@
 package objects;
 
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 
@@ -9,7 +8,6 @@ public final class Movimientos {
         private final GregorianCalendar fechaOperacion;
         private int tipoOperacion;
         private double montoOperacion;
-        private Cuenta cuenta; 
         private static int totalOperaciones = 0;
 
         public Movimientos(int tipoOperacion, double montoOperacion) {
@@ -58,15 +56,15 @@ public final class Movimientos {
                 case 5 -> tipo = "Interes mensual";
             }
             return "\n\tNumero de operacion: " + getNumeroOperacion() +
-                   "\n\tFecha: " + getFechaOperacionCorta() + 
+                   //"\n\tFecha: " + getFechaOperacionCorta() + 
                    "\n\tTipo: " + tipo + "\n\tMonto: " + getMontoOperacion();
         }
         
-        public String getFechaOperacionCorta() {
+/*         public String getFechaOperacionCorta() {
             int dia, mes, anio;
             dia = cuenta.getCreationDate().get(Calendar.DAY_OF_MONTH);
             mes = cuenta.getCreationDate().get(Calendar.MONTH)+1;
             anio = cuenta.getCreationDate().get(Calendar.YEAR);
             return (dia<=9?"0"+dia:dia) + "/" + (mes<=9?"0"+mes:mes) + "/" + anio;
-        }
+        } */
 }

@@ -1,26 +1,32 @@
 package objects;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
-public class CuentaAhorro extends Cuenta
-        implements ImptoTransaccionesFinancieras, interesMensual {
+public class CuentaAhorro extends Cuenta {
 
-    private static double tasaInteresAnual = 0.04f;
     private float withdrawLim;
-    private GregorianCalendar statementDate;
-    private int statementPeriod;
-    private int gracePeriod;
-    private Persona[] beneficiaries;
-    ArrayList<Movimientos> operaciones;
+    private String statementDay;
+    private String statementPeriod;
+    private String gracePeriod;
+    private ArrayList<String> beneficiaries;
 
-    public CuentaAhorro(float withdrawLim, GregorianCalendar statementDate, int statementPeriod, int gracePeriod, Persona[] beneficiaries, String number, GregorianCalendar creationDate, String currency, double balance, float interestRate, int tipoCuenta) {
-        super(number, creationDate, currency, balance, interestRate, tipoCuenta);
+    public CuentaAhorro(float withdrawLim, String statementDay, String statementPeriod, String gracePeriod, ArrayList<String> beneficiaries, String number, String[] creationDate, String currency, double balance, float interestRate, String id, String idtype) {
+        super(number, creationDate, currency, balance, 0.04f, id, idtype);
         this.withdrawLim = withdrawLim;
-        this.statementDate = statementDate;
+        this.statementDay = statementDay;
         this.statementPeriod = statementPeriod;
         this.gracePeriod = gracePeriod;
         this.beneficiaries = beneficiaries;
+    }
+
+    public void cuenta(String number, String[] creationDate, String currency, double balance, float interestRate, String id, String idtype){
+        setNumber(number);
+        setCreationDate(creationDate);
+        setCurrency(currency);
+        setBalance(balance);
+        setInterestRate(interestRate);
+        setId(id);
+        setIdtype(idtype);
     }
 
     public float getWithdrawLim() {
@@ -31,100 +37,58 @@ public class CuentaAhorro extends Cuenta
         this.withdrawLim = withdrawLim;
     }
 
-    public GregorianCalendar getStatementDate() {
-        return statementDate;
+    public String getStatementDay() {
+        return statementDay;
     }
 
-    public void setStatementDate(GregorianCalendar statementDate) {
-        this.statementDate = statementDate;
+    public void setStatementDate(String statementDay) {
+        this.statementDay = statementDay;
     }
 
-    public int getStatementPeriod() {
+    public String getStatementPeriod() {
         return statementPeriod;
     }
 
-    public void setStatementPeriod(int statementPeriod) {
+    public void setStatementPeriod(String statementPeriod) {
         this.statementPeriod = statementPeriod;
     }
 
-    public int getGracePeriod() {
+    public String getGracePeriod() {
         return gracePeriod;
     }
 
-    public void setGracePeriod(int gracePeriod) {
+    public void setGracePeriod(String gracePeriod) {
         this.gracePeriod = gracePeriod;
     }
 
-    public Persona[] getBeneficiaries() {
+    public ArrayList<String> getBeneficiaries() {
         return beneficiaries;
     }
 
-    public void setBeneficiaries(Persona[] beneficiaries) {
+    public void setBeneficiaries(ArrayList<String> beneficiaries) {
         this.beneficiaries = beneficiaries;
     }
 
-    public static void modificarTasaInteresAnual(float tasaInteresA) {
-        tasaInteresAnual = tasaInteresA;
+    public void modificarTasaInteresAnual(float tasaInteres) {
+        super.setInterestRate(tasaInteres);
     }
 
-    public static double obtenerTasaInteresAnual() {
-        return tasaInteresAnual;
+    public double obtenerTasaInteresAnual() {
+        return getInterestRate();
     }
 
-    public boolean realizarDeposito(float montoD) {
-        Movimientos movimiento;
-        setBalance(getBalance() + montoD);
-        movimiento = new Movimientos(1, montoD);
-        operaciones.add(movimiento);
-        if (montoD >= 1000) {
-            setBalance(getBalance() - calcularITF(montoD));
-            movimiento = new Movimientos(4, calcularITF(montoD));
-            operaciones.add(movimiento);
+    public String beneficiariesToSTring() {
+        String str = "";
+
+        for (Object i : getBeneficiaries()) {
+            str = str + "\n" + i;
         }
-        return true;
+        return str;
     }
 
-    public boolean realizarRetiro(float montoR) {
-        Movimientos movimiento;
-        float montoITF = calcularITF(montoR);
-        if (montoR >= 1000) {
-            if (montoR + montoITF <= getBalance()) {
-                setBalance(montoITF);
-                movimiento = new Movimientos(2, montoR);
-                operaciones.add(movimiento);
-                setBalance(getBalance() + montoR);
-                movimiento = new Movimientos(4, montoITF);
-                operaciones.add(movimiento);
-                return true;
-            }
-            return false;
-        } else {
-            if (montoR <= getBalance()) {
-                setBalance(getBalance() - montoR);
-                movimiento = new Movimientos(2, montoR);
-                operaciones.add(movimiento);
-                return true;
-            }
-        }
-        return false;
-    }
-
+    //DOC: Save format: number - year - month - day - currency - balance - interestRate - withdrawLim - statementDay - statementPeriod - gracePeriod - beneficiaries
     @Override
-    public void calcularInteresMensual() {
-        Movimientos movimiento;
-        double interesMensual = getBalance() * obtenerTasaInteresAnual() / 12;
-        setBalance(getBalance() + interesMensual);
-        movimiento = new Movimientos(5, interesMensual);
-        operaciones.add(movimiento);
+    public String toString() {
+        return super.toString() + "\n" + getStatementDay() + "\n" + getStatementPeriod() + "\n" + getGracePeriod() + beneficiariesToSTring();
     }
-
-    @Override
-    public float calcularITF(float cantidad) {
-        return cantidad * ITF;
-    }
-
-    public ArrayList<Movimientos> getOperaciones() {
-        return operaciones;
-    }
-
 }

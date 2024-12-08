@@ -1,21 +1,30 @@
 package objects;
 
-import java.util.GregorianCalendar;
+public class CuentaCorriente extends Cuenta {
 
-public class CuentaCorriente extends Cuenta{
     private float overdraftLimit;
     private float chequeLimit;
     private float chequeNumberLimit;
     private String checkbookNumber;
     private float chequeCommission;
 
-    public CuentaCorriente(float overdraftLimit, float chequeLimit, float chequeNumberLimit, String checkbookNumber, float chequeCommission, String number, GregorianCalendar creationDate, String currency, double balance, float interestRate,int tipoCuenta) {
-        super(number, creationDate, currency, balance, interestRate,tipoCuenta);
+    public CuentaCorriente(float overdraftLimit, float chequeLimit, float chequeNumberLimit, String checkbookNumber, float chequeCommission, String number, String[] creationDate, String currency, double balance, float interestRate, String id, String idtype) {
+        super(number, creationDate, currency, balance, interestRate, id, idtype);
         this.overdraftLimit = overdraftLimit;
         this.chequeLimit = chequeLimit;
         this.chequeNumberLimit = chequeNumberLimit;
         this.checkbookNumber = checkbookNumber;
         this.chequeCommission = chequeCommission;
+    }
+
+    public void cuenta(String number, String[] creationDate, String currency, double balance, float interestRate, String id, String idtype){
+        setNumber(number);
+        setCreationDate(creationDate);
+        setCurrency(currency);
+        setBalance(balance);
+        setInterestRate(interestRate);
+        setId(id);
+        setIdtype(idtype);
     }
 
     public float getOverdraftLimit() {
@@ -57,6 +66,11 @@ public class CuentaCorriente extends Cuenta{
     public void setChequeCommission(float chequeCommission) {
         this.chequeCommission = chequeCommission;
     }
+    //DOC: Save format: number - year - month - day - currency - balance - interestRate - overdraftLim - chequeLim - ChequeNumberLim - CheckbookNum - ChequeCommis
 
-    
+    @Override
+    public String toString() {
+        return super.toString() + "\n" + getOverdraftLimit() + "\n" + getChequeLimit() + "\n" + getCheckbookNumber() + "\n" + getChequeCommission();
+    }
+
 }

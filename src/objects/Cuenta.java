@@ -1,67 +1,29 @@
 package objects;
 
-import java.util.GregorianCalendar;
+public class Cuenta {
 
-public class Cuenta{
     private String number;
-    private GregorianCalendar creationDate;
+    private String[] creationDate;
     private String currency;
     private double balance;
     private float interestRate;
-    private int tipoCuenta;
-    private static int totalCtaAhorro = 0;
-    private static int totalCtaCorriente = 0;
+    private String id;
+    private String idtype;
 
-    public Cuenta(String number, GregorianCalendar creationDate, String currency, double balance, float interestRate,int tipoCuenta) {
+    public Cuenta(String number, String[] creationDate, String currency, double balance, float interestRate, String id, String idtype) {
         this.number = number;
         this.creationDate = creationDate;
         this.currency = currency;
         this.balance = balance;
         this.interestRate = interestRate;
-        this.tipoCuenta = tipoCuenta;
+        this.id = id;
+        this.idtype = idtype;
     }
 
-    public Cuenta(String clave, int tipoCuenta) { 
-        this.tipoCuenta = tipoCuenta;
-        creationDate = new GregorianCalendar();
-        if(tipoCuenta == 1)
-            ++totalCtaAhorro;
-        else
-            ++totalCtaCorriente;
-        number = generarNumber();
-    }
-
-    private String generarNumber() {
-        int numDig=0, num=0, dato=0;
-        String numCuenta = "";
-        switch(tipoCuenta) {
-            case 1 -> {
-                num = dato = totalCtaAhorro;
-                numCuenta = "A";
-            }
-            case 2 -> {
-                num = dato = totalCtaCorriente;
-                numCuenta = "C";
-            }
-        }
-        while (num > 9) {
-            numDig++;
-            num /= 10;
-        }
-        numDig++;
-        for(int i=0;i<10-numDig; i++)
-            numCuenta += "0";
-        numCuenta += dato;        
-        return numCuenta;
-    }   
-  
     public String getNumeroCuenta() {
         return number;
     }
 
-    public int getTipoCuenta(){
-        return tipoCuenta;
-    }
     public String getNumber() {
         return number;
     }
@@ -70,11 +32,11 @@ public class Cuenta{
         this.number = number;
     }
 
-    public GregorianCalendar getCreationDate() {
+    public String[] getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(GregorianCalendar creationDate) {
+    public void setCreationDate(String[] creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -102,8 +64,24 @@ public class Cuenta{
         this.interestRate = interestRate;
     }
 
-    public void setTipoCuenta(int tipoCuenta) {
-        this.tipoCuenta = tipoCuenta;
+    @Override
+    public String toString() {
+        return getNumber() + "\n" + getId() + "\n" + getIdtype() + "\n" + getCreationDate()[0] + "\n" + getCreationDate()[1] + "\n" + getCreationDate()[2] + "\n" + getCurrency() + "\n" + getBalance() + "\n" + getInterestRate();
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIdtype() {
+        return idtype;
+    }
+
+    public void setIdtype(String idtype) {
+        this.idtype = idtype;
+    }
 }
