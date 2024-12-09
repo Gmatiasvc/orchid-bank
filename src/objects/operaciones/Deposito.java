@@ -23,4 +23,18 @@ public class Deposito extends Operacion{
         return getIDENTIFIER() + getSUCCESS() + getACC() + getDNI() + getUNIX() + getMONTO() + getPID();
     }
 
+    public static Deposito parseFromString(String str){
+        if (str.length() != 46) {
+            return new Deposito(null, null, null, null, null, null, null);
+        }
+        String pid = str.substring(36,46);
+        String unix = str.substring(18,28);
+        String monto = str.substring(28,36);
+        String identifier = str.substring(0, 1);
+        String success= str.substring(1, 2);
+        String aac= str.substring(2, 10);
+        String dni = str.substring(10,18);
+        return new Deposito(pid, unix, monto, identifier, success, aac, dni);
+        
+    }
 }

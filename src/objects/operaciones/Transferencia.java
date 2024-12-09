@@ -22,4 +22,18 @@ public class Transferencia extends Operacion{
     public String toString() {
         return getIDENTIFIER() + getSUCCESS() + getACCR() + getACCS() + getUNIX() + getMONTO() + getPID();
     }
+
+    public static Transferencia parseFromString(String str){
+        if (str.length() != 46) {
+            return new Transferencia(null, null, null, null, null, null, null);
+        }
+        String pid = str.substring(36,46);
+        String unix = str.substring(18,28);
+        String monto = str.substring(28,36);
+        String identifier = str.substring(0, 1);
+        String success= str.substring(1, 2);
+        String accr= str.substring(2, 10);
+        String accs = str.substring(10,18);
+        return new Transferencia(accr, accs, pid, unix, monto, identifier, success);
+    }
 }

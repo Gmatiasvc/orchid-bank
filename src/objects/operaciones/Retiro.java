@@ -22,4 +22,19 @@ public class Retiro extends Operacion{
     public String toString() {
         return getIDENTIFIER() + getSUCCESS() + getACC() + getDNI() + getUNIX() + getMONTO() + getPID();
     }
+
+    public static Retiro parseFromString(String str){
+        if (str.length() != 46) {
+            return new Retiro(null, null, null, null, null, null, null);
+        }
+        String pid = str.substring(36,46);
+        String unix = str.substring(18,28);
+        String monto = str.substring(28,36);
+        String identifier = str.substring(0, 1);
+        String success= str.substring(1, 2);
+        String aac= str.substring(2, 10);
+        String dni = str.substring(10,18);
+        return new Retiro(pid, unix, monto, identifier, success, aac, dni);
+        
+    }
 }
