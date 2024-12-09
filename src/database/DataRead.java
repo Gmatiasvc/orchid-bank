@@ -1,5 +1,6 @@
 package database;
 
+import common.logger.Logger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class DataRead {
                 data.setCivilStatus(scanner.nextLine());
             }
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
         }
         return data;
     }
@@ -86,7 +87,7 @@ public class DataRead {
                 data.setRepresentative(dataRep);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
         }
         return data;
     }
@@ -136,7 +137,7 @@ public class DataRead {
                 data.cuenta(number, creationDate, currency, balance, interestRate, id, idType);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
         }
 		return data;
 	}
@@ -184,7 +185,7 @@ public class DataRead {
                 data.cuenta(number, creationDate, currency, balance, interestRate, id, idType);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
         }
 		return data;
 	}
