@@ -1,0 +1,34 @@
+package functions;
+
+import database.DataSave;
+import database.InfoRead;
+import database.infoSave;
+import objects.Persona;
+
+public class clientHandling {
+    public static Persona createNatural(String name, String surname, String idString, String idType, String[] dayOfBirth, String[] adress, String phoneNumber, String email, String civilStatus){
+        try {
+            int sizeofSave = InfoRead.clientNatural();
+            Persona object = new Persona(name, surname, idString, idType, dayOfBirth, adress, phoneNumber, email, civilStatus);
+            DataSave.saveClientNatural(sizeofSave+1, object, false);
+            infoSave.clientNatural(sizeofSave+1, false);
+            return object;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static Persona createNatural(String name, String surname, String idString, String idType, String year, String month, String day, String state, String region, String district, String street, String phoneNumber, String email, String civilStatus){
+        try {
+            String[] dayOfBirth = {year, month, day};
+            String[] adress = {state, region, district, street};
+            int sizeofSave = InfoRead.clientNatural();
+            Persona object = new Persona(name, surname, idString, idType, dayOfBirth, adress, phoneNumber, email, civilStatus);
+            DataSave.saveClientNatural(sizeofSave+1, object, false);
+            infoSave.clientNatural(sizeofSave+1, false);
+            return object;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+}
