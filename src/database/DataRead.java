@@ -12,7 +12,7 @@ import objects.PersonaJuridica;
 
 public class DataRead {
     public static String[] empty3 = {null, null,null};
-    public static String[] empty4 = {null, null,null};
+    public static String[] empty4 = {null, null,null,null};
     public static ArrayList<String> emptyArray = new ArrayList<>();
 
     //Doc: Save format: name - surname - idString - idType - BithYear - BirthMonth - BirthDay - Adress - phoneNumber - email - marital
