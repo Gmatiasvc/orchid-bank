@@ -1,6 +1,7 @@
 package objects.lists;
 
 import database.DataRead;
+import database.InfoRead;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import objects.CuentaAhorro;
@@ -10,7 +11,7 @@ public class ListaCuentasAhorro {
     private LinkedList<CuentaAhorro> list = new LinkedList<>();
 
     public ListaCuentasAhorro() {
-        int dbsize = 0;
+        int dbsize = InfoRead.accountAhorro();
         CuentaAhorro caho;
         for (int i = 0; i <= dbsize; i++) {
             caho = DataRead.readCuentaAhorro(i, false);

@@ -1,6 +1,7 @@
 package objects.lists;
 
 import database.DataRead;
+import database.InfoRead;
 import java.util.LinkedList;
 import objects.Persona;
 
@@ -9,7 +10,7 @@ public class ListaClientesNaturales {
     private LinkedList<Persona> list = new LinkedList<>();
 
     public ListaClientesNaturales() {
-        int dbsize = 0;
+        int dbsize = InfoRead.clientNatural();
         Persona pnat;
         for (int i = 0; i <= dbsize; i++) {
             pnat = DataRead.readPersona(i, false);

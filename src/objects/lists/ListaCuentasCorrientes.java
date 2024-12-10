@@ -1,6 +1,7 @@
 package objects.lists;
 
 import database.DataRead;
+import database.InfoRead;
 import java.util.LinkedList;
 import objects.CuentaCorriente;
 
@@ -9,7 +10,7 @@ public class ListaCuentasCorrientes {
     private LinkedList<CuentaCorriente> list = new LinkedList<>();
 
     public ListaCuentasCorrientes() {
-        int dbsize = 0;
+        int dbsize = InfoRead.accountCorriente();
         CuentaCorriente ccrt;
         for (int i = 0; i <= dbsize; i++) {
             ccrt = DataRead.readCuentaCorriente(i, false);
