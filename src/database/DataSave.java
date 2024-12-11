@@ -8,6 +8,11 @@ import objects.CuentaAhorro;
 import objects.CuentaCorriente;
 import objects.Persona;
 import objects.PersonaJuridica;
+import objects.operaciones.Cheque;
+import objects.operaciones.Deposito;
+import objects.operaciones.Operacion;
+import objects.operaciones.Retiro;
+import objects.operaciones.Transferencia;
 
 public class DataSave {
 
@@ -35,7 +40,7 @@ public class DataSave {
             }
             return true;
         } catch (IOException e) {
-            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during informatio write event; information has been lost.");
+            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information write event; information has been lost.");
             return false;
         }
     }
@@ -122,7 +127,42 @@ public class DataSave {
             }
             return true;
         } catch (IOException e) {
-            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during informatio write event; information has been lost.");
+            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information write event; information has been lost.");
+            return false;
+        }
+    }
+
+    public static boolean appendOperationAccount(String number, boolean verbose, Operacion operation){
+        try {
+            File saveFile = new File("db/movements/" + number + ".mvlog");
+            if (saveFile.createNewFile()) {
+                if (verbose) {
+                    System.out.println(Logger.dateString(4) + " [INFO] File created at: " + "db/movements/" + number + ".mvlog");
+                }
+            } else {
+                if (verbose) {
+                    System.out.println(Logger.dateString(4) + " [INFO] File already existed at: " + "db/movements/" + number + ".mvlog");
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during file creation event.");
+        }
+
+        try (FileWriter writer = new FileWriter("db/movements/" + number + ".mvlog", true)) {
+            switch (operation.getIDENTIFIER()) {
+                case "0" -> {writer.append(((Deposito)operation).toString());}
+                case "1" -> {writer.append(((Retiro)operation).toString());}
+                case "2","3" -> {writer.append(((Transferencia)operation).toString());}
+                case "4","5" -> {writer.append(((Cheque)operation).toString());}
+                default -> writer.append(operation.toString());
+            }
+            writer.close();
+            if (verbose) {
+                System.out.println(Logger.dateString(4) + " [INFO] File now stores up to date operation information.");
+            }
+            return true;
+        } catch (IOException e) {
+            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information write event; information has been lost.");
             return false;
         }
     }

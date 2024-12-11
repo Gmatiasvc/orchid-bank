@@ -189,4 +189,19 @@ public class DataRead {
         }
 		return data;
 	}
+
+    public static ArrayList<String> readOperation(String number, boolean verbose){
+        ArrayList<String> list = new ArrayList<>();
+            try {
+                File reader = new File("db/movements/" + number + ".mvlog");
+                try (Scanner scanner = new Scanner(reader)) {
+                    while (scanner.hasNextLine()) {
+                        list.add(scanner.nextLine());
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                list.add(null);
+            }
+        return list;
+    }
 }
