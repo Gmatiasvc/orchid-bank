@@ -4,7 +4,7 @@ import common.logger.Logger;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class infoSave {
+public class InfoSave {
     private static int iacca;
     private static int iaccc;
     private static int iclij;
@@ -17,9 +17,9 @@ public class infoSave {
         iclin = InfoRead.clientNatural();
 
         try (FileWriter writer = new FileWriter("db/database.info", false)) {
-            writer.append(Integer.toString(iacca));
-            writer.append(Integer.toString(iaccc));
-            writer.append(Integer.toString(iclij));
+            writer.append(Integer.toString(iacca)+"\n");
+            writer.append(Integer.toString(iaccc)+"\n");
+            writer.append(Integer.toString(iclij)+"\n");
             writer.append(Integer.toString(iclin));
             writer.close();
             if (verbose) {
@@ -39,9 +39,9 @@ public class infoSave {
         iclin = InfoRead.clientNatural();
 
         try (FileWriter writer = new FileWriter("db/database.info", false)) {
-            writer.append(Integer.toString(iacca));
-            writer.append(Integer.toString(iaccc));
-            writer.append(Integer.toString(iclij));
+            writer.append(Integer.toString(iacca)+"\n");
+            writer.append(Integer.toString(iaccc)+"\n");
+            writer.append(Integer.toString(iclij)+"\n");
             writer.append(Integer.toString(iclin));
             writer.close();
             if (verbose) {
@@ -61,9 +61,9 @@ public class infoSave {
         iclin = InfoRead.clientNatural();
 
         try (FileWriter writer = new FileWriter("db/database.info", false)) {
-            writer.append(Integer.toString(iacca));
-            writer.append(Integer.toString(iaccc));
-            writer.append(Integer.toString(iclij));
+            writer.append(Integer.toString(iacca)+"\n");
+            writer.append(Integer.toString(iaccc)+"\n");
+            writer.append(Integer.toString(iclij)+"\n");
             writer.append(Integer.toString(iclin));
             writer.close();
             if (verbose) {
@@ -83,9 +83,9 @@ public class infoSave {
         iclin = newCLIN;
 
         try (FileWriter writer = new FileWriter("db/database.info", false)) {
-            writer.append(Integer.toString(iacca));
-            writer.append(Integer.toString(iaccc));
-            writer.append(Integer.toString(iclij));
+            writer.append(Integer.toString(iacca)+"\n");
+            writer.append(Integer.toString(iaccc)+"\n");
+            writer.append(Integer.toString(iclij)+"\n");
             writer.append(Integer.toString(iclin));
             writer.close();
             if (verbose) {

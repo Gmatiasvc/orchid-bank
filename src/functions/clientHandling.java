@@ -2,7 +2,7 @@ package functions;
 
 import database.DataSave;
 import database.InfoRead;
-import database.infoSave;
+import database.InfoSave;
 import objects.Persona;
 import objects.PersonaJuridica;
 
@@ -12,7 +12,7 @@ public class clientHandling {
             int sizeofSave = InfoRead.clientNatural();
             Persona object = new Persona(name, surname, idString, idType, dayOfBirth, adress, phoneNumber, email, civilStatus);
             DataSave.saveClientNatural(sizeofSave+1, object, false);
-            infoSave.clientNatural(sizeofSave+1, false);
+            InfoSave.clientNatural(sizeofSave+1, false);
             return object;
         } catch (Exception e) {
             return null;
@@ -26,7 +26,7 @@ public class clientHandling {
             int sizeofSave = InfoRead.clientNatural();
             Persona object = new Persona(name, surname, idString, idType, dayOfBirth, adress, phoneNumber, email, civilStatus);
             DataSave.saveClientNatural(sizeofSave+1, object, false);
-            infoSave.clientNatural(sizeofSave+1, false);
+            InfoSave.clientNatural(sizeofSave+1, false);
             return object;
         } catch (Exception e) {
             return null;
@@ -39,7 +39,7 @@ public class clientHandling {
             String[] adress = {state, region, district, street};
             PersonaJuridica object = new PersonaJuridica(companyName, ruc, adress, phoneNumber, email, representative, incorporationDoc);
             DataSave.saveClientJuridica(sizeofSave+1, object, false);
-            infoSave.clientJuridica(sizeofSave+1, false);
+            InfoSave.clientJuridica(sizeofSave+1, false);
             return object;
         } catch (Exception e) {
             return null;
@@ -51,7 +51,7 @@ public class clientHandling {
             int sizeofSave = InfoRead.clientJuridica();
             PersonaJuridica object = new PersonaJuridica(companyName, ruc, adress, phoneNumber, email, representative, incorporationDoc);
             DataSave.saveClientJuridica(sizeofSave+1, object, false);
-            infoSave.clientJuridica(sizeofSave+1, false);
+            InfoSave.clientJuridica(sizeofSave+1, false);
             return object;
         } catch (Exception e) {
             return null;
