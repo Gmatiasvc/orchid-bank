@@ -61,5 +61,5 @@ public class ListaOperaciones {
     public void setAccountNumber(String accountNumber, Logger logger) {
         this.accountNumber = accountNumber;
         setList(logger);
-    }    
+    }
 }
