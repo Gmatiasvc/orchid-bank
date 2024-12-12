@@ -11,8 +11,9 @@ import objects.accounts.Persona;
 import objects.accounts.PersonaJuridica;
 
 public class DataRead {
-    public static String[] empty3 = {null, null,null};
-    public static String[] empty4 = {null, null,null,null};
+
+    public static String[] empty3 = {null, null, null};
+    public static String[] empty4 = {null, null, null, null};
     public static ArrayList<String> emptyArray = new ArrayList<>();
 
     //Doc: Save format: name - surname - idString - idType - BithYear - BirthMonth - BirthDay - Adress - phoneNumber - email - marital
@@ -93,9 +94,9 @@ public class DataRead {
     }
 
     //DOC: Save format: number - id - idtype - year - month - day - currency - balance - interestRate - overdraftLim - chequeLim - ChequeNumberLim - CheckbookNum - ChequeCommis
-	public static CuentaCorriente readCuentaCorriente(int pos, boolean verbose){
-		CuentaCorriente data = new CuentaCorriente(0, 0, 0, null,0, null, empty3, null, 0, 0, null, null);
-		try {
+    public static CuentaCorriente readCuentaCorriente(int pos, boolean verbose) {
+        CuentaCorriente data = new CuentaCorriente(0, 0, 0, null, 0, null, empty3, null, 0, 0, null, null);
+        try {
             File reader = new File("db/account/corriente/" + pos + ".acc");
             try (Scanner scanner = new Scanner(reader)) {
                 String number = scanner.nextLine();
@@ -108,7 +109,7 @@ public class DataRead {
                 String currency = scanner.nextLine();
                 double balance;
                 try {
-                balance = Double.parseDouble(scanner.nextLine());
+                    balance = Double.parseDouble(scanner.nextLine());
                 } catch (NumberFormatException e) {
                     balance = 0.0;
                 }
@@ -139,12 +140,11 @@ public class DataRead {
         } catch (FileNotFoundException e) {
             System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
         }
-		return data;
-	}
-
+        return data;
+    }
 
     //DOC: Save format: number - year - month - day - currency - balance - interestRate - withdrawLim - statementDay - statementPeriod - gracePeriod - beneficiaries
-    public static CuentaAhorro readCuentaAhorro(int pos, boolean verbose){
+    public static CuentaAhorro readCuentaAhorro(int pos, boolean verbose) {
         CuentaAhorro data = new CuentaAhorro(pos, null, null, null, emptyArray, null, empty3, null, pos, pos, null, null);
         try {
             File reader = new File("db/account/ahorro/" + pos + ".acc");
@@ -159,7 +159,7 @@ public class DataRead {
                 String currency = scanner.nextLine();
                 double balance;
                 try {
-                balance = Double.parseDouble(scanner.nextLine());
+                    balance = Double.parseDouble(scanner.nextLine());
                 } catch (NumberFormatException e) {
                     balance = 0.0;
                 }
@@ -178,7 +178,7 @@ public class DataRead {
                 data.setStatementPeriod(scanner.nextLine());
                 data.setGracePeriod(scanner.nextLine());
                 ArrayList<String> beneficiaries = new ArrayList<>();
-                while(scanner.hasNextLine()){
+                while (scanner.hasNextLine()) {
                     beneficiaries.add(scanner.nextLine());
                 }
                 data.setBeneficiaries(beneficiaries);
@@ -187,21 +187,21 @@ public class DataRead {
         } catch (FileNotFoundException e) {
             System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
         }
-		return data;
-	}
+        return data;
+    }
 
-    public static ArrayList<String> readOperation(String number, boolean verbose){
+    public static ArrayList<String> readOperation(String number, boolean verbose) {
         ArrayList<String> list = new ArrayList<>();
-            try {
-                File reader = new File("db/movements/" + number + ".mvlog");
-                try (Scanner scanner = new Scanner(reader)) {
-                    while (scanner.hasNextLine()) {
-                        list.add(scanner.nextLine());
-                    }
+        try {
+            File reader = new File("db/movements/" + number + ".mvlog");
+            try (Scanner scanner = new Scanner(reader)) {
+                while (scanner.hasNextLine()) {
+                    list.add(scanner.nextLine());
                 }
-            } catch (FileNotFoundException e) {
-                list.add(null);
             }
+        } catch (FileNotFoundException e) {
+            list.add(null);
+        }
         return list;
     }
 }

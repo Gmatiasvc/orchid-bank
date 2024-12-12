@@ -25,7 +25,9 @@ public class Logger {
                     System.out.println(dateString(4) + " [INFO] File created at: " + FILE_PATH);
                 }
             } else {
-                if (verbose) System.out.println(dateString(4) + " [INFO] File already existed at: " + FILE_PATH);
+                if (verbose) {
+                    System.out.println(dateString(4) + " [INFO] File already existed at: " + FILE_PATH);
+                }
             }
         } catch (IOException e) {
             System.out.println("ERROR: An error has occurred during log creation event.");
@@ -61,10 +63,10 @@ public class Logger {
             logWrite = new FileWriter(FILE_PATH, true);
             logWrite.append(dateString(2) + " [INFO] " + message + "\n");
             logWrite.close();
-			
-			if (verbose == true) {
-				System.out.println(dateString(4) + " [INFO] An \"INFO\" event has been logged at: " + FILE_PATH);
-			}
+
+            if (verbose == true) {
+                System.out.println(dateString(4) + " [INFO] An \"INFO\" event has been logged at: " + FILE_PATH);
+            }
 
         } catch (IOException e) {
             System.out.println(dateString(4) + " [CRITICAL] An error during the logging of an event has happened, an event HAS NOT been recorded");
@@ -79,9 +81,9 @@ public class Logger {
             logWrite.append(dateString(2) + " [WARN] " + message + "\n");
             logWrite.close();
 
-			if (verbose == true) {
-				System.out.println(dateString(4) + " [INFO] A \"WARN\" event has been logged at: " + FILE_PATH);
-			}
+            if (verbose == true) {
+                System.out.println(dateString(4) + " [INFO] A \"WARN\" event has been logged at: " + FILE_PATH);
+            }
 
         } catch (IOException e) {
             System.out.println(dateString(4) + " [CRITICAL] An error during the logging of an event has happened, an event HAS NOT been recorded");
@@ -96,9 +98,9 @@ public class Logger {
             logWrite.append(dateString(2) + " [ERROR] " + message + "\n");
             logWrite.close();
 
-			if (verbose == true) {
-				System.out.println(dateString(4) + " [INFO] An \"ERROR\" event has been logged at: " + FILE_PATH);
-			}
+            if (verbose == true) {
+                System.out.println(dateString(4) + " [INFO] An \"ERROR\" event has been logged at: " + FILE_PATH);
+            }
 
         } catch (IOException e) {
             System.out.println(dateString(4) + " [CRITICAL] An error during the logging of an event has happened, an event HAS NOT been recorded");
@@ -113,9 +115,9 @@ public class Logger {
             logWrite.append(dateString(2) + " [FAIL] " + message + "\n");
             logWrite.close();
 
-			if (verbose == true) {
-				System.out.println(dateString(4) + " [INFO] A \"FAIL\" event has been logged at: " + FILE_PATH);
-			}
+            if (verbose == true) {
+                System.out.println(dateString(4) + " [INFO] A \"FAIL\" event has been logged at: " + FILE_PATH);
+            }
 
         } catch (IOException e) {
             System.out.println(dateString(4) + " [CRITICAL] An error during the logging of an event has happened, an event HAS NOT been recorded");
@@ -130,9 +132,9 @@ public class Logger {
             logWrite.write(dateString(2) + " [DEBUG] " + message + "\n");
             logWrite.close();
 
-			if (verbose == true) {
-				System.out.println(dateString(4) + " [INFO] A \"WARN\" event has been logged at: " + FILE_PATH);
-			}
+            if (verbose == true) {
+                System.out.println(dateString(4) + " [INFO] A \"WARN\" event has been logged at: " + FILE_PATH);
+            }
 
         } catch (IOException e) {
             System.out.println(dateString(4) + " [CRITICAL] An error during the logging of an event has happened, an event HAS NOT been recorded");

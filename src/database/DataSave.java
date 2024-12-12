@@ -132,7 +132,7 @@ public class DataSave {
         }
     }
 
-    public static boolean appendOperationAccount(String number, boolean verbose, Operacion operation){
+    public static boolean appendOperationAccount(String number, boolean verbose, Operacion operation) {
         try {
             File saveFile = new File("db/movements/" + number + ".mvlog");
             if (saveFile.createNewFile()) {
@@ -150,13 +150,24 @@ public class DataSave {
 
         try (FileWriter writer = new FileWriter("db/movements/" + number + ".mvlog", true)) {
             switch (operation.getIDENTIFIER()) {
-                case "0" -> {writer.append(((Deposito)operation).toString()+"\n");}
-                case "1" -> {writer.append(((Retiro)operation).toString()+"\n");}
-                case "2","3" -> {writer.append(((Transferencia)operation).toString()+"\n");}
-                case "4","5" -> {writer.append(((Cheque)operation).toString()+"\n");}
-                default -> {writer.append(operation.toString()+"\n");if (verbose) {
-                    System.out.println(Logger.dateString(4) + " [ERROR] File has a bad/unparsable line, some information has been written regardless, data loss might have happened.");
-                }}
+                case "0" -> {
+                    writer.append(((Deposito) operation).toString() + "\n");
+                }
+                case "1" -> {
+                    writer.append(((Retiro) operation).toString() + "\n");
+                }
+                case "2", "3" -> {
+                    writer.append(((Transferencia) operation).toString() + "\n");
+                }
+                case "4", "5" -> {
+                    writer.append(((Cheque) operation).toString() + "\n");
+                }
+                default -> {
+                    writer.append(operation.toString() + "\n");
+                    if (verbose) {
+                        System.out.println(Logger.dateString(4) + " [ERROR] File has a bad/unparsable line, some information has been written regardless, data loss might have happened.");
+                    }
+                }
             }
             writer.close();
             if (verbose) {

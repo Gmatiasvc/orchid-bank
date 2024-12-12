@@ -5,21 +5,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class InfoSave {
+
     private static int iacca;
     private static int iaccc;
     private static int iclij;
     private static int iclin;
 
-    public static boolean accountAhorro(int newACCA,boolean verbose){
+    public static boolean accountAhorro(int newACCA, boolean verbose) {
         iacca = newACCA;
         iaccc = InfoRead.accountCorriente();
         iclij = InfoRead.clientJuridica();
         iclin = InfoRead.clientNatural();
 
         try (FileWriter writer = new FileWriter("db/database.info", false)) {
-            writer.append(Integer.toString(iacca)+"\n");
-            writer.append(Integer.toString(iaccc)+"\n");
-            writer.append(Integer.toString(iclij)+"\n");
+            writer.append(Integer.toString(iacca) + "\n");
+            writer.append(Integer.toString(iaccc) + "\n");
+            writer.append(Integer.toString(iclij) + "\n");
             writer.append(Integer.toString(iclin));
             writer.close();
             if (verbose) {
@@ -32,16 +33,16 @@ public class InfoSave {
         }
     }
 
-    public static boolean accountCorriente(int newACCC,boolean verbose){
+    public static boolean accountCorriente(int newACCC, boolean verbose) {
         iacca = InfoRead.accountAhorro();
         iaccc = newACCC;
         iclij = InfoRead.clientJuridica();
         iclin = InfoRead.clientNatural();
 
         try (FileWriter writer = new FileWriter("db/database.info", false)) {
-            writer.append(Integer.toString(iacca)+"\n");
-            writer.append(Integer.toString(iaccc)+"\n");
-            writer.append(Integer.toString(iclij)+"\n");
+            writer.append(Integer.toString(iacca) + "\n");
+            writer.append(Integer.toString(iaccc) + "\n");
+            writer.append(Integer.toString(iclij) + "\n");
             writer.append(Integer.toString(iclin));
             writer.close();
             if (verbose) {
@@ -54,16 +55,16 @@ public class InfoSave {
         }
     }
 
-    public static boolean clientJuridica(int newCLIJ,boolean verbose){
+    public static boolean clientJuridica(int newCLIJ, boolean verbose) {
         iacca = InfoRead.accountAhorro();
         iaccc = InfoRead.accountCorriente();
         iclij = newCLIJ;
         iclin = InfoRead.clientNatural();
 
         try (FileWriter writer = new FileWriter("db/database.info", false)) {
-            writer.append(Integer.toString(iacca)+"\n");
-            writer.append(Integer.toString(iaccc)+"\n");
-            writer.append(Integer.toString(iclij)+"\n");
+            writer.append(Integer.toString(iacca) + "\n");
+            writer.append(Integer.toString(iaccc) + "\n");
+            writer.append(Integer.toString(iclij) + "\n");
             writer.append(Integer.toString(iclin));
             writer.close();
             if (verbose) {
@@ -76,16 +77,16 @@ public class InfoSave {
         }
     }
 
-    public static boolean clientNatural(int newCLIN,boolean verbose){
+    public static boolean clientNatural(int newCLIN, boolean verbose) {
         iacca = InfoRead.accountAhorro();
         iaccc = InfoRead.accountCorriente();
         iclij = InfoRead.clientJuridica();
         iclin = newCLIN;
 
         try (FileWriter writer = new FileWriter("db/database.info", false)) {
-            writer.append(Integer.toString(iacca)+"\n");
-            writer.append(Integer.toString(iaccc)+"\n");
-            writer.append(Integer.toString(iclij)+"\n");
+            writer.append(Integer.toString(iacca) + "\n");
+            writer.append(Integer.toString(iaccc) + "\n");
+            writer.append(Integer.toString(iclij) + "\n");
             writer.append(Integer.toString(iclin));
             writer.close();
             if (verbose) {
