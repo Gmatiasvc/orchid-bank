@@ -154,7 +154,9 @@ public class DataSave {
                 case "1" -> {writer.append(((Retiro)operation).toString());}
                 case "2","3" -> {writer.append(((Transferencia)operation).toString());}
                 case "4","5" -> {writer.append(((Cheque)operation).toString());}
-                default -> writer.append(operation.toString());
+                default -> {writer.append(operation.toString());if (verbose) {
+                    System.out.println(Logger.dateString(4) + " [ERROR] File has a bad/unparsable line, some information has been written regardless, data loss might have happened.");
+                }}
             }
             writer.close();
             if (verbose) {
