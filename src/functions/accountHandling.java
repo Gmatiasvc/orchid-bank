@@ -4,8 +4,8 @@ import database.DataSave;
 import database.InfoRead;
 import database.InfoSave;
 import java.util.ArrayList;
-import objects.CuentaAhorro;
-import objects.CuentaCorriente;
+import objects.accounts.CuentaAhorro;
+import objects.accounts.CuentaCorriente;
 
 public class accountHandling{
 

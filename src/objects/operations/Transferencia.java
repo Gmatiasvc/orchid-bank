@@ -1,4 +1,4 @@
-package objects.operaciones;
+package objects.operations;
 
 import common.exceptions.BadStringToParse;
 

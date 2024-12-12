@@ -5,10 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import objects.CuentaAhorro;
-import objects.CuentaCorriente;
-import objects.Persona;
-import objects.PersonaJuridica;
+import objects.accounts.CuentaAhorro;
+import objects.accounts.CuentaCorriente;
+import objects.accounts.Persona;
+import objects.accounts.PersonaJuridica;
 
 public class DataRead {
     public static String[] empty3 = {null, null,null};

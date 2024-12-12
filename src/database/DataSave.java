@@ -4,15 +4,15 @@ import common.logger.Logger;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import objects.CuentaAhorro;
-import objects.CuentaCorriente;
-import objects.Persona;
-import objects.PersonaJuridica;
-import objects.operaciones.Cheque;
-import objects.operaciones.Deposito;
-import objects.operaciones.Operacion;
-import objects.operaciones.Retiro;
-import objects.operaciones.Transferencia;
+import objects.accounts.CuentaAhorro;
+import objects.accounts.CuentaCorriente;
+import objects.accounts.Persona;
+import objects.accounts.PersonaJuridica;
+import objects.operations.Cheque;
+import objects.operations.Deposito;
+import objects.operations.Operacion;
+import objects.operations.Retiro;
+import objects.operations.Transferencia;
 
 public class DataSave {
 

@@ -5,11 +5,11 @@ import common.logger.Logger;
 import database.DataRead;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import objects.operaciones.Cheque;
-import objects.operaciones.Deposito;
-import objects.operaciones.Operacion;
-import objects.operaciones.Retiro;
-import objects.operaciones.Transferencia;
+import objects.operations.Cheque;
+import objects.operations.Deposito;
+import objects.operations.Operacion;
+import objects.operations.Retiro;
+import objects.operations.Transferencia;
 
 public class ListaOperaciones {
     @SuppressWarnings("FieldMayBeFinal")

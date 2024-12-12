@@ -3,8 +3,8 @@ package functions;
 import database.DataSave;
 import database.InfoRead;
 import database.InfoSave;
-import objects.Persona;
-import objects.PersonaJuridica;
+import objects.accounts.Persona;
+import objects.accounts.PersonaJuridica;
 
 public class clientHandling {
     public static Persona createNatural(String name, String surname, String idString, String idType, String[] dayOfBirth, String[] adress, String phoneNumber, String email, String civilStatus){

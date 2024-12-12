@@ -1,4 +1,4 @@
-package objects;
+package objects.accounts;
 
 public class CuentaCorriente extends Cuenta {
 

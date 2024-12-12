@@ -3,8 +3,8 @@ package objects.lists;
 import database.DataRead;
 import database.InfoRead;
 import java.util.LinkedList;
-import objects.Persona;
-import objects.PersonaJuridica;
+import objects.accounts.Persona;
+import objects.accounts.PersonaJuridica;
 
 public class ListaClientesJuridicos {
     @SuppressWarnings("FieldMayBeFinal")

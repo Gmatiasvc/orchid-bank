@@ -1,17 +1,17 @@
-package objects.operaciones;
+package objects.operations;
 
 import common.exceptions.BadStringToParse;
 
-public class Retiro extends Operacion{
+public class Deposito extends Operacion{
     private final String ACC;
     private final String DNI;
-
-    public Retiro(String PID, String UNIX, String MONTO, String IDENTIFIER, String SUCCESS, String ACC, String DNI) {
+    
+    public Deposito(String PID, String UNIX, String MONTO, String IDENTIFIER, String SUCCESS, String ACC, String DNI) {
         super(PID, UNIX, MONTO, IDENTIFIER, SUCCESS);
         this.ACC = ACC;
         this.DNI = DNI;
     }
-    
+
     public String getACC() {
         return ACC;
     }
@@ -25,7 +25,7 @@ public class Retiro extends Operacion{
         return getIDENTIFIER() + getSUCCESS() + getACC() + getDNI() + getUNIX() + getMONTO() + getPID();
     }
 
-    public static Retiro parseFromString(String str) throws BadStringToParse{
+    public static Deposito parseFromString(String str) throws BadStringToParse{
         if (str.length() != 46) {
             throw new BadStringToParse();
         }
@@ -36,7 +36,7 @@ public class Retiro extends Operacion{
         String success= str.substring(1, 2);
         String aac= str.substring(2, 10);
         String dni = str.substring(10,18);
-        return new Retiro(pid, unix, monto, identifier, success, aac, dni);
+        return new Deposito(pid, unix, monto, identifier, success, aac, dni);
         
     }
 }

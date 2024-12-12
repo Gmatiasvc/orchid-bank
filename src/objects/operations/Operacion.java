@@ -1,4 +1,4 @@
-package objects.operaciones;
+package objects.operations;
 
 public class Operacion {
     private final String PID;

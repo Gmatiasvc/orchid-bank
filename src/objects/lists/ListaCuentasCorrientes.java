@@ -3,7 +3,7 @@ package objects.lists;
 import database.DataRead;
 import database.InfoRead;
 import java.util.LinkedList;
-import objects.CuentaCorriente;
+import objects.accounts.CuentaCorriente;
 
 public class ListaCuentasCorrientes {
     @SuppressWarnings("FieldMayBeFinal")
