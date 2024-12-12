@@ -1,5 +1,7 @@
 package objects.operaciones;
 
+import common.exceptions.BadStringToParse;
+
 public class Deposito extends Operacion{
     private final String ACC;
     private final String DNI;
@@ -23,9 +25,9 @@ public class Deposito extends Operacion{
         return getIDENTIFIER() + getSUCCESS() + getACC() + getDNI() + getUNIX() + getMONTO() + getPID();
     }
 
-    public static Deposito parseFromString(String str){
+    public static Deposito parseFromString(String str) throws BadStringToParse{
         if (str.length() != 46) {
-            return new Deposito(null, null, null, null, null, null, null);
+            throw new BadStringToParse();
         }
         String pid = str.substring(36,46);
         String unix = str.substring(18,28);

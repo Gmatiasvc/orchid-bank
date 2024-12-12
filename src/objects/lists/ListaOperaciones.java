@@ -1,5 +1,7 @@
 package objects.lists;
 
+import common.exceptions.BadStringToParse;
+import common.logger.Logger;
 import database.DataRead;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -16,9 +18,9 @@ public class ListaOperaciones {
 
     private String accountNumber;
 
-    public ListaOperaciones(String accountNumber) {
+    public ListaOperaciones(String accountNumber, Logger logger) {
         this.accountNumber = accountNumber;
-        setList();
+        setList(logger);
     }
 
     public LinkedList<Operacion> getList() {
@@ -29,19 +31,24 @@ public class ListaOperaciones {
         return accountNumber;
     }
 
-    private void setList(){
+    private void setList(Logger logger){
         strList = DataRead.readOperation(getAccountNumber(), false);
         if (strList.getLast() == null){
             list.add(null);
         }
         else{
             for (String i : strList) {
-                switch (i.substring(0,1)) {
-                case "0" -> {list.add(Deposito.parseFromString(i));}
-                case "1" -> {list.add(Retiro.parseFromString(i));}
-                case "2","3" -> {list.add(Transferencia.parseFromString(i));}
-                case "4","5" -> {list.add(Cheque.parseFromString(i));}
-                default -> {list.add(null);}
+                try {
+                    switch (i.substring(0,1)) {
+                        case "0" -> {list.add(Deposito.parseFromString(i));}
+                        case "1" -> {list.add(Retiro.parseFromString(i));}
+                        case "2","3" -> {list.add(Transferencia.parseFromString(i));}
+                        case "4","5" -> {list.add(Cheque.parseFromString(i));}
+                        default -> {throw new BadStringToParse();}
+                        }  
+                        logger.INFO("Operation information has been parsed sucessfully: "+i);
+                } catch (BadStringToParse e) {
+                    logger.WARN("A string could not be parsed during operation data recovery from the db. String might be corrupted. Account: "+getAccountNumber());
                 }
             }
         }
@@ -51,8 +58,8 @@ public class ListaOperaciones {
         this.list = list;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(String accountNumber, Logger logger) {
         this.accountNumber = accountNumber;
-        setList();
+        setList(logger);
     }    
 }

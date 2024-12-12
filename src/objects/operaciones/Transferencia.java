@@ -1,5 +1,7 @@
 package objects.operaciones;
 
+import common.exceptions.BadStringToParse;
+
 public class Transferencia extends Operacion{
     private final String ACCR;
     private final String ACCS;
@@ -23,9 +25,9 @@ public class Transferencia extends Operacion{
         return getIDENTIFIER() + getSUCCESS() + getACCR() + getACCS() + getUNIX() + getMONTO() + getPID();
     }
 
-    public static Transferencia parseFromString(String str){
+    public static Transferencia parseFromString(String str) throws BadStringToParse{
         if (str.length() != 46) {
-            return new Transferencia(null, null, null, null, null, null, null);
+            throw new BadStringToParse();
         }
         String pid = str.substring(36,46);
         String unix = str.substring(18,28);

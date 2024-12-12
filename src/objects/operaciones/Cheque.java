@@ -1,5 +1,7 @@
 package objects.operaciones;
 
+import common.exceptions.BadStringToParse;
+
 public class Cheque extends Operacion {
     private final String ACCR;
     private final String ACCS;
@@ -35,9 +37,9 @@ public class Cheque extends Operacion {
         return getIDENTIFIER() + getSUCCESS() + getACCR() + getACCS() + getDNI() + getCHEQUE() + getUNIX() + getMONTO() + getPID();
     }
 
-    public static Cheque parseFromString(String str){
+    public static Cheque parseFromString(String str) throws BadStringToParse{
         if (str.length() != 62) {
-            return new Cheque(null, null, null, null, null, null, null, null, null);
+            throw new BadStringToParse();
         }
         String pid = str.substring(52,62);
         String unix = str.substring(34,44);

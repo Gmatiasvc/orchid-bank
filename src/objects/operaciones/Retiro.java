@@ -1,5 +1,7 @@
 package objects.operaciones;
 
+import common.exceptions.BadStringToParse;
+
 public class Retiro extends Operacion{
     private final String ACC;
     private final String DNI;
@@ -23,9 +25,9 @@ public class Retiro extends Operacion{
         return getIDENTIFIER() + getSUCCESS() + getACC() + getDNI() + getUNIX() + getMONTO() + getPID();
     }
 
-    public static Retiro parseFromString(String str){
+    public static Retiro parseFromString(String str) throws BadStringToParse{
         if (str.length() != 46) {
-            return new Retiro(null, null, null, null, null, null, null);
+            throw new BadStringToParse();
         }
         String pid = str.substring(36,46);
         String unix = str.substring(18,28);
