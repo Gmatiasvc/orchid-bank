@@ -1,5 +1,5 @@
 package components;
 
-public class client {
+public class Employee {
     
 }
