@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Logger {
 
@@ -142,4 +144,22 @@ public class Logger {
             System.out.println(dateString(4) + " [CRITICAL] If the problem continues, contact your IT branch and report the error");
         }
     }
+
+	public static ArrayList<String> readLog(String year, String month, String day, Logger logger){
+		ArrayList<String> list = new ArrayList<>();
+		try {
+            File reader = new File("logs/"+day+"-"+month+"-"+year+".log");
+            try (Scanner scanner = new Scanner(reader)) {
+                while(scanner.hasNextLine()){
+					list.add(scanner.nextLine());
+				}
+            }
+        } catch (Exception e) {
+			list.add("[ERROR] An exception was raised during the read operation of the .log, that all we know");
+			logger.ERROR("An exception was raised during the read operation of: logs/"+day+"-"+month+"-"+year+".log");
+            return list;
+        }
+		logger.INFO("readLog operation completed sucessfuly");
+		return list;
+	}
 }

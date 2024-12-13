@@ -115,6 +115,7 @@ public class Client {
 	}
 
 	public ListaOperaciones getListaOperacionesPropias(String acc) {
+		logger.INFO("Operation list have been requested from a client component for the account: "+acc);
 		setListaOperacionesPropias(acc);
 		return listaOperacionesPropias;
 	}
