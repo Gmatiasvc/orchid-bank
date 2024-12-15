@@ -84,8 +84,8 @@ public class Client {
 								}
 								else {
 									if (i.getBalance() < monto*ITF){
-									logger.WARN("Tranfer between accounts: "+accs+" -> "+accr +" failed, the requested quantity of money to tranfer: "+monto+ "exceded the balance of the account");
-									return false;
+										logger.WARN("Tranfer between accounts: "+accs+" -> "+accr +" failed, the requested quantity of money to tranfer: "+monto+ "exceded the balance of the account");
+										return false;
 								}
 									else {
 										logger.WARN("Tranfer between accounts: "+accs+" -> "+accr +" failed, the currency of the accounts does not match");
