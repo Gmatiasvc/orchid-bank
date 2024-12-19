@@ -4,3 +4,5 @@ bin
 db
 .LCK*
 *.form
+nbproject
+build.xml

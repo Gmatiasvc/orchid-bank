@@ -11,3 +11,4 @@ Esto se hizo como un proyecto final para el 2do ciclo de Ingenieria de Sistemas 
 ## Contributors
 
 * Gmatiasvc (Gerardo V.)
+* [Gianfranco]

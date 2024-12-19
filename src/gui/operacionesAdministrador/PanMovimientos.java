@@ -1,29 +1,32 @@
-package gui.operacionesEmpleado;
+package gui.operacionesAdministrador;
+
 import javax.swing.table.DefaultTableModel;
 
-
-public class PamMovimientos extends javax.swing.JPanel {
-
+public class PanMovimientos extends javax.swing.JPanel {
+    
     DefaultTableModel mt = new DefaultTableModel();
-    public PamMovimientos() {
+
+    public PanMovimientos() {
         initComponents();
-        String ids[] = {"Dia","Mes","Año","Tipo","Monto"};
+         String ids[] = {"Dia","Mes","Año","Tipo","Monto"};
         mt.setColumnIdentifiers(ids);
         tblMovimientos.setModel(mt);
     }
 
+
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
-        panBlanco = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMovimientos = new javax.swing.JTable();
 
-        panBlanco.setBackground(new java.awt.Color(255, 255, 255));
-        panBlanco.setPreferredSize(new java.awt.Dimension(1140, 784));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1140, 784));
 
         tblMovimientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -35,24 +38,24 @@ public class PamMovimientos extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblMovimientos);
 
-        panBlanco.add(jScrollPane1);
+        jPanel1.add(jScrollPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panBlanco;
     private javax.swing.JTable tblMovimientos;
 }
