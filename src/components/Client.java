@@ -1,7 +1,9 @@
 package components;
 
+import common.data.constants;
 import common.exceptions.AccountNotFound;
 import common.exceptions.DataMissmatch;
+import common.exceptions.InvalidInput;
 import common.logger.Logger;
 import functions.operationHandling;
 import java.util.ArrayList;
@@ -18,8 +20,6 @@ public class Client {
 	private ListaCuentasCorrientes listaCuentasCorrientes = new ListaCuentasCorrientes();
 	private ListaOperaciones listaOperacionesPropias;
 	private Logger logger = new Logger(false);
-	private final float ITF = 1.00005f;
-
 	public Client(String ID_STRING) {
 		this.ID_STRING = ID_STRING;
 		fillArrayList();
@@ -58,7 +58,7 @@ public class Client {
 		return true;
 	}
 
-	public boolean doTransfer(float monto, String accs, String accr) throws AccountNotFound, DataMissmatch{
+	public boolean doTransfer(float monto, String accs, String accr) throws AccountNotFound, DataMissmatch, InvalidInput{
 		
         if (accs.charAt(0) != '1' || accs.charAt(0) != '2'||accs.length()!=8) {
 			logger.WARN("Tranfer operation unable to proceed as provided account number: "+accs+" is invalid. Amount to transfer indicated: "+monto + " to the account: "+accr);
@@ -74,18 +74,42 @@ public class Client {
 					if (accr.charAt(0) == '1'){
 						for (Cuenta j : listaCuentasAhorro.getList()) {
 							if (j.getNumeroCuenta().equals(accr)){
-								if (i.getBalance() >= monto*ITF && i.getCurrency().equals(j.getCurrency())) {
+								if (i.getBalance() >= monto*constants.ITF && i.getCurrency().equals(j.getCurrency())) {
 									operationHandling.registerTransferenciaSaliente(accr, accs, monto, "1");
 									operationHandling.registerTransferenciaEntrante(accr, accs, monto, "0");
-									i.setBalance(i.getBalance()-monto*ITF);
+									i.setBalance(i.getBalance()-monto*constants.ITF);
 									j.setBalance(j.getBalance()+monto);
 									logger.INFO("Tranfer between accounts: "+accs+" -> "+accr +" was executed and registered sucessfuly, the ammount transfered was: "+monto);
 									return true;
 								}
 								else {
-									if (i.getBalance() < monto*ITF){
+									if (i.getBalance() < monto*constants.ITF){
 										logger.WARN("Tranfer between accounts: "+accs+" -> "+accr +" failed, the requested quantity of money to tranfer: "+monto+ "exceded the balance of the account");
-										return false;
+										throw new InvalidInput();
+								}
+									else {
+										logger.WARN("Tranfer between accounts: "+accs+" -> "+accr +" failed, the currency of the accounts does not match");
+										throw new DataMissmatch();
+									}
+								}
+							}
+						}
+					}
+					else{
+						for (Cuenta j : listaCuentasCorrientes.getList()) {
+							if (j.getNumeroCuenta().equals(accr)){
+								if (i.getBalance() >= monto*constants.ITF && i.getCurrency().equals(j.getCurrency())) {
+									operationHandling.registerTransferenciaSaliente(accr, accs, monto, "1");
+									operationHandling.registerTransferenciaEntrante(accr, accs, monto, "0");
+									i.setBalance(i.getBalance()-monto*constants.ITF);
+									j.setBalance(j.getBalance()+monto);
+									logger.INFO("Tranfer between accounts: "+accs+" -> "+accr +" was executed and registered sucessfuly, the ammount transfered was: "+monto);
+									return true;
+								}
+								else {
+									if (i.getBalance() < monto*constants.ITF){
+										logger.WARN("Tranfer between accounts: "+accs+" -> "+accr +" failed, the requested quantity of money to tranfer: "+monto+ "exceded the balance of the account");
+										throw new InvalidInput();
 								}
 									else {
 										logger.WARN("Tranfer between accounts: "+accs+" -> "+accr +" failed, the currency of the accounts does not match");
