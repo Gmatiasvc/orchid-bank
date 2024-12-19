@@ -34,7 +34,7 @@ public class clientHandling {
 		}
 	}
 
-	public static PersonaJuridica creatPersonaJuridica(String companyName, String ruc, String state, String region, String district, String street, String phoneNumber, String email, Persona representative, String incorporationDoc) {
+	public static PersonaJuridica createPersonaJuridica(String companyName, String ruc, String state, String region, String district, String street, String phoneNumber, String email, Persona representative, String incorporationDoc) {
 		try {
 			int sizeofSave = InfoRead.clientJuridica();
 			String[] adress = {state, region, district, street};
@@ -47,7 +47,7 @@ public class clientHandling {
 		}
 	}
 
-	public static PersonaJuridica creatPersonaJuridica(String companyName, String ruc, String[] adress, String phoneNumber, String email, Persona representative, String incorporationDoc) {
+	public static PersonaJuridica createPersonaJuridica(String companyName, String ruc, String[] adress, String phoneNumber, String email, Persona representative, String incorporationDoc) {
 		try {
 			int sizeofSave = InfoRead.clientJuridica();
 			PersonaJuridica object = new PersonaJuridica(companyName, ruc, adress, phoneNumber, email, representative, incorporationDoc);
