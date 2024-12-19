@@ -6,3 +6,4 @@ db
 *.form
 nbproject
 build.xml
+manifest.mf

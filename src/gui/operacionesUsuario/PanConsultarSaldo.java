@@ -35,6 +35,7 @@ public class PanConsultarSaldo extends javax.swing.JPanel {
 
         panBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panBlanco.setPreferredSize(new java.awt.Dimension(1140, 784));
+
         lblImporteRetiro.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblImporteRetiro.setForeground(new java.awt.Color(51, 51, 255));
         lblImporteRetiro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
