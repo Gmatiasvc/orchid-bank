@@ -44,26 +44,27 @@ public class PanEstadoCuenta extends javax.swing.JPanel {
 
         panBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panBlanco.setPreferredSize(new java.awt.Dimension(1140, 784));
+        panBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblImporteRetiro.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblImporteRetiro.setForeground(new java.awt.Color(51, 51, 255));
         lblImporteRetiro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImporteRetiro.setText("Numero de Cuenta");
-        panBlanco.add(lblImporteRetiro);
+        panBlanco.add(lblImporteRetiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 160, -1));
 
         lblcontraseña.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblcontraseña.setForeground(new java.awt.Color(51, 51, 255));
         lblcontraseña.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcontraseña.setText("Nombre del Titular");
-        panBlanco.add(lblcontraseña);
-        panBlanco.add(txtImporteRetirar);
+        panBlanco.add(lblcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 160, -1));
+        panBlanco.add(txtImporteRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 420, -1));
 
         txtContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //txtContraseñaActionPerformed(evt);
+                txtContraseñaActionPerformed(evt);
             }
         });
-        panBlanco.add(txtContraseña);
+        panBlanco.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 420, -1));
 
         btnRetirar.setBackground(new java.awt.Color(51, 51, 255));
         btnRetirar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -72,10 +73,10 @@ public class PanEstadoCuenta extends javax.swing.JPanel {
         btnRetirar.setText("Generar Estado");
         btnRetirar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-               // btnRetirarActionPerformed(evt);
+                btnRetirarActionPerformed(evt);
             }
         });
-        panBlanco.add(btnRetirar);
+        panBlanco.add(btnRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

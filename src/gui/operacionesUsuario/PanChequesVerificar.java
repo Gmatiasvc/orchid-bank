@@ -51,6 +51,7 @@ public class PanChequesVerificar extends javax.swing.JPanel {
         JPanel3.setMinimumSize(new java.awt.Dimension(0, 0));
         JPanel3.setPreferredSize(new java.awt.Dimension(1100, 710));
         JPanel3.setRequestFocusEnabled(false);
+        JPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNumeroCheque.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblNumeroCheque.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -88,7 +89,7 @@ public class PanChequesVerificar extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        JPanel3.add(panNumeroCheque);
+        JPanel3.add(panNumeroCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 920, -1));
 
         lblImporte.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblImporte.setText("IMPORTE A COBRAR");
@@ -125,7 +126,7 @@ public class PanChequesVerificar extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        JPanel3.add(panImporte);
+        JPanel3.add(panImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 920, -1));
 
         lblNombreEmisor.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblNombreEmisor.setText("NOMBRE DEL EMISOR");
@@ -162,7 +163,7 @@ public class PanChequesVerificar extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        JPanel3.add(panNombreEmisor);
+        JPanel3.add(panNombreEmisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 920, -1));
 
         lblNumeroCuentaBeneficiario.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblNumeroCuentaBeneficiario.setText(" NUMERO DE CUENTA DELBENEFICIARIO");
@@ -203,7 +204,7 @@ public class PanChequesVerificar extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        JPanel3.add(panNumeroCuentaBeneficiario);
+        JPanel3.add(panNumeroCuentaBeneficiario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 920, -1));
 
         lblNumeroCuentaLibrador.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblNumeroCuentaLibrador.setText("NUMERO DE CUENTA DEL LIBRADOR");
@@ -240,7 +241,7 @@ public class PanChequesVerificar extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        JPanel3.add(panNumeroCuentaLibrador);
+        JPanel3.add(panNumeroCuentaLibrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 920, -1));
 
         jButton1.setBackground(new java.awt.Color(51, 51, 255));
         jButton1.setFont(new java.awt.Font("Roboto Medium", 1, 16)); // NOI18N
@@ -251,7 +252,7 @@ public class PanChequesVerificar extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        JPanel3.add(jButton1);
+        JPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 180, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

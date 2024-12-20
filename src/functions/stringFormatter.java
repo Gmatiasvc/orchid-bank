@@ -1,5 +1,7 @@
 package functions;
 
+import database.InfoRead;
+
 public class stringFormatter {
 
 	private static final int SIZE_MONTO = 8;
@@ -41,5 +43,17 @@ public class stringFormatter {
 		String str = Double.toString(System.currentTimeMillis());
 
 		return str.substring(str.length() - 13, str.length() - 3);
+	}
+
+	public static String numberGeneratorAhorro(){
+		int aca = InfoRead.accountAhorro()+1;
+		String acats = Integer.toString(aca);
+		return "1"+"0".repeat(7-acats.length())+acats;
+	}
+
+	public static String numberGeneratorCorriente(){
+		int acc = InfoRead.accountCorriente()+1;
+		String accts = Integer.toString(acc);
+		return "1"+"0".repeat(7-accts.length())+accts;
 	}
 }

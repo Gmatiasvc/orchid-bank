@@ -4,6 +4,15 @@
  */
 package gui.operacionesEmpleado;
 
+import java.awt.Color;
+import java.util.ArrayList;
+
+import common.exceptions.ClientNotFound;
+import common.logger.Logger;
+import components.Employee;
+import functions.stringFormatter;
+import objects.accounts.Persona;
+
 /**
  *
  * @author edu11
@@ -13,8 +22,14 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
     /**
      * Creates new form PanCrearCuentaAhorro2
      */
-    public PanCrearCuentaCorriente() {
+	private Employee comp;
+    public PanCrearCuentaCorriente(Employee comp) {
+		this.comp = comp;
         initComponents();
+		cmbRepresentante.removeAllItems();
+		for(String i: comp.getListaNrosDoc()){
+			cmbRepresentante.addItem(i);
+		}
     }
 
     /**
@@ -27,12 +42,6 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panNumeroCheque = new javax.swing.JPanel();
-        lblNumeroCuenta = new javax.swing.JLabel();
-        txtNumeroCuenta = new javax.swing.JTextField();
-        panFechaApertura = new javax.swing.JPanel();
-        lblFechaApertura = new javax.swing.JLabel();
-        txtFechaApertura = new javax.swing.JTextField();
         panSaldoInicial = new javax.swing.JPanel();
         lblSaldoInicial = new javax.swing.JLabel();
         txtSaldoInicial = new javax.swing.JTextField();
@@ -41,7 +50,7 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         txtTipoMoneda = new javax.swing.JTextField();
         panTitularDeLaCuenta = new javax.swing.JPanel();
         lblTitularDeLaCuenta = new javax.swing.JLabel();
-        txtTitularDeLaCuenta = new javax.swing.JTextField();
+        cmbRepresentante = new javax.swing.JComboBox<>();
         panInteresAplicado = new javax.swing.JPanel();
         lblInteresAplicado = new javax.swing.JLabel();
         txtInteresAplicado = new javax.swing.JTextField();
@@ -51,95 +60,16 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         panLimiteCheques = new javax.swing.JPanel();
         lblLimiteCheques = new javax.swing.JLabel();
         txtLimiteCheques = new javax.swing.JTextField();
-        panNumeroCheques = new javax.swing.JPanel();
-        lblNumeroCheques = new javax.swing.JLabel();
-        txtNumeroCheques = new javax.swing.JTextField();
         panComisionPorCheque = new javax.swing.JPanel();
         lblComisionPorCheque = new javax.swing.JLabel();
         txtComisionPorCheque = new javax.swing.JTextField();
+        txtCommisPorCheque = new javax.swing.JTextField();
         jbtGuardar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1120, 680));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblNumeroCuenta.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        lblNumeroCuenta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNumeroCuenta.setText("NUMERO DE CUENTA");
-        lblNumeroCuenta.setAlignmentX(0.5F);
-        lblNumeroCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        txtNumeroCuenta.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtNumeroCuenta.setForeground(new java.awt.Color(204, 204, 204));
-        txtNumeroCuenta.setText("...");
-        txtNumeroCuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroCuentaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panNumeroChequeLayout = new javax.swing.GroupLayout(panNumeroCheque);
-        panNumeroCheque.setLayout(panNumeroChequeLayout);
-        panNumeroChequeLayout.setHorizontalGroup(
-            panNumeroChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panNumeroChequeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNumeroCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panNumeroChequeLayout.setVerticalGroup(
-            panNumeroChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panNumeroChequeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panNumeroChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNumeroCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panNumeroChequeLayout.createSequentialGroup()
-                        .addComponent(txtNumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        jPanel1.add(panNumeroCheque);
-
-        lblFechaApertura.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        lblFechaApertura.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblFechaApertura.setText("FECHA APERTURA");
-        lblFechaApertura.setAlignmentX(0.5F);
-        lblFechaApertura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        txtFechaApertura.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtFechaApertura.setForeground(new java.awt.Color(204, 204, 204));
-        txtFechaApertura.setText("...");
-        txtFechaApertura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaAperturaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panFechaAperturaLayout = new javax.swing.GroupLayout(panFechaApertura);
-        panFechaApertura.setLayout(panFechaAperturaLayout);
-        panFechaAperturaLayout.setHorizontalGroup(
-            panFechaAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panFechaAperturaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblFechaApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFechaApertura, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panFechaAperturaLayout.setVerticalGroup(
-            panFechaAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFechaAperturaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panFechaAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFechaApertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFechaApertura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(panFechaApertura);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSaldoInicial.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblSaldoInicial.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -174,12 +104,12 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
                 .addGroup(panSaldoInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSaldoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panSaldoInicialLayout.createSequentialGroup()
-                        .addComponent(txtSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1.add(panSaldoInicial);
+        jPanel1.add(panSaldoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 920, 40));
 
         lblTipoMoneda.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblTipoMoneda.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -213,11 +143,13 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panTipoMonedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTipoMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTipoMoneda))
+                    .addGroup(panTipoMonedaLayout.createSequentialGroup()
+                        .addComponent(txtTipoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1.add(panTipoMoneda);
+        jPanel1.add(panTipoMoneda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 920, 40));
 
         lblTitularDeLaCuenta.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblTitularDeLaCuenta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -225,14 +157,7 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         lblTitularDeLaCuenta.setAlignmentX(0.5F);
         lblTitularDeLaCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtTitularDeLaCuenta.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtTitularDeLaCuenta.setForeground(new java.awt.Color(204, 204, 204));
-        txtTitularDeLaCuenta.setText("...");
-        txtTitularDeLaCuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTitularDeLaCuentaActionPerformed(evt);
-            }
-        });
+        cmbRepresentante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout panTitularDeLaCuentaLayout = new javax.swing.GroupLayout(panTitularDeLaCuenta);
         panTitularDeLaCuenta.setLayout(panTitularDeLaCuentaLayout);
@@ -242,22 +167,20 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblTitularDeLaCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTitularDeLaCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(cmbRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(339, Short.MAX_VALUE))
         );
         panTitularDeLaCuentaLayout.setVerticalGroup(
             panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTitularDeLaCuentaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitularDeLaCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panTitularDeLaCuentaLayout.createSequentialGroup()
-                        .addComponent(txtTitularDeLaCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitularDeLaCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(cmbRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jPanel1.add(panTitularDeLaCuenta);
+        jPanel1.add(panTitularDeLaCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 920, 40));
 
         lblInteresAplicado.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblInteresAplicado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -290,14 +213,14 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panInteresAplicadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panInteresAplicadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInteresAplicado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblInteresAplicado, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addGroup(panInteresAplicadoLayout.createSequentialGroup()
-                        .addComponent(txtInteresAplicado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtInteresAplicado, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1.add(panInteresAplicado);
+        jPanel1.add(panInteresAplicado, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 920, 40));
 
         lblLimiteSobregiro.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblLimiteSobregiro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -332,12 +255,12 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
                 .addGroup(panLimiteSobregiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLimiteSobregiro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panLimiteSobregiroLayout.createSequentialGroup()
-                        .addComponent(txtLimiteSobregiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtLimiteSobregiro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1.add(panLimiteSobregiro);
+        jPanel1.add(panLimiteSobregiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 920, 40));
 
         lblLimiteCheques.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblLimiteCheques.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -372,52 +295,12 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
                 .addGroup(panLimiteChequesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLimiteCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panLimiteChequesLayout.createSequentialGroup()
-                        .addComponent(txtLimiteCheques, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtLimiteCheques, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1.add(panLimiteCheques);
-
-        lblNumeroCheques.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        lblNumeroCheques.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNumeroCheques.setText("NUMERO DE CHEQUEZ");
-        lblNumeroCheques.setAlignmentX(0.5F);
-        lblNumeroCheques.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        txtNumeroCheques.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtNumeroCheques.setForeground(new java.awt.Color(204, 204, 204));
-        txtNumeroCheques.setText("...");
-        txtNumeroCheques.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroChequesActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panNumeroChequesLayout = new javax.swing.GroupLayout(panNumeroCheques);
-        panNumeroCheques.setLayout(panNumeroChequesLayout);
-        panNumeroChequesLayout.setHorizontalGroup(
-            panNumeroChequesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panNumeroChequesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNumeroCheques, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNumeroCheques, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panNumeroChequesLayout.setVerticalGroup(
-            panNumeroChequesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panNumeroChequesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panNumeroChequesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNumeroCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panNumeroChequesLayout.createSequentialGroup()
-                        .addComponent(txtNumeroCheques, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        jPanel1.add(panNumeroCheques);
+        jPanel1.add(panLimiteCheques, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 920, 40));
 
         lblComisionPorCheque.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblComisionPorCheque.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -434,30 +317,44 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
             }
         });
 
+        txtCommisPorCheque.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtCommisPorCheque.setForeground(new java.awt.Color(204, 204, 204));
+        txtCommisPorCheque.setText("...");
+        txtCommisPorCheque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCommisPorChequeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panComisionPorChequeLayout = new javax.swing.GroupLayout(panComisionPorCheque);
         panComisionPorCheque.setLayout(panComisionPorChequeLayout);
         panComisionPorChequeLayout.setHorizontalGroup(
             panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panComisionPorChequeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblComisionPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtComisionPorCheque, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                .addGroup(panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panComisionPorChequeLayout.createSequentialGroup()
+                        .addGap(272, 272, 272)
+                        .addComponent(txtComisionPorCheque, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
+                    .addGroup(panComisionPorChequeLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblComisionPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtCommisPorCheque, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panComisionPorChequeLayout.setVerticalGroup(
             panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panComisionPorChequeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblComisionPorCheque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panComisionPorChequeLayout.createSequentialGroup()
-                        .addComponent(txtComisionPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(txtCommisPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtComisionPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panComisionPorCheque);
+        jPanel1.add(panComisionPorCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 920, 40));
 
         jbtGuardar.setBackground(new java.awt.Color(51, 51, 255));
         jbtGuardar.setFont(new java.awt.Font("Roboto Medium", 1, 16)); // NOI18N
@@ -468,7 +365,7 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
                 jbtGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbtGuardar);
+        jPanel1.add(jbtGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -482,83 +379,112 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNumeroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroCuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroCuentaActionPerformed
-
-    private void txtFechaAperturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaAperturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaAperturaActionPerformed
-
     private void txtSaldoInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaldoInicialActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtSaldoInicialActionPerformed
 
     private void txtTipoMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoMonedaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtTipoMonedaActionPerformed
 
-    private void txtTitularDeLaCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTitularDeLaCuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTitularDeLaCuentaActionPerformed
-
     private void txtInteresAplicadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInteresAplicadoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtInteresAplicadoActionPerformed
 
     private void txtLimiteSobregiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimiteSobregiroActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtLimiteSobregiroActionPerformed
 
     private void txtLimiteChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimiteChequesActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtLimiteChequesActionPerformed
 
-    private void txtNumeroChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroChequesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroChequesActionPerformed
+    private void txtCommisPorChequeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCommisPorChequeActionPerformed
+    }//GEN-LAST:event_txtCommisPorChequeActionPerformed
 
     private void txtComisionPorChequeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComisionPorChequeActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtComisionPorChequeActionPerformed
 
     private void jbtGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtGuardarActionPerformed
-        // TODO add your handling code here:
+		float overdraftLimit;
+	try{
+		 overdraftLimit = Float.parseFloat(txtLimiteSobregiro.getText());}
+	catch (Exception e) {
+		overdraftLimit = 50000.0f;
+	}
+	float chequeLimit;
+	try
+	{chequeLimit = Float.parseFloat(txtLimiteCheques.getText());}
+	catch (Exception e) {
+		chequeLimit = 10000.0f;
+	}
+	float chequeNumberLimit;
+	try
+	{ chequeNumberLimit = Float.parseFloat(txtNumeroCheques1.getText());}
+	catch (Exception e) {
+		chequeNumberLimit = 100.0f;
+	}
+	float chequeCommission;
+	try
+	{chequeCommission = Float.parseFloat(txtComisionPorCheque.getText());}
+	catch (Exception e) {
+		chequeCommission = 0.05f;
+	}
+	String year = Logger.dateString(0).substring(6,10);
+	String month = Logger.dateString(0).substring(3,5);
+	String day= Logger.dateString(0).substring(0,2);
+	String currency = txtTipoMoneda.getText();
+	double balance;
+	try{ 
+	balance = Double.parseDouble(txtSaldoInicial.getText());
+	} catch (Exception e) {
+		 balance = 0;
+	}
+	float interestRate = 0.05f;
+	Persona rep;
+	try {
+		rep = comp.searchNatural((String)cmbRepresentante.getSelectedItem());
+	} catch (ClientNotFound e) {
+		try {
+			rep = comp.searchJuridica((String)cmbRepresentante.getSelectedItem()).getRepresentative();
+		} catch (ClientNotFound e1) {
+			rep = new Persona(null, null, null, null, null, null, null, null, null);
+		}
+	}
+	String id = rep.getIdString();
+	String idtype = rep.getIdType();
+
+	boolean status = comp.createCorriente(overdraftLimit, chequeLimit, chequeNumberLimit, stringFormatter.numberGeneratorCorriente(), chequeCommission, stringFormatter.numberGeneratorCorriente(), year, month, day, currency, balance, interestRate, id, idtype);
+    if (status){
+		jbtGuardar.setBackground(new Color(51, 51, 255));
+	}
+	else{
+		jbtGuardar.setBackground(new Color(255, 51, 51));
+	}
+
+		
     }//GEN-LAST:event_jbtGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbRepresentante;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbtGuardar;
     private javax.swing.JLabel lblComisionPorCheque;
-    private javax.swing.JLabel lblFechaApertura;
     private javax.swing.JLabel lblInteresAplicado;
     private javax.swing.JLabel lblLimiteCheques;
     private javax.swing.JLabel lblLimiteSobregiro;
-    private javax.swing.JLabel lblNumeroCheques;
-    private javax.swing.JLabel lblNumeroCuenta;
     private javax.swing.JLabel lblSaldoInicial;
     private javax.swing.JLabel lblTipoMoneda;
     private javax.swing.JLabel lblTitularDeLaCuenta;
     private javax.swing.JPanel panComisionPorCheque;
-    private javax.swing.JPanel panFechaApertura;
     private javax.swing.JPanel panInteresAplicado;
     private javax.swing.JPanel panLimiteCheques;
     private javax.swing.JPanel panLimiteSobregiro;
-    private javax.swing.JPanel panNumeroCheque;
-    private javax.swing.JPanel panNumeroCheques;
     private javax.swing.JPanel panSaldoInicial;
     private javax.swing.JPanel panTipoMoneda;
     private javax.swing.JPanel panTitularDeLaCuenta;
     private javax.swing.JTextField txtComisionPorCheque;
-    private javax.swing.JTextField txtFechaApertura;
+    private javax.swing.JTextField txtCommisPorCheque;
     private javax.swing.JTextField txtInteresAplicado;
     private javax.swing.JTextField txtLimiteCheques;
     private javax.swing.JTextField txtLimiteSobregiro;
-    private javax.swing.JTextField txtNumeroCheques;
-    private javax.swing.JTextField txtNumeroCuenta;
     private javax.swing.JTextField txtSaldoInicial;
     private javax.swing.JTextField txtTipoMoneda;
-    private javax.swing.JTextField txtTitularDeLaCuenta;
     // End of variables declaration//GEN-END:variables
 }

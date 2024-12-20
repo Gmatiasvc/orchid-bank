@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import components.Login;
+
 /**
  *
  * @author jhose
@@ -18,8 +20,10 @@ public class PanUsuario extends javax.swing.JPanel {
     /**
      * Creates new form PanUsuario
      */
-    public PanUsuario() {
+    Login loginHandler;
+    public PanUsuario(Login login) {
         initComponents();
+	loginHandler = login;
     }
 
     /**
@@ -39,23 +43,29 @@ public class PanUsuario extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1140, 784));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 255));
         jLabel1.setText("Usuario         :");
-        add(jLabel1);
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 300, 170, 40));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 255));
         jLabel2.setText("Contraseña   :");
-        add(jLabel2);
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 170, 40));
 
         txtUsuario.setPreferredSize(new java.awt.Dimension(260, 40));
-        add(txtUsuario);
+        add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 260, 40));
 
         pwdContraseña.setForeground(new java.awt.Color(204, 204, 204));
         pwdContraseña.setPreferredSize(new java.awt.Dimension(260, 40));
-        add(pwdContraseña);
+        pwdContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwdContraseñaActionPerformed(evt);
+            }
+        });
+        add(pwdContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 260, 40));
 
         btnContinuar.setBackground(new java.awt.Color(0, 51, 255));
         btnContinuar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -67,14 +77,14 @@ public class PanUsuario extends javax.swing.JPanel {
                 btnContinuarActionPerformed(evt);
             }
         });
-        add(btnContinuar);
+        add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 330, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         String usuario = txtUsuario.getText();
         String contraseña = new String(pwdContraseña.getPassword());
- 
-        if (usuario.equals("12345678") && contraseña.equals("12345678")) {
+		boolean sucess = loginHandler.loginUser(usuario, contraseña);
+        if (sucess) {
             FrmVentanaPrincipalUsuario ventanaPrincipalUsuario = new FrmVentanaPrincipalUsuario();
             ventanaPrincipalUsuario.setVisible(true);
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this); 
@@ -83,6 +93,10 @@ public class PanUsuario extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void pwdContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwdContraseñaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

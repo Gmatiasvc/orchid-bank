@@ -7,10 +7,13 @@ import common.exceptions.ClientNotFound;
 import common.exceptions.DataMissmatch;
 import common.exceptions.InvalidInput;
 import common.logger.Logger;
+import functions.accountHandling;
 import functions.clientHandling;
 import functions.operationHandling;
 import java.util.ArrayList;
 import objects.accounts.Cuenta;
+import objects.accounts.CuentaAhorro;
+import objects.accounts.CuentaCorriente;
 import objects.accounts.Persona;
 import objects.accounts.PersonaJuridica;
 import objects.lists.ListaClientesJuridicos;
@@ -88,7 +91,7 @@ public ArrayList<String> getListaNrosCuenta() {
 	}
 
 	public Cuenta searchCuenta(String acc) throws AccountNotFound, BadStringToParse{
-		if (acc.charAt(0)== '0' || acc.charAt(0) == '1' || acc.length() != 8){
+		if (acc.charAt(0) != '1' || acc.charAt(0) != '2' || acc.length() != 8){
 			logger.WARN("searchCuenta method exited with an exeption as the account number: "+acc+" provided was invalid");
 			throw new BadStringToParse();
 		}
@@ -305,4 +308,37 @@ public ArrayList<String> getListaNrosCuenta() {
 			throw new AccountNotFound();
 		}
 	}
+
+	public boolean createCorriente(float overdraftLimit, float chequeLimit, float chequeNumberLimit, String checkbookNumber, float chequeCommission, String number, String year, String month, String day, String currency, double balance, float interestRate, String id, String idtype){
+		logger.INFO("createCorriente method called from an Employee type component");
+		
+		CuentaCorriente obj = accountHandling.createCorriente(overdraftLimit, chequeLimit, chequeNumberLimit, checkbookNumber, chequeCommission, number, year, month, day, currency, balance, interestRate, id, idtype);
+		if (obj == null) {
+			logger.ERROR("createCorriente method failed to create the CuentaCorriente object");
+			return false;
+		}
+		else{
+			listaCorriente.addAccount(obj);
+			return true;
+		}
+	}
+
+	public boolean createAhorro(float withdrawLim, String statementDay, String statementPeriod, String gracePeriod, ArrayList<String> beneficiaries, String number, String year, String month, String day, String currency, double balance, float interestRate, String id, String idtype){
+		logger.INFO("createCorriente method called from an Employee type component");
+		
+		CuentaAhorro obj = accountHandling.createAhorro(withdrawLim, statementDay, statementPeriod, gracePeriod, beneficiaries, number, year, month, day,  currency, balance, interestRate, id, idtype);
+		if (obj == null) {
+			logger.ERROR("createCorriente method failed to create the CuentaCorriente object");
+			return false;
+		}
+		else{
+			listaAhorro.addAccount(obj);
+			return true;
+		}
+	}
+
+	public Logger getLogger() {
+		return logger;
+	}
+	
 }

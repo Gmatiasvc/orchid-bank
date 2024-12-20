@@ -93,9 +93,9 @@ public class PanTransferirFondos extends javax.swing.JPanel {
                             .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtImporteRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panBlancoLayout.createSequentialGroup()
-                        .addGap(346, 346, 346)
+                        .addGap(397, 397, 397)
                         .addComponent(btnRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(467, Short.MAX_VALUE))
+                .addContainerGap(473, Short.MAX_VALUE))
         );
         panBlancoLayout.setVerticalGroup(
             panBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +108,9 @@ public class PanTransferirFondos extends javax.swing.JPanel {
                 .addGroup(panBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblImporteRetiro)
                     .addComponent(txtImporteRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(77, 77, 77)
+                .addGap(39, 39, 39)
                 .addComponent(btnRetirar)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addContainerGap(435, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

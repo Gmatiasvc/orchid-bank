@@ -38,28 +38,37 @@ public class PanInformacionCuenta extends javax.swing.JPanel {
 
         panBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panBlanco.setPreferredSize(new java.awt.Dimension(1140, 784));
+        panBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblSaldo.setBackground(new java.awt.Color(221, 221, 221));
         lblSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSaldo.setForeground(new java.awt.Color(30, 30, 30));
         lblSaldo.setText("Saldo:");
-        panBlanco.add(lblSaldo);
+        panBlanco.add(lblSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 460, -1, -1));
 
+        lblEmail.setBackground(new java.awt.Color(221, 221, 221));
         lblEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(30, 30, 30));
         lblEmail.setText("E-mail:");
-        panBlanco.add(lblEmail);
+        panBlanco.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
 
+        lblNombreApellido.setBackground(new java.awt.Color(221, 221, 221));
         lblNombreApellido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreApellido.setForeground(new java.awt.Color(30, 30, 30));
         lblNombreApellido.setText("Nombre y apellido:");
-        panBlanco.add(lblNombreApellido);
+        panBlanco.add(lblNombreApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
 
         txtEmail.setToolTipText("");
-        panBlanco.add(txtEmail);
-        panBlanco.add(txtCelular);
-        panBlanco.add(txtNombreApellido);
+        panBlanco.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 440, -1));
+        panBlanco.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 440, -1));
+        panBlanco.add(txtNombreApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 440, -1));
 
+        lblCelular1.setBackground(new java.awt.Color(221, 221, 221));
         lblCelular1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCelular1.setForeground(new java.awt.Color(30, 30, 30));
         lblCelular1.setText("Celular:");
-        panBlanco.add(lblCelular1);
-        panBlanco.add(txtCelular1);
+        panBlanco.add(lblCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, -1, -1));
+        panBlanco.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, 440, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

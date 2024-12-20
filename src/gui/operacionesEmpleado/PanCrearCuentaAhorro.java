@@ -4,6 +4,17 @@
  */
 package gui.operacionesEmpleado;
 
+import java.awt.Color;
+import java.util.ArrayList;
+
+import common.exceptions.ClientNotFound;
+import common.logger.Logger;
+
+import components.Employee;
+import functions.accountHandling;
+import functions.stringFormatter;
+import objects.accounts.Persona;
+
 /**
  *
  * @author edu11
@@ -13,8 +24,14 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
     /**
      * Creates new form PanCrearCuentaAhorro2
      */
-    public PanCrearCuentaAhorro() {
+	private Employee comp;
+    public PanCrearCuentaAhorro(Employee comp) {
+		this.comp = comp;
         initComponents();
+		cmbRepresentante.removeAllItems();
+		for(String i: comp.getListaNrosDoc()){
+			cmbRepresentante.addItem(i);
+		}
     }
 
     /**
@@ -27,12 +44,6 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panNumeroCheque = new javax.swing.JPanel();
-        lblNumeroCuenta = new javax.swing.JLabel();
-        txtNumeroCuenta = new javax.swing.JTextField();
-        panFechaApertura = new javax.swing.JPanel();
-        lblFechaApertura = new javax.swing.JLabel();
-        txtFechaApertura = new javax.swing.JTextField();
         panSaldoInicial = new javax.swing.JPanel();
         lblSaldoInicial = new javax.swing.JLabel();
         txtSaldoInicial = new javax.swing.JTextField();
@@ -41,7 +52,7 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
         txtTipoMoneda = new javax.swing.JTextField();
         panTitularDeLaCuenta = new javax.swing.JPanel();
         lblTitularDeLaCuenta = new javax.swing.JLabel();
-        txtTitularDeLaCuenta = new javax.swing.JTextField();
+        cmbRepresentante = new javax.swing.JComboBox<>();
         panInteresAplicado = new javax.swing.JPanel();
         lblInteresAplicado = new javax.swing.JLabel();
         txtInteresAplicado = new javax.swing.JTextField();
@@ -52,91 +63,14 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
         lblFechaCorte = new javax.swing.JLabel();
         txtFechaCorte = new javax.swing.JTextField();
         panBeneficiarios = new javax.swing.JPanel();
-        lblBeneficiarios = new javax.swing.JLabel();
         txtNumeroCheques = new javax.swing.JTextField();
+        lblBeneficiarios = new javax.swing.JLabel();
         jbtGuardar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1120, 680));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblNumeroCuenta.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        lblNumeroCuenta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNumeroCuenta.setText("NUMERO DE CUENTA");
-        lblNumeroCuenta.setAlignmentX(0.5F);
-        lblNumeroCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        txtNumeroCuenta.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtNumeroCuenta.setForeground(new java.awt.Color(204, 204, 204));
-        txtNumeroCuenta.setText("...");
-        txtNumeroCuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroCuentaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panNumeroChequeLayout = new javax.swing.GroupLayout(panNumeroCheque);
-        panNumeroCheque.setLayout(panNumeroChequeLayout);
-        panNumeroChequeLayout.setHorizontalGroup(
-            panNumeroChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panNumeroChequeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNumeroCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panNumeroChequeLayout.setVerticalGroup(
-            panNumeroChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panNumeroChequeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panNumeroChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNumeroCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panNumeroChequeLayout.createSequentialGroup()
-                        .addComponent(txtNumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        jPanel1.add(panNumeroCheque);
-
-        lblFechaApertura.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        lblFechaApertura.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblFechaApertura.setText("FECHA APERTURA");
-        lblFechaApertura.setAlignmentX(0.5F);
-        lblFechaApertura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        txtFechaApertura.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtFechaApertura.setForeground(new java.awt.Color(204, 204, 204));
-        txtFechaApertura.setText("...");
-        txtFechaApertura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaAperturaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panFechaAperturaLayout = new javax.swing.GroupLayout(panFechaApertura);
-        panFechaApertura.setLayout(panFechaAperturaLayout);
-        panFechaAperturaLayout.setHorizontalGroup(
-            panFechaAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panFechaAperturaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblFechaApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFechaApertura, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panFechaAperturaLayout.setVerticalGroup(
-            panFechaAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFechaAperturaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panFechaAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFechaApertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFechaApertura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(panFechaApertura);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSaldoInicial.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblSaldoInicial.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -146,7 +80,6 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
 
         txtSaldoInicial.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtSaldoInicial.setForeground(new java.awt.Color(204, 204, 204));
-        txtSaldoInicial.setText("...");
         txtSaldoInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSaldoInicialActionPerformed(evt);
@@ -171,12 +104,12 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
                 .addGroup(panSaldoInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSaldoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panSaldoInicialLayout.createSequentialGroup()
-                        .addComponent(txtSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1.add(panSaldoInicial);
+        jPanel1.add(panSaldoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 920, 40));
 
         lblTipoMoneda.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblTipoMoneda.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -186,7 +119,6 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
 
         txtTipoMoneda.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtTipoMoneda.setForeground(new java.awt.Color(204, 204, 204));
-        txtTipoMoneda.setText("...");
         txtTipoMoneda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTipoMonedaActionPerformed(evt);
@@ -210,11 +142,13 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panTipoMonedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTipoMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTipoMoneda))
+                    .addGroup(panTipoMonedaLayout.createSequentialGroup()
+                        .addComponent(txtTipoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1.add(panTipoMoneda);
+        jPanel1.add(panTipoMoneda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 920, 40));
 
         lblTitularDeLaCuenta.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblTitularDeLaCuenta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -222,12 +156,10 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
         lblTitularDeLaCuenta.setAlignmentX(0.5F);
         lblTitularDeLaCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtTitularDeLaCuenta.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtTitularDeLaCuenta.setForeground(new java.awt.Color(204, 204, 204));
-        txtTitularDeLaCuenta.setText("...");
-        txtTitularDeLaCuenta.addActionListener(new java.awt.event.ActionListener() {
+        cmbRepresentante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbRepresentante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTitularDeLaCuentaActionPerformed(evt);
+                cmbRepresentanteActionPerformed(evt);
             }
         });
 
@@ -239,22 +171,20 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblTitularDeLaCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTitularDeLaCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(cmbRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(447, Short.MAX_VALUE))
         );
         panTitularDeLaCuentaLayout.setVerticalGroup(
             panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTitularDeLaCuentaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitularDeLaCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panTitularDeLaCuentaLayout.createSequentialGroup()
-                        .addComponent(txtTitularDeLaCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitularDeLaCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(cmbRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jPanel1.add(panTitularDeLaCuenta);
+        jPanel1.add(panTitularDeLaCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 920, 40));
 
         lblInteresAplicado.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblInteresAplicado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -264,7 +194,6 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
 
         txtInteresAplicado.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtInteresAplicado.setForeground(new java.awt.Color(204, 204, 204));
-        txtInteresAplicado.setText("...");
         txtInteresAplicado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtInteresAplicadoActionPerformed(evt);
@@ -287,14 +216,14 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panInteresAplicadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panInteresAplicadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInteresAplicado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblInteresAplicado, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addGroup(panInteresAplicadoLayout.createSequentialGroup()
-                        .addComponent(txtInteresAplicado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtInteresAplicado, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1.add(panInteresAplicado);
+        jPanel1.add(panInteresAplicado, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 920, 40));
 
         lblLimiteRetiros.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblLimiteRetiros.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -304,7 +233,6 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
 
         txtLimiteRetiros.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtLimiteRetiros.setForeground(new java.awt.Color(204, 204, 204));
-        txtLimiteRetiros.setText("...");
         txtLimiteRetiros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLimiteRetirosActionPerformed(evt);
@@ -329,12 +257,12 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
                 .addGroup(panLimiteRetirosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLimiteRetiros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panLimiteRetirosLayout.createSequentialGroup()
-                        .addComponent(txtLimiteRetiros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtLimiteRetiros, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1.add(panLimiteRetiros);
+        jPanel1.add(panLimiteRetiros, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 920, 40));
 
         lblFechaCorte.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblFechaCorte.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -344,7 +272,6 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
 
         txtFechaCorte.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtFechaCorte.setForeground(new java.awt.Color(204, 204, 204));
-        txtFechaCorte.setText("...");
         txtFechaCorte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaCorteActionPerformed(evt);
@@ -367,29 +294,28 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFechaCorteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panFechaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFechaCorte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblFechaCorte, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addGroup(panFechaCorteLayout.createSequentialGroup()
-                        .addComponent(txtFechaCorte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFechaCorte, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1.add(panFechaCorte);
+        jPanel1.add(panFechaCorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 920, 40));
+
+        txtNumeroCheques.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtNumeroCheques.setForeground(new java.awt.Color(204, 204, 204));
+        txtNumeroCheques.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroChequesActionPerformed(evt);
+            }
+        });
 
         lblBeneficiarios.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblBeneficiarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblBeneficiarios.setText("BENEFICIARIOS");
         lblBeneficiarios.setAlignmentX(0.5F);
         lblBeneficiarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        txtNumeroCheques.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtNumeroCheques.setForeground(new java.awt.Color(204, 204, 204));
-        txtNumeroCheques.setText("...");
-        txtNumeroCheques.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroChequesActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panBeneficiariosLayout = new javax.swing.GroupLayout(panBeneficiarios);
         panBeneficiarios.setLayout(panBeneficiariosLayout);
@@ -404,17 +330,15 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
         );
         panBeneficiariosLayout.setVerticalGroup(
             panBeneficiariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBeneficiariosLayout.createSequentialGroup()
+            .addGroup(panBeneficiariosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panBeneficiariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBeneficiarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panBeneficiariosLayout.createSequentialGroup()
-                        .addComponent(txtNumeroCheques, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(panBeneficiariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNumeroCheques, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBeneficiarios, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jPanel1.add(panBeneficiarios);
+        jPanel1.add(panBeneficiarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 920, 40));
 
         jbtGuardar.setBackground(new java.awt.Color(51, 51, 255));
         jbtGuardar.setFont(new java.awt.Font("Roboto Medium", 1, 16)); // NOI18N
@@ -425,7 +349,7 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
                 jbtGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbtGuardar);
+        jPanel1.add(jbtGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -439,76 +363,102 @@ public class PanCrearCuentaAhorro extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNumeroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroCuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroCuentaActionPerformed
+    private void cmbRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRepresentanteActionPerformed
 
-    private void txtFechaAperturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaAperturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaAperturaActionPerformed
-
-    private void txtSaldoInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaldoInicialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSaldoInicialActionPerformed
-
-    private void txtTipoMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoMonedaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoMonedaActionPerformed
-
-    private void txtTitularDeLaCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTitularDeLaCuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTitularDeLaCuentaActionPerformed
-
-    private void txtInteresAplicadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInteresAplicadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInteresAplicadoActionPerformed
-
-    private void txtLimiteRetirosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimiteRetirosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLimiteRetirosActionPerformed
-
-    private void txtFechaCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaCorteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaCorteActionPerformed
-
-    private void txtNumeroChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroChequesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroChequesActionPerformed
+    }//GEN-LAST:event_cmbRepresentanteActionPerformed
 
     private void jbtGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtGuardarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtGuardarActionPerformed
+	float withdrawLim;
+		try {
+		withdrawLim = Float.parseFloat(txtLimiteRetiros.getText());
 
+	}
+	catch (Exception e){
+		withdrawLim = 0;
+	}
+	String statementDay = txtFechaCorte.getText();
+	String statementPeriod = "30";
+	String gracePeriod = "10";
+	String beneficiarie = txtNumeroCheques.getText();
+	String year = Logger.dateString(0).substring(6,10);
+	String month = Logger.dateString(0).substring(3,5);
+	String day= Logger.dateString(0).substring(0,2);
+	String currency = txtTipoMoneda.getText();
+	double balance;
+	try{ 
+	balance = Double.parseDouble(txtSaldoInicial.getText());
+	} catch (Exception e) {
+		 balance = 0;
+	}
+	float interestRate = 0.05f;
+	Persona rep;
+	try {
+		rep = comp.searchNatural((String)cmbRepresentante.getSelectedItem());
+	} catch (ClientNotFound e) {
+		try {
+			rep = comp.searchJuridica((String)cmbRepresentante.getSelectedItem()).getRepresentative();
+		} catch (ClientNotFound e1) {
+			rep = new Persona(null, null, null, null, null, null, null, null, null);
+		}
+	}
+	String id = rep.getIdString();
+	String idtype = rep.getIdType();
+	ArrayList<String> beneficiaries = new ArrayList<>();
+	beneficiaries.add(beneficiarie);
+	
+	boolean status = comp.createAhorro(withdrawLim, statementDay, statementPeriod, gracePeriod, beneficiaries, stringFormatter.numberGeneratorAhorro() ,year, month, day, currency, balance, interestRate, id, idtype);
+    if (status){
+		jbtGuardar.setBackground(new Color(51, 51, 255));
+	}
+	else{
+		jbtGuardar.setBackground(new Color(255, 51, 51));
+	}
+	
+	}//GEN-LAST:event_jbtGuardarActionPerformed
+
+    private void txtNumeroChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroChequesActionPerformed
+
+    }//GEN-LAST:event_txtNumeroChequesActionPerformed
+
+    private void txtFechaCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaCorteActionPerformed
+    }//GEN-LAST:event_txtFechaCorteActionPerformed
+
+    private void txtLimiteRetirosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimiteRetirosActionPerformed
+    }//GEN-LAST:event_txtLimiteRetirosActionPerformed
+
+    private void txtInteresAplicadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInteresAplicadoActionPerformed
+    }//GEN-LAST:event_txtInteresAplicadoActionPerformed
+
+    private void txtTipoMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoMonedaActionPerformed
+    }//GEN-LAST:event_txtTipoMonedaActionPerformed
+
+    private void txtSaldoInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaldoInicialActionPerformed
+    }//GEN-LAST:event_txtSaldoInicialActionPerformed
+	
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbRepresentante;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbtGuardar;
     private javax.swing.JLabel lblBeneficiarios;
-    private javax.swing.JLabel lblFechaApertura;
     private javax.swing.JLabel lblFechaCorte;
     private javax.swing.JLabel lblInteresAplicado;
     private javax.swing.JLabel lblLimiteRetiros;
-    private javax.swing.JLabel lblNumeroCuenta;
     private javax.swing.JLabel lblSaldoInicial;
     private javax.swing.JLabel lblTipoMoneda;
     private javax.swing.JLabel lblTitularDeLaCuenta;
     private javax.swing.JPanel panBeneficiarios;
-    private javax.swing.JPanel panFechaApertura;
     private javax.swing.JPanel panFechaCorte;
     private javax.swing.JPanel panInteresAplicado;
     private javax.swing.JPanel panLimiteRetiros;
-    private javax.swing.JPanel panNumeroCheque;
     private javax.swing.JPanel panSaldoInicial;
     private javax.swing.JPanel panTipoMoneda;
     private javax.swing.JPanel panTitularDeLaCuenta;
-    private javax.swing.JTextField txtFechaApertura;
     private javax.swing.JTextField txtFechaCorte;
     private javax.swing.JTextField txtInteresAplicado;
     private javax.swing.JTextField txtLimiteRetiros;
     private javax.swing.JTextField txtNumeroCheques;
-    private javax.swing.JTextField txtNumeroCuenta;
     private javax.swing.JTextField txtSaldoInicial;
     private javax.swing.JTextField txtTipoMoneda;
-    private javax.swing.JTextField txtTitularDeLaCuenta;
     // End of variables declaration//GEN-END:variables
 }

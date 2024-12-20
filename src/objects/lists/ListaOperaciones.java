@@ -33,6 +33,7 @@ public class ListaOperaciones {
 	}
 
 	private void setList(Logger logger) {
+		list.clear();
 		strList = DataRead.readOperation(getAccountNumber(), false);
 		if (strList.getLast() == null) {
 			list.add(null);

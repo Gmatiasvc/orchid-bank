@@ -47,6 +47,7 @@ public class PanCheques extends javax.swing.JPanel {
         panChequez.setMinimumSize(new java.awt.Dimension(0, 0));
         panChequez.setPreferredSize(new java.awt.Dimension(1140, 784));
         panChequez.setRequestFocusEnabled(false);
+        panChequez.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jrbEmitirCheque.setText("Emitir Cheque");
         jrbEmitirCheque.addActionListener(new java.awt.event.ActionListener() {
@@ -54,7 +55,7 @@ public class PanCheques extends javax.swing.JPanel {
                 jrbEmitirChequeActionPerformed(evt);
             }
         });
-        panChequez.add(jrbEmitirCheque);
+        panChequez.add(jrbEmitirCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
 
         jrbCobrarCheque.setText("Cobrar Cheque");
         jrbCobrarCheque.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +63,7 @@ public class PanCheques extends javax.swing.JPanel {
                 jrbCobrarChequeActionPerformed(evt);
             }
         });
-        panChequez.add(jrbCobrarCheque);
+        panChequez.add(jrbCobrarCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
         jrbVerificarCheque.setText("Verificar cheque");
         jrbVerificarCheque.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +71,7 @@ public class PanCheques extends javax.swing.JPanel {
                 jrbVerificarChequeActionPerformed(evt);
             }
         });
-        panChequez.add(jrbVerificarCheque);
+        panChequez.add(jrbVerificarCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
 
         jrbDevolverCheque.setText("Devolver Cheque");
         jrbDevolverCheque.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +79,7 @@ public class PanCheques extends javax.swing.JPanel {
                 jrbDevolverChequeActionPerformed(evt);
             }
         });
-        panChequez.add(jrbDevolverCheque);
+        panChequez.add(jrbDevolverCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
 
         panOpcionesChequez.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -93,7 +94,7 @@ public class PanCheques extends javax.swing.JPanel {
             .addGap(0, 710, Short.MAX_VALUE)
         );
 
-        panChequez.add(panOpcionesChequez);
+        panChequez.add(panOpcionesChequez, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1100, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

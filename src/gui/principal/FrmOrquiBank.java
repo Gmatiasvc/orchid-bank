@@ -4,6 +4,7 @@
  */
 package gui.principal;
 
+import components.Login;
 import java.awt.BorderLayout;
 
 /**
@@ -15,9 +16,11 @@ public class FrmOrquiBank extends javax.swing.JFrame {
     /**
      * Creates new form FrmOrquiBank
      */
+    private Login loginHandling;
+	
     public FrmOrquiBank() {
         initComponents();
-        
+        loginHandling = new Login();
     }
 
     /**
@@ -192,7 +195,7 @@ public class FrmOrquiBank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadoActionPerformed
-        PanEmpleado panEmpleado = new PanEmpleado();
+        PanEmpleado panEmpleado = new PanEmpleado(loginHandling);
         panEmpleado.setSize(1127,784);
         panEmpleado.setLocation(0,0);
         
@@ -204,7 +207,7 @@ public class FrmOrquiBank extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadoActionPerformed
 
     private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
-        PanAdministrador panAdministrador = new PanAdministrador();
+        PanAdministrador panAdministrador = new PanAdministrador(loginHandling);
         panAdministrador.setSize(1127,784);
         panAdministrador.setLocation(0,0);
         
@@ -215,7 +218,7 @@ public class FrmOrquiBank extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdministradorActionPerformed
 
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
-        PanUsuario panUsuario = new PanUsuario();
+        PanUsuario panUsuario = new PanUsuario(loginHandling);
         panUsuario.setSize(1127,784);
         panUsuario.setLocation(0,0);
         

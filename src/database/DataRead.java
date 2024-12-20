@@ -4,6 +4,7 @@ import common.logger.Logger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import objects.accounts.CuentaAhorro;
 import objects.accounts.CuentaCorriente;
@@ -42,7 +43,7 @@ public class DataRead {
                 data.setEmail(scanner.nextLine());
                 data.setCivilStatus(scanner.nextLine());
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException| NoSuchElementException e) {
             System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
         }
         return data;
@@ -87,7 +88,7 @@ public class DataRead {
                 dataRep.setCivilStatus(scanner.nextLine());
                 data.setRepresentative(dataRep);
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException| NoSuchElementException e) {
             System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
         }
         return data;
@@ -110,34 +111,34 @@ public class DataRead {
                 double balance;
                 try {
                     balance = Double.parseDouble(scanner.nextLine());
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException | NoSuchElementException e) {
                     balance = 0.0;
                 }
                 float interestRate;
                 try {
                     interestRate = Float.parseFloat(scanner.nextLine());
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException | NoSuchElementException e) {
                     interestRate = 0.0f;
                 }
                 try {
                     data.setOverdraftLimit(Float.parseFloat(scanner.nextLine()));
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException | NoSuchElementException e) {
                     data.setOverdraftLimit(0.0f);
                 }
                 try {
                     data.setChequeLimit(Float.parseFloat(scanner.nextLine()));
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException | NoSuchElementException e) {
                     data.setChequeLimit(0.0f);
                 }
                 data.setCheckbookNumber(scanner.nextLine());
                 try {
                     data.setChequeCommission(Float.parseFloat(scanner.nextLine()));
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException | NoSuchElementException  e) {
                     data.setChequeCommission(0.0f);
                 }
                 data.cuenta(number, creationDate, currency, balance, interestRate, id, idType);
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException| NoSuchElementException e) {
             System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
         }
         return data;
@@ -160,18 +161,18 @@ public class DataRead {
                 double balance;
                 try {
                     balance = Double.parseDouble(scanner.nextLine());
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException | NoSuchElementException e) {
                     balance = 0.0;
                 }
                 float interestRate;
                 try {
                     interestRate = Float.parseFloat(scanner.nextLine());
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException | NoSuchElementException e) {
                     interestRate = 0.0f;
                 }
                 try {
                     data.setWithdrawLim(Float.parseFloat(scanner.nextLine()));
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException | NoSuchElementException e) {
                     data.setWithdrawLim(0.0f);
                 }
                 data.setStatementDate(scanner.nextLine());
@@ -184,7 +185,7 @@ public class DataRead {
                 data.setBeneficiaries(beneficiaries);
                 data.cuenta(number, creationDate, currency, balance, interestRate, id, idType);
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException| NoSuchElementException e) {
             System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
         }
         return data;
@@ -199,7 +200,7 @@ public class DataRead {
                     list.add(scanner.nextLine());
                 }
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException| NoSuchElementException e) {
             list.add(null);
         }
         return list;

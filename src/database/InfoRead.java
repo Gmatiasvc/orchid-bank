@@ -13,6 +13,8 @@ public class InfoRead {
                 return Integer.parseInt((scanner.nextLine()));
             }
         } catch (Exception e) {
+			System.out.println("EXEPCION EN INFOREAD");
+			e.printStackTrace();
             return 0;
         }
     }
@@ -25,6 +27,7 @@ public class InfoRead {
                 return Integer.parseInt((scanner.nextLine()));
             }
         } catch (Exception e) {
+			e.printStackTrace();
             return 0;
         }
     }
@@ -38,6 +41,7 @@ public class InfoRead {
                 return Integer.parseInt((scanner.nextLine()));
             }
         } catch (Exception e) {
+			e.printStackTrace();
             return 0;
         }
     }
@@ -53,6 +57,7 @@ public class InfoRead {
             }
 
         } catch (Exception e) {
+			e.printStackTrace();
             return 0;
         }
     }

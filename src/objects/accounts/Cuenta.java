@@ -40,6 +40,10 @@ public class Cuenta {
 		this.creationDate = creationDate;
 	}
 
+	public void setCreationDate(String year, String month, String day){
+		this.creationDate = new String[] {year,month,day};
+	}
+
 	public String getCurrency() {
 		return currency;
 	}

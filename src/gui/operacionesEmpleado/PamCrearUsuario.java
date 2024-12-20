@@ -6,6 +6,8 @@ package gui.operacionesEmpleado;
 
 import java.awt.BorderLayout;
 import javax.swing.ButtonGroup;
+
+import components.Employee;
 /**
  *
  * @author jhose
@@ -17,7 +19,10 @@ public class PamCrearUsuario extends javax.swing.JPanel {
     /**
      * Creates new form PamCrearUsuario
      */
-    public PamCrearUsuario() {
+
+	private Employee comp;
+    public PamCrearUsuario(Employee comp) {
+		this.comp = comp;
         initComponents();
         buttonGroupOpciones = new ButtonGroup();
         buttonGroupOpciones.add(jrbCuentaAhorro);
@@ -42,6 +47,7 @@ public class PamCrearUsuario extends javax.swing.JPanel {
 
         panBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panBlanco.setPreferredSize(new java.awt.Dimension(1140, 784));
+        panBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jrbCuentaAhorro.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jrbCuentaAhorro.setForeground(new java.awt.Color(0, 51, 255));
@@ -51,7 +57,7 @@ public class PamCrearUsuario extends javax.swing.JPanel {
                 jrbCuentaAhorroActionPerformed(evt);
             }
         });
-        panBlanco.add(jrbCuentaAhorro);
+        panBlanco.add(jrbCuentaAhorro, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
         jrbCuentaCorriente.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jrbCuentaCorriente.setForeground(new java.awt.Color(0, 51, 255));
@@ -61,7 +67,7 @@ public class PamCrearUsuario extends javax.swing.JPanel {
                 jrbCuentaCorrienteActionPerformed(evt);
             }
         });
-        panBlanco.add(jrbCuentaCorriente);
+        panBlanco.add(jrbCuentaCorriente, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, -1, -1));
 
         panContenido.setBackground(new java.awt.Color(204, 204, 204));
         panContenido.setPreferredSize(new java.awt.Dimension(1120, 680));
@@ -74,10 +80,10 @@ public class PamCrearUsuario extends javax.swing.JPanel {
         );
         panContenidoLayout.setVerticalGroup(
             panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGap(0, 760, Short.MAX_VALUE)
         );
 
-        panBlanco.add(panContenido);
+        panBlanco.add(panContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 760));
         panContenido.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -88,12 +94,12 @@ public class PamCrearUsuario extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrbCuentaCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCuentaCorrienteActionPerformed
-        PanCrearCuentaCorriente panCrearCuentaCorriente = new PanCrearCuentaCorriente();
+        PanCrearCuentaCorriente panCrearCuentaCorriente = new PanCrearCuentaCorriente(comp);
         panCrearCuentaCorriente.setSize(1100,670);
         panCrearCuentaCorriente.setLocation(0,0);
 
@@ -104,7 +110,7 @@ public class PamCrearUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_jrbCuentaCorrienteActionPerformed
 
     private void jrbCuentaAhorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCuentaAhorroActionPerformed
-		PanCrearCuentaAhorro panCrearCuentaAhorro = new PanCrearCuentaAhorro();
+		PanCrearCuentaAhorro panCrearCuentaAhorro = new PanCrearCuentaAhorro(comp);
         panCrearCuentaAhorro.setSize(1100,670);
         panCrearCuentaAhorro.setLocation(0,0);
 

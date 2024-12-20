@@ -83,7 +83,7 @@ public class Admin {
 	}
 
 	public Cuenta searchCuenta(String acc) throws AccountNotFound, BadStringToParse{
-		if (acc.charAt(0)== '0' || acc.charAt(0) == '1' || acc.length() != 8){
+		if (acc.charAt(0) != '1' || acc.charAt(0) != '2' || acc.length() != 8){
 			logger.WARN("searchCuenta method exited with an exeption as the account number: "+acc+" provided was invalid");
 			throw new BadStringToParse();
 		}

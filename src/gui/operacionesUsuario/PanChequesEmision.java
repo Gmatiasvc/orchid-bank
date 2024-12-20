@@ -46,6 +46,7 @@ public class PanChequesEmision extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(1100, 710));
         jPanel1.setRequestFocusEnabled(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNumeroCheque.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblNumeroCheque.setText("NUMERO DE CHEQUE");
@@ -82,7 +83,7 @@ public class PanChequesEmision extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel1.add(panNumeroCheque);
+        jPanel1.add(panNumeroCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 920, -1));
 
         lblImporte.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblImporte.setText("IMPORTE");
@@ -119,7 +120,7 @@ public class PanChequesEmision extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel1.add(panImporte);
+        jPanel1.add(panImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 920, -1));
 
         lblNombreDestinatario.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblNombreDestinatario.setText("NOMBRE DEL DESTINATARIO");
@@ -156,7 +157,7 @@ public class PanChequesEmision extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel1.add(panNombreDestinatario);
+        jPanel1.add(panNombreDestinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 920, -1));
 
         lblNumeroCuenta.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblNumeroCuenta.setText("NUMERO DE CUENTA");
@@ -193,7 +194,7 @@ public class PanChequesEmision extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panNumeroCuenta);
+        jPanel1.add(panNumeroCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 920, -1));
 
         jButton1.setBackground(new java.awt.Color(51, 51, 255));
         jButton1.setFont(new java.awt.Font("Roboto Medium", 1, 16)); // NOI18N
@@ -204,7 +205,7 @@ public class PanChequesEmision extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 510, 180, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

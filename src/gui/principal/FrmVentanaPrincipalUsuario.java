@@ -8,7 +8,6 @@ import java.awt.BorderLayout;
 import javax.swing.ButtonGroup;
 
 import gui.operacionesEmpleado.PanInformacionCuenta;
-import gui.operacionesUsuario.PamRetirar;
 import gui.operacionesUsuario.PanCheques;
 import gui.operacionesUsuario.PanEstadoCuenta;
 import gui.operacionesUsuario.PanTransferirFondos;
@@ -18,7 +17,7 @@ import gui.operacionesUsuario.PanTransferirFondos;
  * @author jhose
  */
 public class FrmVentanaPrincipalUsuario extends javax.swing.JFrame {
-
+    
     private final javax.swing.ButtonGroup buttonGroupOpciones;
     
     /**
@@ -27,7 +26,6 @@ public class FrmVentanaPrincipalUsuario extends javax.swing.JFrame {
     public FrmVentanaPrincipalUsuario() {
         initComponents();
         buttonGroupOpciones = new ButtonGroup();
-        buttonGroupOpciones.add(jrbRetirar);
         buttonGroupOpciones.add(jrbTransferirFondos);
         buttonGroupOpciones.add(jrbEstadoCuenta);
         buttonGroupOpciones.add(jrbCheques);  
@@ -62,12 +60,12 @@ public class FrmVentanaPrincipalUsuario extends javax.swing.JFrame {
         jrbEstadoCuenta = new javax.swing.JRadioButton();
         jrbCheques = new javax.swing.JRadioButton();
         jrbInformacionCuenta = new javax.swing.JRadioButton();
-        jrbRetirar = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panBlanco.setPreferredSize(new java.awt.Dimension(1440, 960));
+        panBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panContenido.setBackground(new java.awt.Color(255, 255, 255));
         panContenido.setPreferredSize(new java.awt.Dimension(1140, 784));
@@ -80,10 +78,10 @@ public class FrmVentanaPrincipalUsuario extends javax.swing.JFrame {
         );
         panContenidoLayout.setVerticalGroup(
             panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 784, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
-        panBlanco.add(panContenido);
+        panBlanco.add(panContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 84, -1, 870));
 
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 51, 255));
@@ -94,7 +92,7 @@ public class FrmVentanaPrincipalUsuario extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        panBlanco.add(btnSalir);
+        panBlanco.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1340, 110, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -151,18 +149,6 @@ public class FrmVentanaPrincipalUsuario extends javax.swing.JFrame {
             }
         });
 
-        jrbRetirar.setBackground(new java.awt.Color(0, 51, 255));
-        jrbRetirar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jrbRetirar.setForeground(new java.awt.Color(255, 255, 255));
-        jrbRetirar.setText("Retirar");
-        jrbRetirar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jrbRetirar.setPreferredSize(new java.awt.Dimension(200, 40));
-        jrbRetirar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbRetirarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -170,38 +156,34 @@ public class FrmVentanaPrincipalUsuario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jrbTransferirFondos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jrbEstadoCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jrbCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jrbInformacionCuenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jrbRetirar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addComponent(lblUsuario)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                        .addComponent(lblUsuario))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrbTransferirFondos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrbInformacionCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrbEstadoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrbCheques, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addComponent(lblUsuario)
-                .addGap(54, 54, 54)
+                .addGap(60, 60, 60)
                 .addComponent(jrbInformacionCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jrbRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(jrbTransferirFondos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jrbEstadoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jrbCheques, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(492, Short.MAX_VALUE))
+                .addContainerGap(489, Short.MAX_VALUE))
         );
 
-        panBlanco.add(jPanel1);
+        panBlanco.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,10 +200,6 @@ public class FrmVentanaPrincipalUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jrbRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbRetirarActionPerformed
-        cargarPanel(new PamRetirar());
-    }//GEN-LAST:event_jrbRetirarActionPerformed
 
     private void jrbTransferirFondosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbTransferirFondosActionPerformed
        cargarPanel(new PanTransferirFondos());
@@ -283,7 +261,6 @@ public class FrmVentanaPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JRadioButton jrbCheques;
     private javax.swing.JRadioButton jrbEstadoCuenta;
     private javax.swing.JRadioButton jrbInformacionCuenta;
-    private javax.swing.JRadioButton jrbRetirar;
     private javax.swing.JRadioButton jrbTransferirFondos;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel panBlanco;

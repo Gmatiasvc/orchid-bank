@@ -6,10 +6,10 @@ package gui.principal;
 
 import java.awt.BorderLayout;
 
-import gui.operacionesAdministrador.PanListaUsuarios;
+import components.Employee;
 import gui.operacionesEmpleado.PamCrearUsuario;
 import gui.operacionesEmpleado.PamMovimientos;
-import gui.operacionesEmpleado.PanInformacionCuenta;
+import gui.operacionesEmpleado.PanListaOperaciones;
 
 /**
  *
@@ -17,17 +17,21 @@ import gui.operacionesEmpleado.PanInformacionCuenta;
  */
 public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
     
-    private final javax.swing.ButtonGroup buttonGroupOpciones;
+	private final javax.swing.ButtonGroup buttonGroupOpciones;
     /**
      * Creates new form FrmVentanaPrincipalEmpleado
      */
+
+	private Employee comp = new Employee();
+
     public FrmVentanaPrincipalEmpleado() {
         initComponents();
         buttonGroupOpciones = new javax.swing.ButtonGroup();
-        buttonGroupOpciones.add(jrbCrearUsuario);
-        buttonGroupOpciones.add(jrbInformacionCuenta);
+        buttonGroupOpciones.add(jrbCrearCuentas);
+        buttonGroupOpciones.add(jrbInformacionCuentas);
         buttonGroupOpciones.add(jrbMovimientos);
-        buttonGroupOpciones.add(jrbListaUsuarios);
+        buttonGroupOpciones.add(jrbCrearClientes);
+
     }
     
     private void cargarPanel(javax.swing.JPanel panel) {
@@ -52,18 +56,20 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
         panBlanco = new javax.swing.JPanel();
         panOpciones = new javax.swing.JPanel();
         lblEmpleado = new javax.swing.JLabel();
-        jrbInformacionCuenta = new javax.swing.JRadioButton();
-        jrbCrearUsuario = new javax.swing.JRadioButton();
+        jrbInformacionCuentas = new javax.swing.JRadioButton();
+        jrbCrearCuentas = new javax.swing.JRadioButton();
         jrbMovimientos = new javax.swing.JRadioButton();
-        jrbListaUsuarios = new javax.swing.JRadioButton();
+        jrbCrearClientes = new javax.swing.JRadioButton();
         btnSalir = new javax.swing.JButton();
         panContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panBlanco.setMinimumSize(new java.awt.Dimension(1127, 960));
         panBlanco.setPreferredSize(new java.awt.Dimension(1440, 960));
+        panBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panOpciones.setBackground(new java.awt.Color(255, 255, 255));
         panOpciones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -73,29 +79,29 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
         lblEmpleado.setForeground(new java.awt.Color(0, 51, 255));
         lblEmpleado.setText("Menu");
 
-        jrbInformacionCuenta.setBackground(new java.awt.Color(0, 51, 255));
-        jrbInformacionCuenta.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jrbInformacionCuenta.setForeground(new java.awt.Color(255, 255, 255));
-        jrbInformacionCuenta.setText("Informacion de cuenta");
-        jrbInformacionCuenta.setToolTipText("");
-        jrbInformacionCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jrbInformacionCuenta.setPreferredSize(new java.awt.Dimension(240, 40));
-        jrbInformacionCuenta.addActionListener(new java.awt.event.ActionListener() {
+        jrbInformacionCuentas.setBackground(new java.awt.Color(0, 51, 255));
+        jrbInformacionCuentas.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jrbInformacionCuentas.setForeground(new java.awt.Color(255, 255, 255));
+        jrbInformacionCuentas.setText("Informacion de cuentas");
+        jrbInformacionCuentas.setToolTipText("");
+        jrbInformacionCuentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jrbInformacionCuentas.setPreferredSize(new java.awt.Dimension(240, 40));
+        jrbInformacionCuentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbInformacionCuentaActionPerformed(evt);
+                jrbInformacionCuentasActionPerformed(evt);
             }
         });
 
-        jrbCrearUsuario.setBackground(new java.awt.Color(0, 51, 255));
-        jrbCrearUsuario.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jrbCrearUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jrbCrearUsuario.setText("Crear cuenta");
-        jrbCrearUsuario.setToolTipText("");
-        jrbCrearUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jrbCrearUsuario.setPreferredSize(new java.awt.Dimension(240, 40));
-        jrbCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
+        jrbCrearCuentas.setBackground(new java.awt.Color(0, 51, 255));
+        jrbCrearCuentas.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jrbCrearCuentas.setForeground(new java.awt.Color(255, 255, 255));
+        jrbCrearCuentas.setText("Crear cuenta");
+        jrbCrearCuentas.setToolTipText("");
+        jrbCrearCuentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jrbCrearCuentas.setPreferredSize(new java.awt.Dimension(240, 40));
+        jrbCrearCuentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbCrearUsuarioActionPerformed(evt);
+                jrbCrearCuentasActionPerformed(evt);
             }
         });
 
@@ -112,16 +118,16 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
             }
         });
 
-        jrbListaUsuarios.setBackground(new java.awt.Color(0, 51, 255));
-        jrbListaUsuarios.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jrbListaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        jrbListaUsuarios.setText("Usuarios");
-        jrbListaUsuarios.setToolTipText("");
-        jrbListaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jrbListaUsuarios.setPreferredSize(new java.awt.Dimension(200, 40));
-        jrbListaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        jrbCrearClientes.setBackground(new java.awt.Color(0, 51, 255));
+        jrbCrearClientes.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jrbCrearClientes.setForeground(new java.awt.Color(255, 255, 255));
+        jrbCrearClientes.setText("Usuarios");
+        jrbCrearClientes.setToolTipText("");
+        jrbCrearClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jrbCrearClientes.setPreferredSize(new java.awt.Dimension(200, 40));
+        jrbCrearClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbListaUsuariosActionPerformed(evt);
+                jrbCrearClientesActionPerformed(evt);
             }
         });
 
@@ -135,14 +141,13 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
                         .addGap(72, 72, 72)
                         .addComponent(lblEmpleado))
                     .addGroup(panOpcionesLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jrbInformacionCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jrbMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(jrbListaUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jrbCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                        .addGap(47, 47, 47)
+                        .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jrbInformacionCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jrbCrearCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jrbMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jrbCrearClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         panOpcionesLayout.setVerticalGroup(
             panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,17 +155,17 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
                 .addGap(93, 93, 93)
                 .addComponent(lblEmpleado)
                 .addGap(70, 70, 70)
-                .addComponent(jrbInformacionCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jrbInformacionCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jrbCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jrbCrearCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jrbMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jrbListaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(536, Short.MAX_VALUE))
+                .addComponent(jrbCrearClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(529, Short.MAX_VALUE))
         );
 
-        panBlanco.add(panOpciones);
+        panBlanco.add(panOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 960));
 
         btnSalir.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 51, 255));
@@ -171,7 +176,7 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        panBlanco.add(btnSalir);
+        panBlanco.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 90, -1, -1));
 
         panContenido.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -183,40 +188,31 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
         );
         panContenidoLayout.setVerticalGroup(
             panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 784, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
-        panBlanco.add(panContenido);
+        panBlanco.add(panContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 84, -1, 870));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(panBlanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jrbCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCrearUsuarioActionPerformed
-        cargarPanel(new PamCrearUsuario());
-    }//GEN-LAST:event_jrbCrearUsuarioActionPerformed
+    private void jrbCrearCuentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCrearCuentasActionPerformed
+        cargarPanel(new PamCrearUsuario(comp));
+    }//GEN-LAST:event_jrbCrearCuentasActionPerformed
 
     private void jrbMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMovimientosActionPerformed
         cargarPanel(new PamMovimientos());
     }//GEN-LAST:event_jrbMovimientosActionPerformed
 
-    private void jrbInformacionCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbInformacionCuentaActionPerformed
-        cargarPanel(new PanInformacionCuenta());
-    }//GEN-LAST:event_jrbInformacionCuentaActionPerformed
+    private void jrbInformacionCuentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbInformacionCuentasActionPerformed
+        cargarPanel(new PanListaOperaciones(comp));
+    }//GEN-LAST:event_jrbInformacionCuentasActionPerformed
 
-    private void jrbListaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbListaUsuariosActionPerformed
-    cargarPanel(new PanListaUsuarios());
-    }//GEN-LAST:event_jrbListaUsuariosActionPerformed
+    private void jrbCrearClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCrearClientesActionPerformed
+    
+    }//GEN-LAST:event_jrbCrearClientesActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
        FrmOrquiBank returnOrquiBank = new FrmOrquiBank();
@@ -259,9 +255,9 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
-    private javax.swing.JRadioButton jrbCrearUsuario;
-    private javax.swing.JRadioButton jrbInformacionCuenta;
-    private javax.swing.JRadioButton jrbListaUsuarios;
+    private javax.swing.JRadioButton jrbCrearClientes;
+    private javax.swing.JRadioButton jrbCrearCuentas;
+    private javax.swing.JRadioButton jrbInformacionCuentas;
     private javax.swing.JRadioButton jrbMovimientos;
     private javax.swing.JLabel lblEmpleado;
     private javax.swing.JPanel panBlanco;
