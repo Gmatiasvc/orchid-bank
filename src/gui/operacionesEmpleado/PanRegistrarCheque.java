@@ -21,21 +21,21 @@ import objects.accounts.Persona;
  *
  * @author edu11
  */
-public class PanRegistrarTransferencia extends javax.swing.JPanel {
+public class PanRegistrarCheque extends javax.swing.JPanel {
 
     /**
      * Creates new form PanCrearCuentaAhorro2
      */
 	private Employee comp;
 	private boolean populated = false;
-    public PanRegistrarTransferencia(Employee comp) {
+    public PanRegistrarCheque(Employee comp) {
 		this.comp = comp;
         initComponents();
 		cmbListaCuentasDestino.removeAllItems();
 		for(String i: comp.getListaNrosCuenta()){
 			cmbListaCuentasDestino.addItem(i);
 		}
-		cmbListaCuentasOrigen.removeAllItems();
+		cmbListaCuentasDestino.removeAllItems();
     }
 
     /**
@@ -57,7 +57,7 @@ public class PanRegistrarTransferencia extends javax.swing.JPanel {
         lblCuentaDestinatario1 = new javax.swing.JLabel();
         btnTransferir = new javax.swing.JButton();
         txtDocClient = new javax.swing.JTextField();
-        cmbListaCuentasOrigen = new javax.swing.JComboBox<>();
+        txtChequera = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(1120, 680));
 
@@ -65,20 +65,20 @@ public class PanRegistrarTransferencia extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblCuentaOrigen.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        lblCuentaOrigen.setText("Cuenta Origen:");
-        jPanel1.add(lblCuentaOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, -1, -1));
+        lblCuentaOrigen.setText("Chequera");
+        jPanel1.add(lblCuentaOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
 
         cmbListaCuentasDestino.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         cmbListaCuentasDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cmbListaCuentasDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 380, 40));
+        jPanel1.add(cmbListaCuentasDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 380, 40));
 
         lblCuentaDestinatario.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblCuentaDestinatario.setText("Documento del cliente");
-        jPanel1.add(lblCuentaDestinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
+        jPanel1.add(lblCuentaDestinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         lblImporte.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblImporte.setText("Importe:");
-        jPanel1.add(lblImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, -1));
+        jPanel1.add(lblImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
 
         txtImporte.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         txtImporte.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +86,7 @@ public class PanRegistrarTransferencia extends javax.swing.JPanel {
                 txtImporteActionPerformed(evt);
             }
         });
-        jPanel1.add(txtImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 380, 40));
+        jPanel1.add(txtImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 380, 40));
 
         btnPopularDatos.setBackground(new java.awt.Color(51, 51, 255));
         btnPopularDatos.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
@@ -97,11 +97,11 @@ public class PanRegistrarTransferencia extends javax.swing.JPanel {
                 btnPopularDatosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPopularDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 130, 30));
+        jPanel1.add(btnPopularDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 130, 30));
 
         lblCuentaDestinatario1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         lblCuentaDestinatario1.setText("Cuenta del destinatario: ");
-        jPanel1.add(lblCuentaDestinatario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, -1));
+        jPanel1.add(lblCuentaDestinatario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
 
         btnTransferir.setBackground(new java.awt.Color(51, 51, 255));
         btnTransferir.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
@@ -112,7 +112,7 @@ public class PanRegistrarTransferencia extends javax.swing.JPanel {
                 btnTransferirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTransferir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 380, 130, 30));
+        jPanel1.add(btnTransferir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 230, 130, 30));
 
         txtDocClient.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         txtDocClient.addActionListener(new java.awt.event.ActionListener() {
@@ -120,11 +120,15 @@ public class PanRegistrarTransferencia extends javax.swing.JPanel {
                 txtDocClientActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDocClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 380, 40));
+        jPanel1.add(txtDocClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 380, 40));
 
-        cmbListaCuentasOrigen.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        cmbListaCuentasOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cmbListaCuentasOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 380, 40));
+        txtChequera.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        txtChequera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtChequeraActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtChequera, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 380, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -150,14 +154,14 @@ public class PanRegistrarTransferencia extends javax.swing.JPanel {
 
     private void btnPopularDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopularDatosActionPerformed
         populated = true;
-		cmbListaCuentasOrigen.removeAllItems();
+		cmbListaCuentasDestino.removeAllItems();
 		String docString = txtDocClient.getText();
 		comp.fillListaNrosCuenta();
 		for(String i : comp.getListaNrosCuenta()){
 			try {
 				System.out.println("DEBUG: " + i);
 				if (comp.searchCuenta(i).getId().equals(docString)){
-					cmbListaCuentasOrigen.addItem(i);
+					cmbListaCuentasDestino.addItem(i);
 				}
 			} catch (AccountNotFound | BadStringToParse e) {
 				populated= false;
@@ -177,12 +181,13 @@ public class PanRegistrarTransferencia extends javax.swing.JPanel {
 			amount = 0.0f;
 		}
         try {
-			comp.doTransfer(amount, (String)cmbListaCuentasOrigen.getSelectedItem(), (String)cmbListaCuentasDestino.getSelectedItem());
-			JOptionPane.showMessageDialog(this, "Operacion exitosa", "Datos guardados", JOptionPane.INFORMATION_MESSAGE);
+			comp.doCheque(amount,txtChequera.getText() ,txtChequera.getText() ,(String)cmbListaCuentasDestino.getSelectedItem());
+		JOptionPane.showMessageDialog(this, "Operacion exitosa", "Datos guardados", JOptionPane.INFORMATION_MESSAGE);
 
 		} catch (AccountNotFound | DataMissmatch | InvalidInput e) {
-			JOptionPane.showMessageDialog(this, "Datos invalidos", "Error en la operacion", JOptionPane.ERROR_MESSAGE);
 			btnTransferir.setBackground(new Color(255,51,51));
+			JOptionPane.showMessageDialog(this, "Datos invalidos", "Error en la operacion", JOptionPane.ERROR_MESSAGE);
+
 			e.printStackTrace();
 		}
     }//GEN-LAST:event_btnTransferirActionPerformed
@@ -191,17 +196,21 @@ public class PanRegistrarTransferencia extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDocClientActionPerformed
 
+    private void txtChequeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChequeraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtChequeraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPopularDatos;
     private javax.swing.JButton btnTransferir;
     private javax.swing.JComboBox<String> cmbListaCuentasDestino;
-    private javax.swing.JComboBox<String> cmbListaCuentasOrigen;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCuentaDestinatario;
     private javax.swing.JLabel lblCuentaDestinatario1;
     private javax.swing.JLabel lblCuentaOrigen;
     private javax.swing.JLabel lblImporte;
+    private javax.swing.JTextField txtChequera;
     private javax.swing.JTextField txtDocClient;
     private javax.swing.JTextField txtImporte;
     // End of variables declaration//GEN-END:variables

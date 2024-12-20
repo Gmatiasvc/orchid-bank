@@ -4,8 +4,6 @@
  */
 package gui.operacionesEmpleado;
 
-import gui.operacionesAdministrador.*;
-import components.Admin;
 import components.Employee;
 import objects.accounts.Cuenta;
 
@@ -13,31 +11,29 @@ import javax.swing.table.DefaultTableModel;
 
 import common.exceptions.AccountNotFound;
 import common.exceptions.BadStringToParse;
+import common.exceptions.ClientNotFound;
 import objects.accounts.CuentaAhorro;
 import objects.accounts.CuentaCorriente;
-import objects.lists.ListaOperaciones;
+import objects.accounts.Persona;
+import objects.accounts.PersonaJuridica;
 
 /**
  *
  * @author jhose
  */
-public class PanListaOperaciones extends javax.swing.JPanel {
+public class PanListaCuentas extends javax.swing.JPanel {
 
     DefaultTableModel mt = new DefaultTableModel();
     private Employee comp;
-	private ListaOperaciones listOps;
     /**
      * Creates new form PanListaEmpleados
      */
-    public PanListaOperaciones(Employee comp) {
+    public PanListaCuentas(Employee comp) {
         this.comp = comp;
         initComponents();
         String ids[] = {"Nombre","Apellidos","DNI","Telefono","Direccion","Coreo electronico","Sueldo"};
         mt.setColumnIdentifiers(ids);
-        cmbAcc.removeAllItems();
-		for (String i : comp.getListaNrosCuenta()) {
-				cmbAcc.addItem(i);
-		}
+         
     }
 
     /**
@@ -51,41 +47,24 @@ public class PanListaOperaciones extends javax.swing.JPanel {
 
         panBlanco = new javax.swing.JPanel();
         cmbAcc = new javax.swing.JComboBox<>();
-        lblAccounts = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txpAccountInfo = new javax.swing.JTextPane();
 
         panBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panBlanco.setPreferredSize(new java.awt.Dimension(1140, 784));
         panBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmbAcc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbAcc.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                cmbAccPopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                cmbAccPopupMenuWillBecomeVisible(evt);
-            }
-        });
-        cmbAcc.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cmbAccMouseClicked(evt);
-            }
-        });
         cmbAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //cmbAccActionPerformed(evt);
+                cmbAccActionPerformed(evt);
             }
         });
-        panBlanco.add(cmbAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 120, 40));
+        panBlanco.add(cmbAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 120, 40));
 
-        lblAccounts.setBackground(new java.awt.Color(221, 221, 221));
-        lblAccounts.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        lblAccounts.setForeground(new java.awt.Color(30, 30, 30));
-        lblAccounts.setToolTipText("");
-        lblAccounts.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panBlanco.add(lblAccounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 300, 490));
+        jScrollPane1.setViewportView(txpAccountInfo);
+
+        panBlanco.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 580, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -104,48 +83,34 @@ public class PanListaOperaciones extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbAccPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmbAccPopupMenuWillBecomeVisible
-        
-    
-	// for (String i : comp.getListaNrosCuenta()) {
-	// 		cmbAcc.addItem(i);
-			
-	// }
-    }//GEN-LAST:event_cmbAccPopupMenuWillBecomeVisible
 
-    private void cmbAccPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmbAccPopupMenuWillBecomeInvisible
+    private void cmbAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAccActionPerformed
+          
         String number = cmbAcc.getSelectedItem().toString();
-		//try {
+		try {
+			Cuenta account = comp.searchCuenta(number);
 			if (number.charAt(0)=='1'){
-				//CuentaAhorro account = (CuentaAhorro) comp.searchCuenta(number);
-				listOps = new ListaOperaciones(number, comp.getLogger());
-				lblAccounts.setText(listOps.toString());
-
+				CuentaAhorro acct = (CuentaAhorro)account;
+				txpAccountInfo.setText(acct.toString());
 			}
 			else {
-				//CuentaCorriente account = (CuentaCorriente) comp.searchCuenta(number);
-				listOps = new ListaOperaciones(number, comp.getLogger());
-				lblAccounts.setText(listOps.toString());
+				CuentaCorriente acct = (CuentaCorriente)account;
+				txpAccountInfo.setText(acct.toString());
 			}
-		//}
-		// } catch (AccountNotFound  e) {
-		// 	lblAccounts.setText("ERROR\nCuenta no encontrada acc not found");
-		// }
-        //         catch (  BadStringToParse e ) {
-        //             	lblAccounts.setText("ERROR\nCuenta no encontrada bstp");
-        //         }
 
-		
-    }//GEN-LAST:event_cmbAccPopupMenuWillBecomeInvisible
-
-    private void cmbAccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbAccMouseClicked
-        // cmbAcc.removeAllItems();
-    }//GEN-LAST:event_cmbAccMouseClicked
-
-
+		} catch (AccountNotFound | BadStringToParse e) {
+			txpAccountInfo.setText("ERROR\nCuenta no encontrada");
+		}
+		cmbAcc.removeAllItems();
+		for(String i : comp.getListaNrosCuenta()){
+			cmbAcc.addItem(i);
+		}
+    }//GEN-LAST:event_cmbAccActionPerformed
+	
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbAcc;
-    private javax.swing.JLabel lblAccounts;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panBlanco;
+    private javax.swing.JTextPane txpAccountInfo;
     // End of variables declaration//GEN-END:variables
 }

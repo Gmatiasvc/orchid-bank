@@ -14,7 +14,9 @@ public class ListaCuentasAhorro {
 	public ListaCuentasAhorro() {
 		int dbsize = InfoRead.accountAhorro();
 		CuentaAhorro caho;
+		System.out.println(dbsize);
 		for (int i = 0; i <= dbsize; i++) {
+			System.out.println(i);
 			caho = DataRead.readCuentaAhorro(i, false);
 			if (caho.getNumber() != null || !"null".equals(caho.getNumber()) || !"".equals(caho.getNumber())) {
 				list.add(caho);

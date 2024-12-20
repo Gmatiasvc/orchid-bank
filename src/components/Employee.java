@@ -7,6 +7,7 @@ import common.exceptions.ClientNotFound;
 import common.exceptions.DataMissmatch;
 import common.exceptions.InvalidInput;
 import common.logger.Logger;
+import database.DataSave;
 import functions.accountHandling;
 import functions.clientHandling;
 import functions.operationHandling;
@@ -91,7 +92,8 @@ public ArrayList<String> getListaNrosCuenta() {
 	}
 
 	public Cuenta searchCuenta(String acc) throws AccountNotFound, BadStringToParse{
-		if (acc.charAt(0) != '1' || acc.charAt(0) != '2' || acc.length() != 8){
+		if (acc.charAt(0) != '1' && acc.charAt(0) != '2' && acc.length() != 8){
+			System.out.println("ERROR DEBUG: " + acc +" - "+acc.charAt(0));
 			logger.WARN("searchCuenta method exited with an exeption as the account number: "+acc+" provided was invalid");
 			throw new BadStringToParse();
 		}
@@ -185,12 +187,12 @@ public ArrayList<String> getListaNrosCuenta() {
 
 	public boolean doTransfer(float monto, String accs, String accr) throws AccountNotFound, DataMissmatch, InvalidInput{
 		
-        if (accs.charAt(0) != '1' || accs.charAt(0) != '2'||accs.length()!=8) {
+        if (accs.charAt(0) != '1' && accs.charAt(0) != '2'&&accs.length()!=8) {
 			logger.WARN("Tranfer operation unable to proceed as provided account number: "+accs+" is invalid. Amount to transfer indicated: "+monto + " to the account: "+accr);
 			throw new AccountNotFound();
 			
 		} else {
-			if (accr.charAt(0) != '1' || accr.charAt(0) != '2'||accr.length()!=8){
+			if (accr.charAt(0) != '1' && accr.charAt(0) != '2'&&accr.length()!=8){
 				logger.WARN("Tranfer operation unable to proceed as provided account number: "+accr+" is invalid. Amount to transfer indicated: "+monto + " from the account: "+accs);
 				throw new AccountNotFound();
 			}
@@ -205,6 +207,9 @@ public ArrayList<String> getListaNrosCuenta() {
 									operationHandling.registerTransferenciaEntrante(accr, accs, monto, "0");
 									i.setBalance(i.getBalance()-monto*constants.ITF);
 									j.setBalance(j.getBalance()+monto);
+									DataSave.saveAccountAhorro(listaAhorro.getIndexFromObject((CuentaAhorro)i), (CuentaAhorro)i, false);
+									DataSave.saveAccountAhorro(listaAhorro.getIndexFromObject((CuentaAhorro)j), (CuentaAhorro)j, false);
+
 									logger.INFO("Tranfer between accounts: "+accs+" -> "+accr +" was executed and registered sucessfuly, the ammount transfered was: "+monto);
 									return true;
 								}
@@ -226,10 +231,12 @@ public ArrayList<String> getListaNrosCuenta() {
 							if (j.getNumeroCuenta().equals(accr)){
 								if (i.getBalance() >= monto*constants.ITF && i.getCurrency().equals(j.getCurrency())) {
 									operationHandling.registerTransferenciaSaliente(accr, accs, monto, "1");
-									operationHandling.registerTransferenciaEntrante(accr, accs, monto, "0");
+									operationHandling.registerTransferenciaEntrante(accr, accs, monto, "1");
 									i.setBalance(i.getBalance()-monto*constants.ITF);
 									j.setBalance(j.getBalance()+monto);
 									logger.INFO("Tranfer between accounts: "+accs+" -> "+accr +" was executed and registered sucessfuly, the ammount transfered was: "+monto);
+									DataSave.saveAccountAhorro(listaAhorro.getIndexFromObject((CuentaAhorro)i), (CuentaAhorro)i, false);
+									DataSave.saveAccountCorriente(listaCorriente.getIndexFromObject((CuentaCorriente)j), (CuentaCorriente)j, false);
 									return true;
 								}
 								else {
@@ -260,6 +267,8 @@ public ArrayList<String> getListaNrosCuenta() {
 									i.setBalance(i.getBalance()-monto*constants.ITF);
 									j.setBalance(j.getBalance()+monto);
 									logger.INFO("Tranfer between accounts: "+accs+" -> "+accr +" was executed and registered sucessfuly, the ammount transfered was: "+monto);
+									DataSave.saveAccountCorriente(listaCorriente.getIndexFromObject((CuentaCorriente)i), (CuentaCorriente)i, false);
+									DataSave.saveAccountAhorro(listaAhorro.getIndexFromObject((CuentaAhorro)j), (CuentaAhorro)j, false);
 									return true;
 								}
 								else {
@@ -280,9 +289,12 @@ public ArrayList<String> getListaNrosCuenta() {
 							if (j.getNumeroCuenta().equals(accr)){
 								if (i.getBalance() >= monto*constants.ITF && i.getCurrency().equals(j.getCurrency())) {
 									operationHandling.registerTransferenciaSaliente(accr, accs, monto, "1");
-									operationHandling.registerTransferenciaEntrante(accr, accs, monto, "0");
+									operationHandling.registerTransferenciaEntrante(accr, accs, monto, "1");
 									i.setBalance(i.getBalance()-monto*constants.ITF);
 									j.setBalance(j.getBalance()+monto);
+									DataSave.saveAccountCorriente(listaCorriente.getIndexFromObject((CuentaCorriente)i), (CuentaCorriente)i, false);
+									DataSave.saveAccountCorriente(listaCorriente.getIndexFromObject((CuentaCorriente)j), (CuentaCorriente)j, false);
+									
 									logger.INFO("Tranfer between accounts: "+accs+" -> "+accr +" was executed and registered sucessfuly, the ammount transfered was: "+monto);
 									return true;
 								}
@@ -344,4 +356,219 @@ public ArrayList<String> getListaNrosCuenta() {
 	public ListaClientesNaturales getListaNaturales() {
 		return listaNaturales;
 	}
+
+	public boolean doWithdraw(float monto, String acc,String docstr) throws AccountNotFound, InvalidInput{
+		if (acc.charAt(0) != '1' && acc.charAt(0) != '2'&&acc.length()!=8) {
+			logger.WARN("Withdraw operation unable to proceed as provided account number: "+acc+" is invalid. Amount to withdraw indicated: "+monto);
+			throw new AccountNotFound();
+		}
+        
+
+		if(acc.charAt(0)=='1'){
+			for(CuentaAhorro i : listaAhorro.getList()){
+				if (i.getNumeroCuenta().equals(acc)){
+					if(i.getBalance()>=monto*constants.ITF && i.getWithdrawLim()>=monto*constants.ITF){
+						operationHandling.registerRetiro(monto, "1", acc, docstr);
+						i.setBalance(i.getBalance()-monto*constants.ITF);
+						DataSave.saveAccountAhorro(listaAhorro.getIndexFromObject((CuentaAhorro)i), (CuentaAhorro)i, false);
+						return true;
+					}
+
+					else{
+					operationHandling.registerRetiro(monto, "0", acc, docstr);
+					logger.WARN("Withdraw operation from "+ acc+" failed due to a lack of funds");
+					throw new InvalidInput();}
+				}
+			}
+		}
+		else{
+			for(CuentaCorriente i : listaCorriente.getList()){
+				if (i.getNumeroCuenta().equals(acc)){
+					if(i.getBalance()>=monto*constants.ITF ){
+						operationHandling.registerRetiro(monto, "1", acc, docstr);
+						i.setBalance(i.getBalance()-monto*constants.ITF);
+						DataSave.saveAccountCorriente(listaCorriente.getIndexFromObject((CuentaCorriente)i), (CuentaCorriente)i, false);
+						return true;
+					}
+
+					else{
+					operationHandling.registerRetiro(monto, "0", acc, docstr);
+					logger.WARN("Withdraw operation from "+ acc+" failed due to a lack of funds");
+					throw new InvalidInput();}
+				}
+				
+			}
+		}
+	return false;
+	}
+
+
+	public boolean doDeposit(float monto, String acc,String docstr) throws AccountNotFound, InvalidInput{
+        if (acc.charAt(0) != '1' && acc.charAt(0) != '2'&&acc.length()!=8) {
+			logger.WARN("Withdraw operation unable to proceed as provided account number: "+acc+" is invalid. Amount to withdraw indicated: "+monto);
+			throw new AccountNotFound();
+		}
+
+		if(acc.charAt(0)=='1'){
+			for(CuentaAhorro i : listaAhorro.getList()){
+				if (i.getNumeroCuenta().equals(acc)){
+					operationHandling.registerDeposito(monto, "1", acc, docstr);
+					i.setBalance(i.getBalance()-monto-(monto*(constants.ITF-1)));
+					DataSave.saveAccountAhorro(listaAhorro.getIndexFromObject((CuentaAhorro)i), (CuentaAhorro)i, false);
+					return true;
+			
+				}
+			}
+		}
+		else{
+			for(CuentaCorriente i : listaCorriente.getList()){
+				if (i.getNumeroCuenta().equals(acc)){
+					operationHandling.registerDeposito(monto, "1", acc, docstr);
+					i.setBalance(i.getBalance()+monto-(monto*(constants.ITF-1)));
+					DataSave.saveAccountCorriente(listaCorriente.getIndexFromObject((CuentaCorriente)i), (CuentaCorriente)i, false);
+					return true;
+				}
+				
+			}
+		}
+	return false;
+	}
+
+	public boolean doCheque(float monto, String accs, String accr, String doc) throws AccountNotFound, DataMissmatch, InvalidInput {
+		
+			if (accs.charAt(0) != '1' && accs.charAt(0) != '2'&&accs.length()!=8) {
+				logger.WARN("Cheque operation unable to proceed as provided account number: "+accs+" is invalid. Amount to transfer indicated: "+monto + " to the account: "+accr);
+				throw new AccountNotFound();
+				
+			} else {
+				if (accr.charAt(0) != '1' && accr.charAt(0) != '2'&&accr.length()!=8){
+					logger.WARN("Cheque operation unable to proceed as provided account number: "+accr+" is invalid. Amount to transfer indicated: "+monto + " from the account: "+accs);
+					throw new AccountNotFound();
+				}
+				if (accs.charAt(0)=='1'){ 
+				for (Cuenta i: listaAhorro.getList()) {
+					if (i.getNumeroCuenta().equals(accs)){
+						if (accr.charAt(0) == '1'){
+							for (Cuenta j : listaAhorro.getList()) {
+								if (j.getNumeroCuenta().equals(accr)){
+									if (i.getBalance() >= monto*constants.ITF && i.getCurrency().equals(j.getCurrency())) {
+										operationHandling.registerChequeSaliente(accr,accs,doc,accs,monto,"1");
+										operationHandling.registerChequeEntrante(accs,accr,doc,accs,monto,"1");
+										i.setBalance(i.getBalance()-monto*constants.ITF);
+										j.setBalance(j.getBalance()+monto);
+										DataSave.saveAccountAhorro(listaAhorro.getIndexFromObject((CuentaAhorro)i), (CuentaAhorro)i, false);
+										DataSave.saveAccountAhorro(listaAhorro.getIndexFromObject((CuentaAhorro)j), (CuentaAhorro)j, false);
+	
+										logger.INFO("Cheque tranfer between accounts: "+accs+" -> "+accr +" was executed and registered sucessfuly, the ammount transfered was: "+monto);
+										return true;
+									}
+									else {
+										if (i.getBalance() < monto*constants.ITF){
+											logger.WARN("Cheque transfer between accounts: "+accs+" -> "+accr +" failed, the requested quantity of money to tranfer: "+monto+ "exceded the balance of the account");
+											throw new InvalidInput();
+									}
+										else {
+											logger.WARN("Cheque tranfer between accounts: "+accs+" -> "+accr +" failed, the currency of the accounts does not match");
+											throw new DataMissmatch();
+										}
+									}
+								}
+							}
+						}
+						else{
+							for (Cuenta j : listaCorriente.getList()) {
+								if (j.getNumeroCuenta().equals(accr)){
+									if (i.getBalance() >= monto*constants.ITF && i.getCurrency().equals(j.getCurrency())) {
+										operationHandling.registerChequeSaliente(accr,accs,doc,accs,monto,"1");
+										operationHandling.registerChequeEntrante(accs,accr,doc,accs,monto,"1");
+										i.setBalance(i.getBalance()-monto*constants.ITF);
+										j.setBalance(j.getBalance()+monto);
+										logger.INFO("Cheque tranfer between accounts: "+accs+" -> "+accr +" was executed and registered sucessfuly, the ammount transfered was: "+monto);
+										DataSave.saveAccountAhorro(listaAhorro.getIndexFromObject((CuentaAhorro)i), (CuentaAhorro)i, false);
+										DataSave.saveAccountCorriente(listaCorriente.getIndexFromObject((CuentaCorriente)j), (CuentaCorriente)j, false);
+										return true;
+									}
+									else {
+										if (i.getBalance() < monto*constants.ITF){
+											logger.WARN("Cheque tranfer between accounts: "+accs+" -> "+accr +" failed, the requested quantity of money to tranfer: "+monto+ "exceded the balance of the account");
+											throw new InvalidInput();
+									}
+										else {
+											logger.WARN("Cheque tranfer between accounts: "+accs+" -> "+accr +" failed, the currency of the accounts does not match");
+											throw new DataMissmatch();
+										}
+									}
+								}
+							}
+						}
+					}
+				}	
+			}
+			else {
+				for (Cuenta i: listaCorriente.getList()) {
+					if (i.getNumeroCuenta().equals(accs)){
+						if (accr.charAt(0) == '1'){
+							for (Cuenta j : listaAhorro.getList()) {
+								if (j.getNumeroCuenta().equals(accr)){
+									if (i.getBalance() >= monto*constants.ITF && i.getCurrency().equals(j.getCurrency())) {
+										operationHandling.registerChequeSaliente(accr,accs,doc,accs,monto,"1");
+										operationHandling.registerChequeEntrante(accs,accr,doc,accs,monto,"1");
+										i.setBalance(i.getBalance()-monto*constants.ITF);
+										j.setBalance(j.getBalance()+monto);
+										logger.INFO("Cheque tranfer between accounts: "+accs+" -> "+accr +" was executed and registered sucessfuly, the ammount transfered was: "+monto);
+										DataSave.saveAccountCorriente(listaCorriente.getIndexFromObject((CuentaCorriente)i), (CuentaCorriente)i, false);
+										DataSave.saveAccountAhorro(listaAhorro.getIndexFromObject((CuentaAhorro)j), (CuentaAhorro)j, false);
+										return true;
+									}
+									else {
+										if (i.getBalance() < monto*constants.ITF){
+											logger.WARN("Cheque tranfer between accounts: "+accs+" -> "+accr +" failed, the requested quantity of money to tranfer: "+monto+ "exceded the balance of the account");
+											throw new InvalidInput();
+									}
+										else {
+											logger.WARN("Cheque tranfer between accounts: "+accs+" -> "+accr +" failed, the currency of the accounts does not match");
+											throw new DataMissmatch();
+										}
+									}
+								}
+							}
+						}
+						else{
+							for (Cuenta j : listaCorriente.getList()) {
+								if (j.getNumeroCuenta().equals(accr)){
+									if (i.getBalance() >= monto*constants.ITF && i.getCurrency().equals(j.getCurrency())) {
+										operationHandling.registerChequeSaliente(accr,accs,doc,accs,monto,"1");
+										operationHandling.registerChequeEntrante(accs,accr,doc,accs,monto,"1");
+										i.setBalance(i.getBalance()-monto*constants.ITF);
+										j.setBalance(j.getBalance()+monto);
+										DataSave.saveAccountCorriente(listaCorriente.getIndexFromObject((CuentaCorriente)i), (CuentaCorriente)i, false);
+										DataSave.saveAccountCorriente(listaCorriente.getIndexFromObject((CuentaCorriente)j), (CuentaCorriente)j, false);
+										
+										logger.INFO("Tranfer between accounts: "+accs+" -> "+accr +" was executed and registered sucessfuly, the ammount transfered was: "+monto);
+										return true;
+									}
+									else {
+										if (i.getBalance() < monto*constants.ITF){
+											logger.WARN("Tranfer between accounts: "+accs+" -> "+accr +" failed, the requested quantity of money to tranfer: "+monto+ "exceded the balance of the account");
+											throw new InvalidInput();
+									}
+										else {
+											logger.WARN("Tranfer between accounts: "+accs+" -> "+accr +" failed, the currency of the accounts does not match");
+											throw new DataMissmatch();
+										}
+									}
+								}
+							}
+						}
+					}
+				}	
+			
+			}
+				
+				logger.WARN("Tranfer operation unable to proceed as provided account number: "+accs+" is invalid. Amount to transfer indicated: "+monto + " to the account: "+accr);
+				throw new AccountNotFound();
+			}
+
+	}
+
 }

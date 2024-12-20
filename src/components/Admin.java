@@ -103,8 +103,8 @@ public class Admin {
 		throw new AccountNotFound();
 	}
 
-	public ArrayList<String> getLog(String year, String month, String day){
+	public ArrayList<String> getLog(String path){
 		logger.INFO("Method getLog called from an admin component");
-		return Logger.readLog(year, month, day, logger);
+		return Logger.readLog(path, logger);
 	}
 }

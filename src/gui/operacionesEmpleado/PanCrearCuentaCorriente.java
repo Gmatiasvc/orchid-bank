@@ -7,6 +7,8 @@ package gui.operacionesEmpleado;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import common.exceptions.ClientNotFound;
 import common.logger.Logger;
 import components.Employee;
@@ -22,14 +24,15 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
     /**
      * Creates new form PanCrearCuentaAhorro2
      */
-	private Employee comp;
+    private Employee comp;
+
     public PanCrearCuentaCorriente(Employee comp) {
-		this.comp = comp;
+        this.comp = comp;
         initComponents();
-		cmbRepresentante.removeAllItems();
-		for(String i: comp.getListaNrosDoc()){
-			cmbRepresentante.addItem(i);
-		}
+        cmbRepresentante.removeAllItems();
+        for (String i : comp.getListaNrosDoc()) {
+            cmbRepresentante.addItem(i);
+        }
     }
 
     /**
@@ -89,24 +92,24 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         javax.swing.GroupLayout panSaldoInicialLayout = new javax.swing.GroupLayout(panSaldoInicial);
         panSaldoInicial.setLayout(panSaldoInicialLayout);
         panSaldoInicialLayout.setHorizontalGroup(
-            panSaldoInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panSaldoInicialLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSaldoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
+                panSaldoInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panSaldoInicialLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSaldoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         panSaldoInicialLayout.setVerticalGroup(
-            panSaldoInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panSaldoInicialLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panSaldoInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSaldoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panSaldoInicialLayout.createSequentialGroup()
-                        .addComponent(txtSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                panSaldoInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panSaldoInicialLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panSaldoInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblSaldoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(panSaldoInicialLayout.createSequentialGroup()
+                                                .addComponent(txtSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
 
         jPanel1.add(panSaldoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 920, 40));
@@ -129,24 +132,24 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         javax.swing.GroupLayout panTipoMonedaLayout = new javax.swing.GroupLayout(panTipoMoneda);
         panTipoMoneda.setLayout(panTipoMonedaLayout);
         panTipoMonedaLayout.setHorizontalGroup(
-            panTipoMonedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panTipoMonedaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTipoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTipoMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
+                panTipoMonedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panTipoMonedaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblTipoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTipoMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         panTipoMonedaLayout.setVerticalGroup(
-            panTipoMonedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTipoMonedaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panTipoMonedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTipoMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panTipoMonedaLayout.createSequentialGroup()
-                        .addComponent(txtTipoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                panTipoMonedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTipoMonedaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panTipoMonedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblTipoMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(panTipoMonedaLayout.createSequentialGroup()
+                                                .addComponent(txtTipoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
 
         jPanel1.add(panTipoMoneda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 920, 40));
@@ -157,27 +160,27 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         lblTitularDeLaCuenta.setAlignmentX(0.5F);
         lblTitularDeLaCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        cmbRepresentante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbRepresentante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
 
         javax.swing.GroupLayout panTitularDeLaCuentaLayout = new javax.swing.GroupLayout(panTitularDeLaCuenta);
         panTitularDeLaCuenta.setLayout(panTitularDeLaCuentaLayout);
         panTitularDeLaCuentaLayout.setHorizontalGroup(
-            panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panTitularDeLaCuentaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitularDeLaCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(339, Short.MAX_VALUE))
+                panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panTitularDeLaCuentaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblTitularDeLaCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(339, Short.MAX_VALUE))
         );
         panTitularDeLaCuentaLayout.setVerticalGroup(
-            panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTitularDeLaCuentaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitularDeLaCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(cmbRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTitularDeLaCuentaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panTitularDeLaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblTitularDeLaCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                                        .addComponent(cmbRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
         );
 
         jPanel1.add(panTitularDeLaCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 920, 40));
@@ -200,24 +203,24 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         javax.swing.GroupLayout panInteresAplicadoLayout = new javax.swing.GroupLayout(panInteresAplicado);
         panInteresAplicado.setLayout(panInteresAplicadoLayout);
         panInteresAplicadoLayout.setHorizontalGroup(
-            panInteresAplicadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panInteresAplicadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblInteresAplicado, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtInteresAplicado, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
+                panInteresAplicadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panInteresAplicadoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblInteresAplicado, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtInteresAplicado, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         panInteresAplicadoLayout.setVerticalGroup(
-            panInteresAplicadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panInteresAplicadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panInteresAplicadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInteresAplicado, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addGroup(panInteresAplicadoLayout.createSequentialGroup()
-                        .addComponent(txtInteresAplicado, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                panInteresAplicadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panInteresAplicadoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panInteresAplicadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblInteresAplicado, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                                        .addGroup(panInteresAplicadoLayout.createSequentialGroup()
+                                                .addComponent(txtInteresAplicado, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
 
         jPanel1.add(panInteresAplicado, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 920, 40));
@@ -240,24 +243,24 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         javax.swing.GroupLayout panLimiteSobregiroLayout = new javax.swing.GroupLayout(panLimiteSobregiro);
         panLimiteSobregiro.setLayout(panLimiteSobregiroLayout);
         panLimiteSobregiroLayout.setHorizontalGroup(
-            panLimiteSobregiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panLimiteSobregiroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblLimiteSobregiro, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLimiteSobregiro, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
+                panLimiteSobregiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panLimiteSobregiroLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblLimiteSobregiro, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtLimiteSobregiro, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         panLimiteSobregiroLayout.setVerticalGroup(
-            panLimiteSobregiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLimiteSobregiroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panLimiteSobregiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLimiteSobregiro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panLimiteSobregiroLayout.createSequentialGroup()
-                        .addComponent(txtLimiteSobregiro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                panLimiteSobregiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLimiteSobregiroLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panLimiteSobregiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblLimiteSobregiro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(panLimiteSobregiroLayout.createSequentialGroup()
+                                                .addComponent(txtLimiteSobregiro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
 
         jPanel1.add(panLimiteSobregiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 920, 40));
@@ -280,24 +283,24 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         javax.swing.GroupLayout panLimiteChequesLayout = new javax.swing.GroupLayout(panLimiteCheques);
         panLimiteCheques.setLayout(panLimiteChequesLayout);
         panLimiteChequesLayout.setHorizontalGroup(
-            panLimiteChequesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panLimiteChequesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblLimiteCheques, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLimiteCheques, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
+                panLimiteChequesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panLimiteChequesLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblLimiteCheques, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtLimiteCheques, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         panLimiteChequesLayout.setVerticalGroup(
-            panLimiteChequesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLimiteChequesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panLimiteChequesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLimiteCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panLimiteChequesLayout.createSequentialGroup()
-                        .addComponent(txtLimiteCheques, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                panLimiteChequesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLimiteChequesLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panLimiteChequesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblLimiteCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(panLimiteChequesLayout.createSequentialGroup()
+                                                .addComponent(txtLimiteCheques, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
 
         jPanel1.add(panLimiteCheques, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 920, 40));
@@ -329,29 +332,29 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         javax.swing.GroupLayout panComisionPorChequeLayout = new javax.swing.GroupLayout(panComisionPorCheque);
         panComisionPorCheque.setLayout(panComisionPorChequeLayout);
         panComisionPorChequeLayout.setHorizontalGroup(
-            panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panComisionPorChequeLayout.createSequentialGroup()
-                .addGroup(panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panComisionPorChequeLayout.createSequentialGroup()
-                        .addGap(272, 272, 272)
-                        .addComponent(txtComisionPorCheque, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
-                    .addGroup(panComisionPorChequeLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblComisionPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(txtCommisPorCheque, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)))
-                .addContainerGap())
+                panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panComisionPorChequeLayout.createSequentialGroup()
+                                .addGroup(panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panComisionPorChequeLayout.createSequentialGroup()
+                                                .addGap(272, 272, 272)
+                                                .addComponent(txtComisionPorCheque, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
+                                        .addGroup(panComisionPorChequeLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(lblComisionPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(27, 27, 27)
+                                                .addComponent(txtCommisPorCheque, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         panComisionPorChequeLayout.setVerticalGroup(
-            panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panComisionPorChequeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblComisionPorCheque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtCommisPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtComisionPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panComisionPorChequeLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panComisionPorChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblComisionPorCheque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtCommisPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtComisionPorCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(panComisionPorCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 920, 40));
@@ -370,12 +373,12 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -401,61 +404,60 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
     }//GEN-LAST:event_txtComisionPorChequeActionPerformed
 
     private void jbtGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtGuardarActionPerformed
-		float overdraftLimit;
-	try{
-		 overdraftLimit = Float.parseFloat(txtLimiteSobregiro.getText());}
-	catch (Exception e) {
-		overdraftLimit = 50000.0f;
-	}
-	float chequeLimit;
-	try
-	{chequeLimit = Float.parseFloat(txtLimiteCheques.getText());}
-	catch (Exception e) {
-		chequeLimit = 10000.0f;
-	}
-	float chequeNumberLimit=100.0f;
-	
-	float chequeCommission;
-	try
-	{chequeCommission = Float.parseFloat(txtComisionPorCheque.getText());}
-	catch (Exception e) {
-		chequeCommission = 0.05f;
-	}
-	String year = Logger.dateString(0).substring(6,10);
-	String month = Logger.dateString(0).substring(3,5);
-	String day= Logger.dateString(0).substring(0,2);
-	String currency = txtTipoMoneda.getText();
-	double balance;
-	try{ 
-	balance = Double.parseDouble(txtSaldoInicial.getText());
-	} catch (Exception e) {
-		 balance = 0;
-	}
-	float interestRate = 0.05f;
-	Persona rep;
-	try {
-		rep = comp.searchNatural((String)cmbRepresentante.getSelectedItem());
-	} catch (ClientNotFound e) {
-		try {
-			rep = comp.searchJuridica((String)cmbRepresentante.getSelectedItem()).getRepresentative();
-		} catch (ClientNotFound e1) {
-			rep = new Persona(null, null, null, null, null, null, null, null, null);
-		}
-	}
-	String id = rep.getIdString();
-	String idtype = rep.getIdType();
+        float overdraftLimit;
+        try {
+            overdraftLimit = Float.parseFloat(txtLimiteSobregiro.getText());
+        } catch (Exception e) {
+            overdraftLimit = 50000.0f;
+        }
+        float chequeLimit;
+        try {
+            chequeLimit = Float.parseFloat(txtLimiteCheques.getText());
+        } catch (Exception e) {
+            chequeLimit = 10000.0f;
+        }
+        float chequeNumberLimit = 100.0f;
 
-	boolean status = comp.createCorriente(overdraftLimit, chequeLimit, chequeNumberLimit, stringFormatter.numberGeneratorCorriente(), chequeCommission, stringFormatter.numberGeneratorCorriente(), year, month, day, currency, balance, interestRate, id, idtype);
-    if (status){
-		jbtGuardar.setBackground(new Color(51, 51, 255));
-	}
-	else{
-		jbtGuardar.setBackground(new Color(255, 51, 51));
-	}
+        float chequeCommission;
+        try {
+            chequeCommission = Float.parseFloat(txtComisionPorCheque.getText());
+        } catch (Exception e) {
+            chequeCommission = 0.05f;
+        }
+        String year = Logger.dateString(0).substring(6, 10);
+        String month = Logger.dateString(0).substring(3, 5);
+        String day = Logger.dateString(0).substring(0, 2);
+        String currency = txtTipoMoneda.getText();
+        double balance;
+        try {
+            balance = Double.parseDouble(txtSaldoInicial.getText());
+        } catch (Exception e) {
+            balance = 0;
+        }
+        float interestRate = 0.05f;
+        Persona rep;
+        try {
+            rep = comp.searchNatural((String) cmbRepresentante.getSelectedItem());
+        } catch (ClientNotFound e) {
+            try {
+                rep = comp.searchJuridica((String) cmbRepresentante.getSelectedItem()).getRepresentative();
+            } catch (ClientNotFound e1) {
+                rep = new Persona(null, null, null, null, null, null, null, null, null);
+            }
+        }
+        String id = rep.getIdString();
+        String idtype = rep.getIdType();
 
-		
+        boolean status = comp.createCorriente(overdraftLimit, chequeLimit, chequeNumberLimit, stringFormatter.numberGeneratorCorriente(), chequeCommission, stringFormatter.numberGeneratorCorriente(), year, month, day, currency, balance, interestRate, id, idtype);
+        if (status) {
+            JOptionPane.showMessageDialog(this, "Operacion exitosa", "Datos guardados", JOptionPane.INFORMATION_MESSAGE);
+            jbtGuardar.setBackground(new Color(51, 51, 255));
+        } else {
+            JOptionPane.showMessageDialog(this, "Datos invalidos", "Error en la operacion", JOptionPane.ERROR_MESSAGE);
+            jbtGuardar.setBackground(new Color(255, 51, 51));
+        }
+
     }//GEN-LAST:event_jbtGuardarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbRepresentante;

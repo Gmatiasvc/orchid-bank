@@ -54,6 +54,6 @@ public class stringFormatter {
 	public static String numberGeneratorCorriente(){
 		int acc = InfoRead.accountCorriente()+1;
 		String accts = Integer.toString(acc);
-		return "1"+"0".repeat(7-accts.length())+accts;
+		return "2"+"0".repeat(7-accts.length())+accts;
 	}
 }

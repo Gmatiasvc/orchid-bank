@@ -185,9 +185,13 @@ public class DataRead {
                 data.setBeneficiaries(beneficiaries);
                 data.cuenta(number, creationDate, currency, balance, interestRate, id, idType);
             }
-        } catch (FileNotFoundException| NoSuchElementException e) {
-            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained.");
+        } catch (FileNotFoundException e) {
+            System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained. fnf");
         }
+		catch ( NoSuchElementException e){
+			System.out.println(Logger.dateString(4) + " [ERROR] An error has occurred during information read event; information has not been obtained. nsf");
+			System.out.println("db/account/ahorro/" + pos + ".acc");
+		}
         return data;
     }
 

@@ -11,21 +11,21 @@ import gui.operacionesAdministrador.PanListaClientes;
 import gui.operacionesAdministrador.PanListaCuentas;
 import gui.operacionesAdministrador.PanLogs;
 
-
 /**
  *
  * @author jhose
  */
 public class FrmVentanaPrincipalAdministrador extends javax.swing.JFrame {
-    
+
     private final javax.swing.ButtonGroup buttonGroupOpciones;
     private Admin adminComp = new Admin();
+
     /**
      * Creates new form FrmVentanaPrincipalAdministrador
      */
     public FrmVentanaPrincipalAdministrador() {
         initComponents();
-        
+
         buttonGroupOpciones = new javax.swing.ButtonGroup();
         buttonGroupOpciones.add(jrbLogs);
         buttonGroupOpciones.add(jrbListaClientes);
@@ -33,15 +33,15 @@ public class FrmVentanaPrincipalAdministrador extends javax.swing.JFrame {
     }
 
     private void cargarPanel(javax.swing.JPanel panel) {
-    panel.setSize(1100, 576);
-    panel.setLocation(0, 0);
+        panel.setSize(1100, 576);
+        panel.setLocation(0, 0);
 
-    panContenido.removeAll();
-    panContenido.add(panel, BorderLayout.CENTER);
-    panContenido.revalidate();
-    panContenido.repaint();
+        panContenido.removeAll();
+        panContenido.add(panel, BorderLayout.CENTER);
+        panContenido.revalidate();
+        panContenido.repaint();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,32 +116,32 @@ public class FrmVentanaPrincipalAdministrador extends javax.swing.JFrame {
         javax.swing.GroupLayout panOpcionesLayout = new javax.swing.GroupLayout(panOpciones);
         panOpciones.setLayout(panOpcionesLayout);
         panOpcionesLayout.setHorizontalGroup(
-            panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panOpcionesLayout.createSequentialGroup()
-                .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panOpcionesLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(lblAdministrador))
-                    .addGroup(panOpcionesLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrbLogs, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jrbListaCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jrbListaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panOpcionesLayout.createSequentialGroup()
+                                .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panOpcionesLayout.createSequentialGroup()
+                                                .addGap(76, 76, 76)
+                                                .addComponent(lblAdministrador))
+                                        .addGroup(panOpcionesLayout.createSequentialGroup()
+                                                .addGap(31, 31, 31)
+                                                .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jrbLogs, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jrbListaCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jrbListaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(55, Short.MAX_VALUE))
         );
         panOpcionesLayout.setVerticalGroup(
-            panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panOpcionesLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(lblAdministrador)
-                .addGap(57, 57, 57)
-                .addComponent(jrbListaCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jrbLogs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jrbListaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(632, Short.MAX_VALUE))
+                panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panOpcionesLayout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(lblAdministrador)
+                                .addGap(57, 57, 57)
+                                .addComponent(jrbListaCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbLogs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbListaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(632, Short.MAX_VALUE))
         );
 
         panBlanco.add(panOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 960));
@@ -153,12 +153,12 @@ public class FrmVentanaPrincipalAdministrador extends javax.swing.JFrame {
         javax.swing.GroupLayout panContenidoLayout = new javax.swing.GroupLayout(panContenido);
         panContenido.setLayout(panContenidoLayout);
         panContenidoLayout.setHorizontalGroup(
-            panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
+                panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1140, Short.MAX_VALUE)
         );
         panContenidoLayout.setVerticalGroup(
-            panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 784, Short.MAX_VALUE)
+                panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 784, Short.MAX_VALUE)
         );
 
         panBlanco.add(panContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
@@ -177,14 +177,14 @@ public class FrmVentanaPrincipalAdministrador extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -195,11 +195,11 @@ public class FrmVentanaPrincipalAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbLogsActionPerformed
 
     private void jrbListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbListaClientesActionPerformed
-      cargarPanel(new PanListaClientes(adminComp));
+        cargarPanel(new PanListaClientes(adminComp));
     }//GEN-LAST:event_jrbListaClientesActionPerformed
 
     private void jrbListaCuentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbListaCuentasActionPerformed
-       cargarPanel(new PanListaCuentas(adminComp));
+        cargarPanel(new PanListaCuentas(adminComp));
     }//GEN-LAST:event_jrbListaCuentasActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

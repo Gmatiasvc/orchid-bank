@@ -25,8 +25,11 @@ public class PanRegistrarOperacion extends javax.swing.JPanel {
 		this.comp = comp;
         initComponents();
         buttonGroupOpciones = new ButtonGroup();
-        buttonGroupOpciones.add(jrbCuentaAhorro);
-        buttonGroupOpciones.add(jrbCuentaCorriente);
+        buttonGroupOpciones.add(jrbTransferencia);
+        buttonGroupOpciones.add(jrbCheque);
+        buttonGroupOpciones.add(jrbDeposito);
+        buttonGroupOpciones.add(jrbRetiro);
+        
     }
 
     /**
@@ -39,11 +42,11 @@ public class PanRegistrarOperacion extends javax.swing.JPanel {
     private void initComponents() {
 
         panBlanco = new javax.swing.JPanel();
-        jrbCuentaAhorro = new javax.swing.JRadioButton();
-        jrbCuentaCorriente = new javax.swing.JRadioButton();
+        jrbTransferencia = new javax.swing.JRadioButton();
+        jrbCheque = new javax.swing.JRadioButton();
         panContenido = new javax.swing.JPanel();
-        jrbCuentaCorriente1 = new javax.swing.JRadioButton();
-        jrbCuentaCorriente2 = new javax.swing.JRadioButton();
+        jrbDeposito = new javax.swing.JRadioButton();
+        jrbRetiro = new javax.swing.JRadioButton();
 
         setPreferredSize(new java.awt.Dimension(1284, 784));
 
@@ -51,25 +54,25 @@ public class PanRegistrarOperacion extends javax.swing.JPanel {
         panBlanco.setPreferredSize(new java.awt.Dimension(1140, 784));
         panBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jrbCuentaAhorro.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jrbCuentaAhorro.setForeground(new java.awt.Color(0, 51, 255));
-        jrbCuentaAhorro.setText("Transferencia");
-        jrbCuentaAhorro.addActionListener(new java.awt.event.ActionListener() {
+        jrbTransferencia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jrbTransferencia.setForeground(new java.awt.Color(0, 51, 255));
+        jrbTransferencia.setText("Transferencia");
+        jrbTransferencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbCuentaAhorroActionPerformed(evt);
+                jrbTransferenciaActionPerformed(evt);
             }
         });
-        panBlanco.add(jrbCuentaAhorro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+        panBlanco.add(jrbTransferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
-        jrbCuentaCorriente.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jrbCuentaCorriente.setForeground(new java.awt.Color(0, 51, 255));
-        jrbCuentaCorriente.setText("Cheque");
-        jrbCuentaCorriente.addActionListener(new java.awt.event.ActionListener() {
+        jrbCheque.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jrbCheque.setForeground(new java.awt.Color(0, 51, 255));
+        jrbCheque.setText("Cheque");
+        jrbCheque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbCuentaCorrienteActionPerformed(evt);
+                jrbChequeActionPerformed(evt);
             }
         });
-        panBlanco.add(jrbCuentaCorriente, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
+        panBlanco.add(jrbCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
 
         panContenido.setBackground(new java.awt.Color(204, 204, 204));
         panContenido.setPreferredSize(new java.awt.Dimension(1120, 680));
@@ -88,25 +91,25 @@ public class PanRegistrarOperacion extends javax.swing.JPanel {
         panBlanco.add(panContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 760));
         panContenido.getAccessibleContext().setAccessibleName("");
 
-        jrbCuentaCorriente1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jrbCuentaCorriente1.setForeground(new java.awt.Color(0, 51, 255));
-        jrbCuentaCorriente1.setText("Deposito");
-        jrbCuentaCorriente1.addActionListener(new java.awt.event.ActionListener() {
+        jrbDeposito.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jrbDeposito.setForeground(new java.awt.Color(0, 51, 255));
+        jrbDeposito.setText("Deposito");
+        jrbDeposito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbCuentaCorriente1ActionPerformed(evt);
+                jrbDepositoActionPerformed(evt);
             }
         });
-        panBlanco.add(jrbCuentaCorriente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
+        panBlanco.add(jrbDeposito, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
 
-        jrbCuentaCorriente2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jrbCuentaCorriente2.setForeground(new java.awt.Color(0, 51, 255));
-        jrbCuentaCorriente2.setText("Retiro");
-        jrbCuentaCorriente2.addActionListener(new java.awt.event.ActionListener() {
+        jrbRetiro.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jrbRetiro.setForeground(new java.awt.Color(0, 51, 255));
+        jrbRetiro.setText("Retiro");
+        jrbRetiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbCuentaCorriente2ActionPerformed(evt);
+                jrbRetiroActionPerformed(evt);
             }
         });
-        panBlanco.add(jrbCuentaCorriente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
+        panBlanco.add(jrbRetiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -120,42 +123,56 @@ public class PanRegistrarOperacion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jrbCuentaCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCuentaCorrienteActionPerformed
-        PanCrearCuentaCorriente panCrearCuentaCorriente = new PanCrearCuentaCorriente(comp);
-        panCrearCuentaCorriente.setSize(1100,670);
-        panCrearCuentaCorriente.setLocation(0,0);
+    private void jrbChequeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbChequeActionPerformed
+        PanRegistrarCheque panCheq = new PanRegistrarCheque(comp);
+        panCheq.setSize(1100,670);
+        panCheq.setLocation(0,0);
 
         panContenido.removeAll();
-        panContenido.add(panCrearCuentaCorriente,BorderLayout.CENTER);
+        panContenido.add(panCheq,BorderLayout.CENTER);
         panContenido.revalidate();
         panContenido.repaint();
-    }//GEN-LAST:event_jrbCuentaCorrienteActionPerformed
+    }//GEN-LAST:event_jrbChequeActionPerformed
 
-    private void jrbCuentaAhorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCuentaAhorroActionPerformed
-		PanCrearCuentaAhorro panCrearCuentaAhorro = new PanCrearCuentaAhorro(comp);
-        panCrearCuentaAhorro.setSize(1100,670);
-        panCrearCuentaAhorro.setLocation(0,0);
+    private void jrbTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbTransferenciaActionPerformed
+	PanRegistrarTransferencia panTransf = new PanRegistrarTransferencia(comp);
+        panTransf.setSize(1100,670);
+        panTransf.setLocation(0,0);
 
         panContenido.removeAll();
-        panContenido.add(panCrearCuentaAhorro,BorderLayout.CENTER);
+        panContenido.add(panTransf,BorderLayout.CENTER);
         panContenido.revalidate();
         panContenido.repaint();
-    }//GEN-LAST:event_jrbCuentaAhorroActionPerformed
+    }//GEN-LAST:event_jrbTransferenciaActionPerformed
 
-    private void jrbCuentaCorriente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCuentaCorriente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbCuentaCorriente1ActionPerformed
+    private void jrbDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbDepositoActionPerformed
+        PanRegistrarDeposito panDep = new PanRegistrarDeposito(comp);
+        panDep.setSize(1100,670);
+        panDep.setLocation(0,0);
 
-    private void jrbCuentaCorriente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCuentaCorriente2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrbCuentaCorriente2ActionPerformed
+        panContenido.removeAll();
+        panContenido.add(panDep,BorderLayout.CENTER);
+        panContenido.revalidate();
+        panContenido.repaint();
+    }//GEN-LAST:event_jrbDepositoActionPerformed
+
+    private void jrbRetiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbRetiroActionPerformed
+        PanRegistrarRetiro panRet = new PanRegistrarRetiro(comp);
+        panRet.setSize(1100,670);
+        panRet.setLocation(0,0);
+
+        panContenido.removeAll();
+        panContenido.add(panRet,BorderLayout.CENTER);
+        panContenido.revalidate();
+        panContenido.repaint();
+    }//GEN-LAST:event_jrbRetiroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton jrbCuentaAhorro;
-    private javax.swing.JRadioButton jrbCuentaCorriente;
-    private javax.swing.JRadioButton jrbCuentaCorriente1;
-    private javax.swing.JRadioButton jrbCuentaCorriente2;
+    private javax.swing.JRadioButton jrbCheque;
+    private javax.swing.JRadioButton jrbDeposito;
+    private javax.swing.JRadioButton jrbRetiro;
+    private javax.swing.JRadioButton jrbTransferencia;
     private javax.swing.JPanel panBlanco;
     private javax.swing.JPanel panContenido;
     // End of variables declaration//GEN-END:variables

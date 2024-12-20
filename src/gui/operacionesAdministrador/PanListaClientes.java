@@ -23,16 +23,15 @@ import objects.accounts.PersonaJuridica;
  */
 public class PanListaClientes extends javax.swing.JPanel {
 
-    DefaultTableModel mt = new DefaultTableModel();
     private Admin comp;
+
     /**
      * Creates new form PanListaEmpleados
      */
     public PanListaClientes(Admin comp) {
         this.comp = comp;
         initComponents();
-        String ids[] = {"Nombre","Apellidos","DNI","Telefono","Direccion","Coreo electronico","Sueldo"};
-        mt.setColumnIdentifiers(ids);
+
     }
 
     /**
@@ -46,87 +45,68 @@ public class PanListaClientes extends javax.swing.JPanel {
 
         panBlanco = new javax.swing.JPanel();
         cmbAcc = new javax.swing.JComboBox<>();
-        lblAccounts = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txpClientInfo = new javax.swing.JTextPane();
 
         panBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panBlanco.setPreferredSize(new java.awt.Dimension(1140, 784));
         panBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cmbAcc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbAcc.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                cmbAccPopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-        });
+        cmbAcc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
         cmbAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAccActionPerformed(evt);
             }
         });
-        panBlanco.add(cmbAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 120, 40));
+        panBlanco.add(cmbAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 120, 40));
 
-        lblAccounts.setBackground(new java.awt.Color(221, 221, 221));
-        lblAccounts.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        lblAccounts.setForeground(new java.awt.Color(30, 30, 30));
-        lblAccounts.setToolTipText("");
-        lblAccounts.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panBlanco.add(lblAccounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 300, 490));
+        jScrollPane1.setViewportView(txpClientInfo);
+
+        panBlanco.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 580, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-		cmbAcc.removeAllItems();
-		for (String i : comp.getListaNrosDoc()) {
-			cmbAcc.addItem(i);
-			
-		}
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAccActionPerformed
-        
-    }//GEN-LAST:event_cmbAccActionPerformed
 
-    private void cmbAccPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmbAccPopupMenuWillBecomeInvisible
         String number = cmbAcc.getSelectedItem().toString();
-		try {
-			if (number.length() == 8){
-				Persona account = comp.searchNatural(number);
-				lblAccounts.setText(account.toString());
-			}
-			else {
-				PersonaJuridica account = comp.searchJuridica(number);
-				lblAccounts.setText(account.toString());
-			}
+        try {
+            if (number.length() == 8) {
+                Persona account = comp.searchNatural(number);
+                txpClientInfo.setText(account.toString());
+            } else {
+                PersonaJuridica account = comp.searchJuridica(number);
+                txpClientInfo.setText(account.toString());
+            }
 
-		} catch (ClientNotFound e) {
-			lblAccounts.setText("ERROR\nCliente no encontrado");
-		}
-
-		
-    }//GEN-LAST:event_cmbAccPopupMenuWillBecomeInvisible
-
+        } catch (ClientNotFound e) {
+            txpClientInfo.setText("ERROR\nCliente no encontrado");
+        }
+        cmbAcc.removeAllItems();
+        for (String i : comp.getListaNrosDoc()) {
+            cmbAcc.addItem(i);
+        }
+    }//GEN-LAST:event_cmbAccActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbAcc;
-    private javax.swing.JLabel lblAccounts;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panBlanco;
+    private javax.swing.JTextPane txpClientInfo;
     // End of variables declaration//GEN-END:variables
 }

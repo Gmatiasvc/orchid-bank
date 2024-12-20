@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import javax.swing.ButtonGroup;
 
 import components.Employee;
+
 /**
  *
  * @author jhose
@@ -15,14 +16,14 @@ import components.Employee;
 public class PamCrearPersona extends javax.swing.JPanel {
 
     private final javax.swing.ButtonGroup buttonGroupOpciones;
-    
+
     /**
      * Creates new form PamCrearUsuario
      */
+    private Employee comp;
 
-	private Employee comp;
     public PamCrearPersona(Employee comp) {
-		this.comp = comp;
+        this.comp = comp;
         initComponents();
         buttonGroupOpciones = new ButtonGroup();
         buttonGroupOpciones.add(jrdNatural);
@@ -75,12 +76,12 @@ public class PamCrearPersona extends javax.swing.JPanel {
         javax.swing.GroupLayout panContenidoLayout = new javax.swing.GroupLayout(panContenido);
         panContenido.setLayout(panContenidoLayout);
         panContenidoLayout.setHorizontalGroup(
-            panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1120, Short.MAX_VALUE)
+                panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1120, Short.MAX_VALUE)
         );
         panContenidoLayout.setVerticalGroup(
-            panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
+                panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 760, Short.MAX_VALUE)
         );
 
         panBlanco.add(panContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 760));
@@ -89,37 +90,36 @@ public class PamCrearPersona extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrbJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbJuridicaActionPerformed
         PanCrearJuridico panCrearjur = new PanCrearJuridico(comp);
-        panCrearjur.setSize(1100,670);
-        panCrearjur.setLocation(0,0);
+        panCrearjur.setSize(1100, 670);
+        panCrearjur.setLocation(0, 0);
 
         panContenido.removeAll();
-        panContenido.add(panCrearjur,BorderLayout.CENTER);
+        panContenido.add(panCrearjur, BorderLayout.CENTER);
         panContenido.revalidate();
         panContenido.repaint();
     }//GEN-LAST:event_jrbJuridicaActionPerformed
 
     private void jrdNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrdNaturalActionPerformed
         PanCrearNatural panCrearnat = new PanCrearNatural(comp);
-        panCrearnat.setSize(1100,670);
-        panCrearnat.setLocation(0,0);
+        panCrearnat.setSize(1100, 670);
+        panCrearnat.setLocation(0, 0);
 
         panContenido.removeAll();
-        panContenido.add(panCrearnat,BorderLayout.CENTER);
+        panContenido.add(panCrearnat, BorderLayout.CENTER);
         panContenido.revalidate();
         panContenido.repaint();
     }//GEN-LAST:event_jrdNaturalActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton jrbJuridica;

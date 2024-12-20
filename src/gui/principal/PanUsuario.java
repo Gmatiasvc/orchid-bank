@@ -15,15 +15,15 @@ import components.Login;
  * @author jhose
  */
 public class PanUsuario extends javax.swing.JPanel {
-    
-    
+
     /**
      * Creates new form PanUsuario
      */
     Login loginHandler;
+
     public PanUsuario(Login login) {
         initComponents();
-	loginHandler = login;
+        loginHandler = login;
     }
 
     /**
@@ -83,11 +83,11 @@ public class PanUsuario extends javax.swing.JPanel {
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         String usuario = txtUsuario.getText();
         String contraseña = new String(pwdContraseña.getPassword());
-		boolean sucess = loginHandler.loginUser(usuario, contraseña);
+        boolean sucess = loginHandler.loginUser(usuario, contraseña);
         if (sucess) {
             FrmVentanaPrincipalUsuario ventanaPrincipalUsuario = new FrmVentanaPrincipalUsuario();
             ventanaPrincipalUsuario.setVisible(true);
-            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this); 
+            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
             topFrame.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
@@ -97,7 +97,6 @@ public class PanUsuario extends javax.swing.JPanel {
     private void pwdContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdContraseñaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;

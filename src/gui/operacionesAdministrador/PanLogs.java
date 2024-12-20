@@ -7,10 +7,15 @@ package gui.operacionesAdministrador;
 import components.Admin;
 import objects.accounts.Cuenta;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.swing.table.DefaultTableModel;
 
 import common.exceptions.AccountNotFound;
 import common.exceptions.BadStringToParse;
+import common.logger.Logger;
 import objects.accounts.CuentaAhorro;
 import objects.accounts.CuentaCorriente;
 
@@ -22,14 +27,16 @@ public class PanLogs extends javax.swing.JPanel {
 
     DefaultTableModel mt = new DefaultTableModel();
     private Admin comp;
+
     /**
      * Creates new form PanListaEmpleados
      */
     public PanLogs(Admin comp) {
         initComponents();
-        String ids[] = {"Nombre","Apellidos","DNI","Telefono","Direccion","Coreo electronico","Sueldo"};
+        String ids[] = {"Nombre", "Apellidos", "DNI", "Telefono", "Direccion", "Coreo electronico", "Sueldo"};
         mt.setColumnIdentifiers(ids);
         this.comp = comp;
+
     }
 
     /**
@@ -42,85 +49,59 @@ public class PanLogs extends javax.swing.JPanel {
     private void initComponents() {
 
         panBlanco = new javax.swing.JPanel();
-        cmbAcc = new javax.swing.JComboBox<>();
-        lblAccounts = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txpLog = new javax.swing.JTextPane();
+        txtpath = new javax.swing.JTextField();
+        btnRead = new javax.swing.JButton();
 
         panBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panBlanco.setPreferredSize(new java.awt.Dimension(1140, 784));
         panBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cmbAcc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbAcc.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                cmbAccPopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-        });
-        cmbAcc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbAccActionPerformed(evt);
-            }
-        });
-        panBlanco.add(cmbAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 120, 40));
+        jScrollPane1.setViewportView(txpLog);
 
-        lblAccounts.setBackground(new java.awt.Color(221, 221, 221));
-        lblAccounts.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        lblAccounts.setForeground(new java.awt.Color(30, 30, 30));
-        lblAccounts.setToolTipText("");
-        lblAccounts.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panBlanco.add(lblAccounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 300, 490));
+        panBlanco.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 700, 720));
+        panBlanco.add(txtpath, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 140, 40));
+
+        btnRead.setText("Leer");
+        btnRead.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReadActionPerformed(evt);
+            }
+        });
+        panBlanco.add(btnRead, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAccActionPerformed
-        for (String i : comp.getListaNrosCuenta()) {
-			cmbAcc.addItem(i);
-			
-		}
-    }//GEN-LAST:event_cmbAccActionPerformed
+    private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
+        txpLog.setText("");
+        for (String i : comp.getLog(txtpath.getText())) {
+            txpLog.setText(txpLog.getText() + "\n" + i);
+        }
 
-    private void cmbAccPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmbAccPopupMenuWillBecomeInvisible
-        String number = cmbAcc.getSelectedItem().toString();
-		try {
-			if (number.charAt(0)=='1'){
-				CuentaAhorro account = (CuentaAhorro) comp.searchCuenta(number);
-				lblAccounts.setText(account.toString());
-			}
-			else {
-				CuentaCorriente account = (CuentaCorriente) comp.searchCuenta(number);
-				lblAccounts.setText(account.toString());
-			}
-
-		} catch (AccountNotFound | BadStringToParse e) {
-			lblAccounts.setText("ERROR\nCuenta no encontrada");
-		}
-
-		
-    }//GEN-LAST:event_cmbAccPopupMenuWillBecomeInvisible
-
+    }//GEN-LAST:event_btnReadActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbAcc;
-    private javax.swing.JLabel lblAccounts;
+    private javax.swing.JButton btnRead;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panBlanco;
+    private javax.swing.JTextPane txpLog;
+    private javax.swing.JTextField txtpath;
     // End of variables declaration//GEN-END:variables
 }

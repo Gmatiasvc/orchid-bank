@@ -60,12 +60,12 @@ public class Client {
 
 	public boolean doTransfer(float monto, String accs, String accr) throws AccountNotFound, DataMissmatch, InvalidInput{
 		
-        if (accs.charAt(0) != '1' || accs.charAt(0) != '2'||accs.length()!=8) {
+        if (accs.charAt(0) != '1' && accs.charAt(0) != '2'&&accs.length()!=8) {
 			logger.WARN("Tranfer operation unable to proceed as provided account number: "+accs+" is invalid. Amount to transfer indicated: "+monto + " to the account: "+accr);
 			throw new AccountNotFound();
 			
 		} else {
-			if (accr.charAt(0) != '1' || accr.charAt(0) != '2'||accr.length()!=8){
+			if (accr.charAt(0) != '1' && accr.charAt(0) != '2'&&accr.length()!=8){
 				logger.WARN("Tranfer operation unable to proceed as provided account number: "+accr+" is invalid. Amount to transfer indicated: "+monto + " from the account: "+accs);
 				throw new AccountNotFound();
 			}

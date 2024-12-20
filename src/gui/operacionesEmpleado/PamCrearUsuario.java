@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import javax.swing.ButtonGroup;
 
 import components.Employee;
+
 /**
  *
  * @author jhose
@@ -15,14 +16,14 @@ import components.Employee;
 public class PamCrearUsuario extends javax.swing.JPanel {
 
     private final javax.swing.ButtonGroup buttonGroupOpciones;
-    
+
     /**
      * Creates new form PamCrearUsuario
      */
+    private Employee comp;
 
-	private Employee comp;
     public PamCrearUsuario(Employee comp) {
-		this.comp = comp;
+        this.comp = comp;
         initComponents();
         buttonGroupOpciones = new ButtonGroup();
         buttonGroupOpciones.add(jrbCuentaAhorro);
@@ -75,12 +76,12 @@ public class PamCrearUsuario extends javax.swing.JPanel {
         javax.swing.GroupLayout panContenidoLayout = new javax.swing.GroupLayout(panContenido);
         panContenido.setLayout(panContenidoLayout);
         panContenidoLayout.setHorizontalGroup(
-            panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1120, Short.MAX_VALUE)
+                panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1120, Short.MAX_VALUE)
         );
         panContenidoLayout.setVerticalGroup(
-            panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
+                panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 760, Short.MAX_VALUE)
         );
 
         panBlanco.add(panContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 760));
@@ -89,37 +90,36 @@ public class PamCrearUsuario extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrbCuentaCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCuentaCorrienteActionPerformed
         PanCrearCuentaCorriente panCrearCuentaCorriente = new PanCrearCuentaCorriente(comp);
-        panCrearCuentaCorriente.setSize(1100,670);
-        panCrearCuentaCorriente.setLocation(0,0);
+        panCrearCuentaCorriente.setSize(1100, 670);
+        panCrearCuentaCorriente.setLocation(0, 0);
 
         panContenido.removeAll();
-        panContenido.add(panCrearCuentaCorriente,BorderLayout.CENTER);
+        panContenido.add(panCrearCuentaCorriente, BorderLayout.CENTER);
         panContenido.revalidate();
         panContenido.repaint();
     }//GEN-LAST:event_jrbCuentaCorrienteActionPerformed
 
     private void jrbCuentaAhorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCuentaAhorroActionPerformed
-		PanCrearCuentaAhorro panCrearCuentaAhorro = new PanCrearCuentaAhorro(comp);
-        panCrearCuentaAhorro.setSize(1100,670);
-        panCrearCuentaAhorro.setLocation(0,0);
+        PanCrearCuentaAhorro panCrearCuentaAhorro = new PanCrearCuentaAhorro(comp);
+        panCrearCuentaAhorro.setSize(1100, 670);
+        panCrearCuentaAhorro.setLocation(0, 0);
 
         panContenido.removeAll();
-        panContenido.add(panCrearCuentaAhorro,BorderLayout.CENTER);
+        panContenido.add(panCrearCuentaAhorro, BorderLayout.CENTER);
         panContenido.revalidate();
         panContenido.repaint();
     }//GEN-LAST:event_jrbCuentaAhorroActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton jrbCuentaAhorro;

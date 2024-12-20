@@ -7,6 +7,8 @@ package gui.operacionesEmpleado;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import common.exceptions.ClientNotFound;
 import common.exceptions.InvalidInput;
 import common.logger.Logger;
@@ -504,9 +506,11 @@ public class PanCrearJuridico extends javax.swing.JPanel {
 			e.printStackTrace();
 		}
 		if (status){
-			jbtGuardar.setBackground(new Color(51, 51, 255));
+		JOptionPane.showMessageDialog(this, "Operacion exitosa", "Datos guardados", JOptionPane.INFORMATION_MESSAGE);
+		jbtGuardar.setBackground(new Color(51, 51, 255));
 		}
 		else{
+			JOptionPane.showMessageDialog(this, "Datos invalidos", "Error en la operacion", JOptionPane.ERROR_MESSAGE);
 			jbtGuardar.setBackground(new Color(255, 51, 51));
 		}	
     }//GEN-LAST:event_jbtGuardarActionPerformed

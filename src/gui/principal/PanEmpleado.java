@@ -3,23 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package gui.principal;
- import components.Login;
+
+import components.Login;
 import javax.swing.*;
+
 /**
  *
  * @author jhose
  */
 public class PanEmpleado extends javax.swing.JPanel {
 
-    
     /**
      * Creates new form PanEmpleado
      */
-	private Login loginHandler;
+    private Login loginHandler;
+
     public PanEmpleado(Login login) {
         initComponents();
-		loginHandler = login;
-    } 
+        loginHandler = login;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,20 +75,19 @@ public class PanEmpleado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-                            
+
         String usuario = txtEmpleado.getText();
-        String contraseña = new String(pwdContraseña1.getPassword()); 
-		boolean sucess = loginHandler.loginEmployee(usuario, contraseña);
+        String contraseña = new String(pwdContraseña1.getPassword());
+        boolean sucess = loginHandler.loginEmployee(usuario, contraseña);
         if (sucess) {
             FrmVentanaPrincipalEmpleado ventanaPrincipalEmpleado = new FrmVentanaPrincipalEmpleado();
             ventanaPrincipalEmpleado.setVisible(true);
-            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this); 
+            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
             topFrame.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnContinuarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;

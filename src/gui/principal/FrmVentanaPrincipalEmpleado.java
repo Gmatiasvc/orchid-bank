@@ -9,7 +9,7 @@ import java.awt.BorderLayout;
 import components.Employee;
 import gui.operacionesEmpleado.PamCrearPersona;
 import gui.operacionesEmpleado.PamCrearUsuario;
-import gui.operacionesEmpleado.PanListaOperaciones;
+import gui.operacionesEmpleado.PanListaCuentas;
 import gui.operacionesEmpleado.PanRegistrarOperacion;
 
 /**
@@ -17,13 +17,13 @@ import gui.operacionesEmpleado.PanRegistrarOperacion;
  * @author jhose
  */
 public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
-    
-	private final javax.swing.ButtonGroup buttonGroupOpciones;
+
+    private final javax.swing.ButtonGroup buttonGroupOpciones;
     /**
      * Creates new form FrmVentanaPrincipalEmpleado
      */
 
-	private Employee comp = new Employee();
+    private Employee comp = new Employee();
 
     public FrmVentanaPrincipalEmpleado() {
         initComponents();
@@ -34,17 +34,17 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
         buttonGroupOpciones.add(jrbOperaciones);
 
     }
-    
-    private void cargarPanel(javax.swing.JPanel panel) {
-    panel.setSize(1100, 576);
-    panel.setLocation(0, 0);
 
-    panContenido.removeAll();
-    panContenido.add(panel, BorderLayout.CENTER);
-    panContenido.revalidate();
-    panContenido.repaint();
+    private void cargarPanel(javax.swing.JPanel panel) {
+        panel.setSize(1100, 576);
+        panel.setLocation(0, 0);
+
+        panContenido.removeAll();
+        panContenido.add(panel, BorderLayout.CENTER);
+        panContenido.revalidate();
+        panContenido.repaint();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,35 +135,35 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
         javax.swing.GroupLayout panOpcionesLayout = new javax.swing.GroupLayout(panOpciones);
         panOpciones.setLayout(panOpcionesLayout);
         panOpcionesLayout.setHorizontalGroup(
-            panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panOpcionesLayout.createSequentialGroup()
-                .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panOpcionesLayout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(lblEmpleado))
-                    .addGroup(panOpcionesLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jrbInformacionCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jrbCrearCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jrbCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jrbOperaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panOpcionesLayout.createSequentialGroup()
+                                .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panOpcionesLayout.createSequentialGroup()
+                                                .addGap(72, 72, 72)
+                                                .addComponent(lblEmpleado))
+                                        .addGroup(panOpcionesLayout.createSequentialGroup()
+                                                .addGap(47, 47, 47)
+                                                .addGroup(panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jrbInformacionCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                                        .addComponent(jrbCrearCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                                        .addComponent(jrbCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                                        .addComponent(jrbOperaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))))
+                                .addContainerGap(36, Short.MAX_VALUE))
         );
         panOpcionesLayout.setVerticalGroup(
-            panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panOpcionesLayout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(lblEmpleado)
-                .addGap(70, 70, 70)
-                .addComponent(jrbInformacionCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jrbCrearCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jrbCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jrbOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(529, Short.MAX_VALUE))
+                panOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panOpcionesLayout.createSequentialGroup()
+                                .addGap(93, 93, 93)
+                                .addComponent(lblEmpleado)
+                                .addGap(70, 70, 70)
+                                .addComponent(jrbInformacionCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbCrearCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(529, Short.MAX_VALUE))
         );
 
         panBlanco.add(panOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 960));
@@ -184,12 +184,12 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
         javax.swing.GroupLayout panContenidoLayout = new javax.swing.GroupLayout(panContenido);
         panContenido.setLayout(panContenidoLayout);
         panContenidoLayout.setHorizontalGroup(
-            panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
+                panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1140, Short.MAX_VALUE)
         );
         panContenidoLayout.setVerticalGroup(
-            panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
+                panContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 870, Short.MAX_VALUE)
         );
 
         panBlanco.add(panContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, 870));
@@ -198,7 +198,7 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void jrbCrearCuentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCrearCuentasActionPerformed
         cargarPanel(new PamCrearUsuario(comp));
     }//GEN-LAST:event_jrbCrearCuentasActionPerformed
@@ -208,7 +208,7 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbCrearClienteActionPerformed
 
     private void jrbInformacionCuentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbInformacionCuentasActionPerformed
-        cargarPanel(new PanListaOperaciones(comp));
+        cargarPanel(new PanListaCuentas(comp));
     }//GEN-LAST:event_jrbInformacionCuentasActionPerformed
 
     private void jrbOperacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbOperacionesActionPerformed
@@ -216,9 +216,9 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbOperacionesActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-       FrmOrquiBank returnOrquiBank = new FrmOrquiBank();
-       returnOrquiBank.setVisible(true);
-       this.dispose();
+        FrmOrquiBank returnOrquiBank = new FrmOrquiBank();
+        returnOrquiBank.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**

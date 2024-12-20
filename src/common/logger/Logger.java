@@ -145,10 +145,10 @@ public class Logger {
         }
     }
 
-	public static ArrayList<String> readLog(String year, String month, String day, Logger logger){
+	public static ArrayList<String> readLog(String path, Logger logger){
 		ArrayList<String> list = new ArrayList<>();
 		try {
-            File reader = new File("logs/"+day+"-"+month+"-"+year+".log");
+            File reader = new File("logs/"+path+".log");
             try (Scanner scanner = new Scanner(reader)) {
                 while(scanner.hasNextLine()){
 					list.add(scanner.nextLine());
@@ -156,7 +156,7 @@ public class Logger {
             }
         } catch (Exception e) {
 			list.add("[ERROR] An exception was raised during the read operation of the .log, that all we know");
-			logger.ERROR("An exception was raised during the read operation of: logs/"+day+"-"+month+"-"+year+".log");
+			logger.ERROR("An exception was raised during the read operation of: logs/"+path+".log");
             return list;
         }
 		logger.INFO("readLog operation completed sucessfuly");

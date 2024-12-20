@@ -19,10 +19,11 @@ public class PanAdministrador extends javax.swing.JPanel {
     /**
      * Creates new form PanAdministrador
      */
-	private Login loginHandler;
+    private Login loginHandler;
+
     public PanAdministrador(Login login) {
         initComponents();
-		loginHandler = login;
+        loginHandler = login;
     }
 
     /**
@@ -84,12 +85,12 @@ public class PanAdministrador extends javax.swing.JPanel {
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         String usuario = txtAdministrador.getText();
-        String contraseña = new String(pwdContraseña.getPassword()); 
-		boolean sucess = loginHandler.loginAdmin(usuario, contraseña);
+        String contraseña = new String(pwdContraseña.getPassword());
+        boolean sucess = loginHandler.loginAdmin(usuario, contraseña);
         if (sucess) {
             FrmVentanaPrincipalAdministrador ventanaPrincipalAdministrador = new FrmVentanaPrincipalAdministrador();
             ventanaPrincipalAdministrador.setVisible(true);
-            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this); 
+            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
             topFrame.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
@@ -99,7 +100,6 @@ public class PanAdministrador extends javax.swing.JPanel {
     private void pwdContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdContraseñaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
