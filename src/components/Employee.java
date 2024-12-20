@@ -341,4 +341,7 @@ public ArrayList<String> getListaNrosCuenta() {
 		return logger;
 	}
 	
+	public ListaClientesNaturales getListaNaturales() {
+		return listaNaturales;
+	}
 }
