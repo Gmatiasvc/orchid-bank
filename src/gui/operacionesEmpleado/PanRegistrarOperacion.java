@@ -12,7 +12,7 @@ import components.Employee;
  *
  * @author jhose
  */
-public class PamCrearUsuario extends javax.swing.JPanel {
+public class PanRegistrarOperacion extends javax.swing.JPanel {
 
     private final javax.swing.ButtonGroup buttonGroupOpciones;
     
@@ -21,7 +21,7 @@ public class PamCrearUsuario extends javax.swing.JPanel {
      */
 
 	private Employee comp;
-    public PamCrearUsuario(Employee comp) {
+    public PanRegistrarOperacion(Employee comp) {
 		this.comp = comp;
         initComponents();
         buttonGroupOpciones = new ButtonGroup();
@@ -42,6 +42,8 @@ public class PamCrearUsuario extends javax.swing.JPanel {
         jrbCuentaAhorro = new javax.swing.JRadioButton();
         jrbCuentaCorriente = new javax.swing.JRadioButton();
         panContenido = new javax.swing.JPanel();
+        jrbCuentaCorriente1 = new javax.swing.JRadioButton();
+        jrbCuentaCorriente2 = new javax.swing.JRadioButton();
 
         setPreferredSize(new java.awt.Dimension(1284, 784));
 
@@ -51,23 +53,23 @@ public class PamCrearUsuario extends javax.swing.JPanel {
 
         jrbCuentaAhorro.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jrbCuentaAhorro.setForeground(new java.awt.Color(0, 51, 255));
-        jrbCuentaAhorro.setText("Cuenta ahorro");
+        jrbCuentaAhorro.setText("Transferencia");
         jrbCuentaAhorro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbCuentaAhorroActionPerformed(evt);
             }
         });
-        panBlanco.add(jrbCuentaAhorro, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        panBlanco.add(jrbCuentaAhorro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         jrbCuentaCorriente.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jrbCuentaCorriente.setForeground(new java.awt.Color(0, 51, 255));
-        jrbCuentaCorriente.setText("Cuenta corriente");
+        jrbCuentaCorriente.setText("Cheque");
         jrbCuentaCorriente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbCuentaCorrienteActionPerformed(evt);
             }
         });
-        panBlanco.add(jrbCuentaCorriente, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, -1, -1));
+        panBlanco.add(jrbCuentaCorriente, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
 
         panContenido.setBackground(new java.awt.Color(204, 204, 204));
         panContenido.setPreferredSize(new java.awt.Dimension(1120, 680));
@@ -85,6 +87,26 @@ public class PamCrearUsuario extends javax.swing.JPanel {
 
         panBlanco.add(panContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 760));
         panContenido.getAccessibleContext().setAccessibleName("");
+
+        jrbCuentaCorriente1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jrbCuentaCorriente1.setForeground(new java.awt.Color(0, 51, 255));
+        jrbCuentaCorriente1.setText("Deposito");
+        jrbCuentaCorriente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCuentaCorriente1ActionPerformed(evt);
+            }
+        });
+        panBlanco.add(jrbCuentaCorriente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
+
+        jrbCuentaCorriente2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jrbCuentaCorriente2.setForeground(new java.awt.Color(0, 51, 255));
+        jrbCuentaCorriente2.setText("Retiro");
+        jrbCuentaCorriente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCuentaCorriente2ActionPerformed(evt);
+            }
+        });
+        panBlanco.add(jrbCuentaCorriente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -120,10 +142,20 @@ public class PamCrearUsuario extends javax.swing.JPanel {
         panContenido.repaint();
     }//GEN-LAST:event_jrbCuentaAhorroActionPerformed
 
+    private void jrbCuentaCorriente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCuentaCorriente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbCuentaCorriente1ActionPerformed
+
+    private void jrbCuentaCorriente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCuentaCorriente2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbCuentaCorriente2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton jrbCuentaAhorro;
     private javax.swing.JRadioButton jrbCuentaCorriente;
+    private javax.swing.JRadioButton jrbCuentaCorriente1;
+    private javax.swing.JRadioButton jrbCuentaCorriente2;
     private javax.swing.JPanel panBlanco;
     private javax.swing.JPanel panContenido;
     // End of variables declaration//GEN-END:variables

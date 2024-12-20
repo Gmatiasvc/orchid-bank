@@ -9,8 +9,8 @@ import java.awt.BorderLayout;
 import components.Employee;
 import gui.operacionesEmpleado.PamCrearPersona;
 import gui.operacionesEmpleado.PamCrearUsuario;
-import gui.operacionesEmpleado.PamMovimientos;
 import gui.operacionesEmpleado.PanListaOperaciones;
+import gui.operacionesEmpleado.PanRegistrarOperacion;
 
 /**
  *
@@ -31,7 +31,7 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
         buttonGroupOpciones.add(jrbCrearCuentas);
         buttonGroupOpciones.add(jrbInformacionCuentas);
         buttonGroupOpciones.add(jrbCrearCliente);
-        buttonGroupOpciones.add(jrbCrearClientes);
+        buttonGroupOpciones.add(jrbOperaciones);
 
     }
     
@@ -60,7 +60,7 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
         jrbInformacionCuentas = new javax.swing.JRadioButton();
         jrbCrearCuentas = new javax.swing.JRadioButton();
         jrbCrearCliente = new javax.swing.JRadioButton();
-        jrbCrearClientes = new javax.swing.JRadioButton();
+        jrbOperaciones = new javax.swing.JRadioButton();
         btnSalir = new javax.swing.JButton();
         panContenido = new javax.swing.JPanel();
 
@@ -119,16 +119,16 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
             }
         });
 
-        jrbCrearClientes.setBackground(new java.awt.Color(0, 51, 255));
-        jrbCrearClientes.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jrbCrearClientes.setForeground(new java.awt.Color(255, 255, 255));
-        jrbCrearClientes.setText("Usuarios");
-        jrbCrearClientes.setToolTipText("");
-        jrbCrearClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jrbCrearClientes.setPreferredSize(new java.awt.Dimension(200, 40));
-        jrbCrearClientes.addActionListener(new java.awt.event.ActionListener() {
+        jrbOperaciones.setBackground(new java.awt.Color(0, 51, 255));
+        jrbOperaciones.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jrbOperaciones.setForeground(new java.awt.Color(255, 255, 255));
+        jrbOperaciones.setText("Operaciones");
+        jrbOperaciones.setToolTipText("");
+        jrbOperaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jrbOperaciones.setPreferredSize(new java.awt.Dimension(200, 40));
+        jrbOperaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbCrearClientesActionPerformed(evt);
+                jrbOperacionesActionPerformed(evt);
             }
         });
 
@@ -147,7 +147,7 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
                             .addComponent(jrbInformacionCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jrbCrearCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jrbCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jrbCrearClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))))
+                            .addComponent(jrbOperaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         panOpcionesLayout.setVerticalGroup(
@@ -162,7 +162,7 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jrbCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jrbCrearClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jrbOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(529, Short.MAX_VALUE))
         );
 
@@ -211,9 +211,9 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
         cargarPanel(new PanListaOperaciones(comp));
     }//GEN-LAST:event_jrbInformacionCuentasActionPerformed
 
-    private void jrbCrearClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCrearClientesActionPerformed
-    
-    }//GEN-LAST:event_jrbCrearClientesActionPerformed
+    private void jrbOperacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbOperacionesActionPerformed
+        cargarPanel(new PanRegistrarOperacion(comp));
+    }//GEN-LAST:event_jrbOperacionesActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
        FrmOrquiBank returnOrquiBank = new FrmOrquiBank();
@@ -257,9 +257,9 @@ public class FrmVentanaPrincipalEmpleado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
     private javax.swing.JRadioButton jrbCrearCliente;
-    private javax.swing.JRadioButton jrbCrearClientes;
     private javax.swing.JRadioButton jrbCrearCuentas;
     private javax.swing.JRadioButton jrbInformacionCuentas;
+    private javax.swing.JRadioButton jrbOperaciones;
     private javax.swing.JLabel lblEmpleado;
     private javax.swing.JPanel panBlanco;
     private javax.swing.JPanel panContenido;

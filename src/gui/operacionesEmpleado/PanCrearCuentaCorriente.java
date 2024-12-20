@@ -413,12 +413,8 @@ public class PanCrearCuentaCorriente extends javax.swing.JPanel {
 	catch (Exception e) {
 		chequeLimit = 10000.0f;
 	}
-	float chequeNumberLimit;
-	try
-	{ chequeNumberLimit = Float.parseFloat(txtNumeroCheques1.getText());}
-	catch (Exception e) {
-		chequeNumberLimit = 100.0f;
-	}
+	float chequeNumberLimit=100.0f;
+	
 	float chequeCommission;
 	try
 	{chequeCommission = Float.parseFloat(txtComisionPorCheque.getText());}

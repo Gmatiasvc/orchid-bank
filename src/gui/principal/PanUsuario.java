@@ -47,16 +47,16 @@ public class PanUsuario extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel1.setText("Usuario         :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 300, 170, 40));
+        jLabel1.setText("DNI                  :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 170, 40));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel2.setText("Contraseña   :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 170, 40));
+        jLabel2.setText("Apellidos        :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 170, 40));
 
         txtUsuario.setPreferredSize(new java.awt.Dimension(260, 40));
-        add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 260, 40));
+        add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 260, 40));
 
         pwdContraseña.setForeground(new java.awt.Color(204, 204, 204));
         pwdContraseña.setPreferredSize(new java.awt.Dimension(260, 40));
@@ -65,7 +65,7 @@ public class PanUsuario extends javax.swing.JPanel {
                 pwdContraseñaActionPerformed(evt);
             }
         });
-        add(pwdContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 260, 40));
+        add(pwdContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 260, 40));
 
         btnContinuar.setBackground(new java.awt.Color(0, 51, 255));
         btnContinuar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -77,7 +77,7 @@ public class PanUsuario extends javax.swing.JPanel {
                 btnContinuarActionPerformed(evt);
             }
         });
-        add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 330, -1, 40));
+        add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
